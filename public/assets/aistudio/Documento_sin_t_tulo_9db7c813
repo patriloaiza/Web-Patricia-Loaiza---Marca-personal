@@ -1,0 +1,57 @@
+﻿Cómo descargar Google Authenticator y vincularlo con una cuenta de Gmail, paso a paso. Puede hacerlo desde su celular y un computador; es más fácil porque tendrá el código QR en la pantalla del computador y podrá escanearlo con el teléfono.
+Paso 1. Descargar Google Authenticator
+  
+
+Si su celular es Android (Samsung, Motorola, Xiaomi, etc.)
+Descárguela desde Google Play.
+Descargar Google Authenticator para Android
+Enabling Google 2-Step Verification - Saga Education Knowledge Base
+Si su celular es iPhone
+  
+
+Descárguela desde App Store.
+Descargar Google Authenticator para iPhone
+Verifique que el desarrollador sea Google LLC. Después, pulse Instalar y luego Abrir.
+Apps on Google Play+1
+Paso 2. Activar la verificación en dos pasos de Gmail
+Desde el computador:
+1. Abra la seguridad de Google.
+Entre en este enlace:
+Abrir seguridad de la cuenta de Google
+2. Inicie sesión con el Gmail que desea proteger.
+Compruebe que sea la dirección correcta. Si tiene varias cuentas abiertas, seleccione la que corresponda.
+3. Entre en «Verificación en dos pasos».
+Busque la sección Cómo inicias sesión en Google y seleccione Verificación en dos pasos.
+4. Active la verificación.
+Pulse Empezar o Activar, según lo que aparezca, y siga las instrucciones. Google puede solicitarle la contraseña o confirmar su identidad.
+Gmail Help+1
+Paso 3. Vincular Gmail con Google Authenticator
+Mantenga abierta la página de seguridad en el computador y tenga su celular a mano.
+¿Y si pierdo un teléfono con Google Authenticator?
+1. Configure la aplicación autenticadora.
+  
+
+Dentro de Verificación en dos pasos, busque Aplicación Authenticator o Configurar autenticador y selecciónela.
+Tutorial para configurar Google Authenticator fácilmente - IONOS
+2. Seleccione su tipo de celular.
+  
+
+Elija Android o iPhone y pulse Siguiente. Google mostrará un código QR en el computador. No cierre esa ventana.
+How to set up Google Authenticator - IONOS UK
+3. Escanee el código QR.
+  
+
+Abra Google Authenticator en su celular, pulse el botón +, elija la opción para escanear un código QR y apunte la cámara al código que aparece en el computador.
+Cara Menggunakan Two Factor Authentication di cPanel - DomaiNesia
+4. Introduzca el código de seis dígitos.
+  
+
+La aplicación generará un código numérico que cambia aproximadamente cada 30 segundos. Escríbalo en la página de Google y pulse Verificar.
+5. Confirme que quedó configurado.
+Si Google confirma la verificación, la vinculación está lista. A partir de ese momento, podrá usar los códigos de Authenticator cuando Google se los solicite.
+Google Account Help+1
+Paso 4. Haga una prueba y guarde una alternativa
+* Compruebe que la aplicación muestra el código correspondiente a la cuenta.
+* Guarde los códigos de respaldo que Google le ofrezca en un lugar seguro.
+* No borre la aplicación ni cambie de celular sin verificar antes que puede recuperar sus códigos.
+* Nunca comparta sus códigos de verificación con terceros.
