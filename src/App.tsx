@@ -3,14 +3,12 @@ import { ActiveView } from './types/index.ts';
 import { Navbar } from './components/Navbar.tsx';
 import { Hero } from './components/Hero.tsx';
 import { TuExperienciaSection } from './components/TuExperienciaSection.tsx';
-import { BioCortaSection } from './components/BioCortaSection.tsx';
-import { PosturaIdentidadSection } from './components/PosturaIdentidadSection.tsx';
-import { BioCompletaSection } from './components/BioCompletaSection.tsx';
-import { MetodologiaFrameworksSection } from './components/MetodologiaFrameworksSection.tsx';
+import { Process5StepsSection } from './components/Process5StepsSection.tsx';
 import { ExpertiseSection } from './components/ExpertiseSection.tsx';
-import { ExperienciaAplicadaBanner } from './components/ExperienciaAplicadaBanner.tsx';
-import { SintesisEvolucionSection } from './components/SintesisEvolucionSection.tsx';
-import { FormacionAcademicaSection } from './components/FormacionAcademicaSection.tsx';
+import { EntregablesTangiblesSection } from './components/EntregablesTangiblesSection.tsx';
+import { MetodologiaFrameworksSection } from './components/MetodologiaFrameworksSection.tsx';
+import { IncludedNotIncludedSection } from './components/IncludedNotIncludedSection.tsx';
+import { SobrePatriciaSection } from './components/SobrePatriciaSection.tsx';
 import { StrategicFAQ } from './components/StrategicFAQ.tsx';
 import { ContinuarExplorandoSection } from './components/ContinuarExplorandoSection.tsx';
 import { Footer } from './components/Footer.tsx';
@@ -29,7 +27,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F7F7F7] text-neutral-900 font-sans antialiased selection:bg-[#E30613] selection:text-white">
-      {/* 1. Header with AI Bar on top (Screenshot image_f3d0e9d7.png) */}
+      {/* 1. Header with AI Bar on top */}
       <Navbar
         activeView={activeView}
         setActiveView={setActiveView}
@@ -41,46 +39,40 @@ export default function App() {
           <ForAIView onBackToHuman={() => setActiveView('main')} />
         ) : (
           <>
-            {/* 2. Hero Section with Framed Photo Slot & Credentials Strip below */}
+            {/* 2. Hero Section: Promesa + Para Quién + CTA con microcopy de reducción de riesgo + Marco de foto */}
             <Hero onExploreServices={scrollToServices} />
 
-            {/* 3. Tu Experiencia Tiene Valor: 6 Puntos de Empatía (PDF Página 2) */}
+            {/* 3. Problemas que resuelves (Puntos de partida con Resultado Deseado y Puente a Diagnóstico) */}
             <TuExperienciaSection />
 
-            {/* 4. Biografía Corta Box (Screenshot image_c139d158.png & PDF Página 3) */}
-            <BioCortaSection />
+            {/* 4. Cómo trabajas en 5 pasos: Entender → Diagnosticar → Priorizar → Orientar/Transformar → Evolucionar */}
+            <Process5StepsSection />
 
-            {/* 5. Postura Quote + Hitos Alcanzados (2x4 Grid sin fechas) + Identidad + 4 Principios de Consultoría */}
-            <PosturaIdentidadSection />
-
-            {/* 6. Biografía Completa / Recorrido Profesional */}
-            <BioCompletaSection />
-
-            {/* 7. Metodologías Propias y Frameworks: Crea y Monetiza® 5 Fases + 6 Frameworks + 3 Modalidades (PDF Páginas 5-7) */}
-            <MetodologiaFrameworksSection />
-
-            {/* 8. Expertise: Cuatro Áreas de Consultoría en Fondo Negro (PDF Páginas 4-5) */}
+            {/* 5. Cuatro Áreas de Consultoría Productizada (Estructura consistente: Para quién, Qué trabajamos, Qué te llevas) */}
             <ExpertiseSection />
 
-            {/* 9. Experiencia Aplicada Banner: De la teoría a la implementación */}
-            <ExperienciaAplicadaBanner />
+            {/* 6. Catálogo de Entregables Tangibles (One Page Strategy, Plan 100 Días, Portafolio Hexagonal, PERE, IA, Dossier) */}
+            <EntregablesTangiblesSection />
 
-            {/* 10. Síntesis de Evolución: Cargos de Liderazgo y Relevancia sin Fechas */}
-            <SintesisEvolucionSection />
+            {/* 7. Metodologías Propias y Créditos Explícitos (CREA Y MONETIZA® vs BMS Framework de Vilma Núñez + 6 Frameworks) */}
+            <MetodologiaFrameworksSection />
 
-            {/* 11. Formación Académica: Aprender también forma parte del trabajo */}
-            <FormacionAcademicaSection />
+            {/* 8. Claridad de Encaje: ¿Es para ti? Qué incluye / Qué NO incluye */}
+            <IncludedNotIncludedSection />
 
-            {/* 12. Las 10 Preguntas y Respuestas Estratégicas para la Web de Patricia Loaiza */}
+            {/* 9. Sobre Patricia: Autoridad, Postura, 4 Principios de Consultoría y Trayectoria Institucional unificada */}
+            <SobrePatriciaSection />
+
+            {/* 10. Consultorio Estratégico (10 Preguntas y Respuestas) + FAQs de Contratación (People Also Ask) */}
             <StrategicFAQ />
 
-            {/* 13. Archivo Relacionado: Continuar Explorando */}
+            {/* 11. Recursos y Continuar Explorando */}
             <ContinuarExplorandoSection setActiveView={setActiveView} />
           </>
         )}
       </main>
 
-      {/* 14. Deep Black Footer */}
+      {/* 12. Deep Black Footer */}
       <Footer setActiveView={setActiveView} />
     </div>
   );

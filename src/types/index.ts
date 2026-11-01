@@ -7,6 +7,8 @@ export interface ServiceItem {
   subname: string;
   focus: string;
   idealFor: string[];
+  whatWeWork: string[];
+  deliverablesTangibles: string[];
   modalities: string[];
   targetProfile: string;
   transformation: {
@@ -52,6 +54,7 @@ export interface PainPoint {
   title: string;
   challenge: string;
   solutionRef: string;
+  desiredResult?: string;
 }
 
 export interface ConsultingPrinciple {
@@ -100,4 +103,21 @@ export interface AcademicItem {
   title: string;
   institution: string;
   year?: string;
+}
+
+export interface ProcessStep {
+  step: string;
+  title: string;
+  subtitle: string;
+  action: string;
+  output: string;
+}
+
+export interface TangibleDeliverable {
+  id: string;
+  number: string;
+  title: string;
+  format: string;
+  purpose: string;
+  benefit: string;
 }

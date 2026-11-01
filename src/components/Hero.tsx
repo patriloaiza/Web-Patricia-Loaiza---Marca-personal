@@ -82,25 +82,33 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
               Acompaño a <strong className="text-neutral-900 font-semibold">consultores, terapeutas, psicólogos y profesionales del conocimiento (senior +40 a 65 años)</strong> a transformar su trayectoria y saber hacer acumulado en ofertas estructuradas, diferenciación visible y sistemas comerciales que puedan gestionar con total autonomía.
             </p>
 
-            {/* Action Buttons: Solid Black LEER BIOGRAFÍA + Prediagnóstico */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
-              <button
-                onClick={scrollToBio}
-                className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-black hover:bg-neutral-800 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-              >
-                <span>LEER BIOGRAFÍA</span>
-                <ArrowDown className="w-3.5 h-3.5 text-neutral-300" />
-              </button>
+            {/* Action Buttons: Primary Prediagnostic + Secondary Areas */}
+            <div className="space-y-3 mb-10">
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href={BRAND_INFO.prediagnosticoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-7 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white bg-[#E30613] hover:bg-[#c90510] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-red-600/20"
+                >
+                  <span>HACER EL PREDIAGNÓSTICO Y DEFINIR TU PRIORIDAD</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
 
-              <a
-                href={BRAND_INFO.prediagnosticoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#E30613] hover:bg-[#c90510] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-              >
-                <span>PREDIAGNÓSTICO OFICIAL</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+                <button
+                  onClick={onExploreServices}
+                  className="px-6 py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-900 bg-white hover:bg-neutral-100 border border-neutral-300 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+                >
+                  <span>CONOCER ÁREAS DE CONSULTORÍA</span>
+                  <ArrowDown className="w-3.5 h-3.5 text-neutral-600" />
+                </button>
+              </div>
+
+              {/* Microcopy de reducción de riesgo (Auditoría UX / CRO) */}
+              <div className="flex items-center gap-2 text-xs text-neutral-500 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                <span>Toma 7–10 min. Recibes tu ruta recomendada (área prioritaria + siguiente paso). Sin costo inicial.</span>
+              </div>
             </div>
 
             {/* Credentials Strip directly inside left column matching screenshot image_d2fe5d66.png */}

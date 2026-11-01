@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView }) => {
             <ul className="space-y-2 text-neutral-400">
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('sobre-patricia')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('sobre-patricia-trayectoria')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Sobre Patricia
@@ -56,62 +56,70 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView }) => {
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('biografia-corta')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('como-trabajo')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Biografía Oficial
+                  Ruta en 5 Pasos
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('postura-identidad')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('sobre-patricia-trayectoria')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Hitos Alcanzados
+                  Principios y Postura
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('hitos-evolucion')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('sobre-patricia-trayectoria')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Trayectoria (2005–Act.)
+                  Trayectoria Institucional
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 2: PENSAMIENTO (2 Cols) matching screenshot image_e467b601.png */}
+          {/* Col 2: METODOLOGÍA (2 Cols) */}
           <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 bg-[#E30613]" />
               <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                Pensamiento
+                Metodología
               </h4>
             </div>
             <ul className="space-y-2 text-neutral-400">
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('postura-identidad')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Postura & Criterio
+                  Crea y Monetiza®
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Cuatro Territorios
+                  Créditos BMS Framework
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('preguntas-estrategicas')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  10 Preguntas Clave
+                  6 Frameworks Propios
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('consultorio-faqs')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Consultorio & FAQs
                 </button>
               </li>
             </ul>

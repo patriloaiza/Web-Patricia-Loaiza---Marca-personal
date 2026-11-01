@@ -14,7 +14,7 @@ export const ContinuarExplorandoSection: React.FC<ContinuarExplorandoProps> = ({
       title: "10 Preguntas Estratégicas",
       description: "Guía completa para acompañar a tu negocio desde el orden de la oferta hasta la escala con IA.",
       action: () => {
-        const el = document.getElementById('preguntas-estrategicas');
+        const el = document.getElementById('consultorio-faqs');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       },
       isExternal: false

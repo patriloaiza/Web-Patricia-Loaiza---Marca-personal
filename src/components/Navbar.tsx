@@ -59,25 +59,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           />
         </div>
 
-        {/* Zone 2: Navigation Links */}
-        <nav className="hidden xl:flex items-center gap-6 text-sm font-medium text-neutral-800">
+        {/* Zone 2: Navigation Links (Max 5 items clean UX - Audit 3.2) */}
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-neutral-800">
           <button
-            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('sobre-patricia')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('sobre-patricia-trayectoria')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
             className="hover:text-[#E30613] transition-colors whitespace-nowrap cursor-pointer"
           >
             Sobre Patricia
           </button>
           <button
-            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('postura-identidad')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('como-trabajo')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
             className="hover:text-[#E30613] transition-colors whitespace-nowrap cursor-pointer"
           >
-            Identidad & Hitos
-          </button>
-          <button
-            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-            className="hover:text-[#E30613] transition-colors whitespace-nowrap cursor-pointer"
-          >
-            Metodología & Frameworks
+            Cómo trabajo
           </button>
           <button
             onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
@@ -86,16 +80,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             Áreas de Consultoría
           </button>
           <button
-            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('preguntas-estrategicas')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
             className="hover:text-[#E30613] transition-colors whitespace-nowrap cursor-pointer"
           >
-            10 Preguntas Clave
+            Metodología & BMS
           </button>
           <button
-            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('hitos-evolucion')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+            onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('consultorio-faqs')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
             className="hover:text-[#E30613] transition-colors whitespace-nowrap cursor-pointer"
           >
-            Trayectoria
+            Consultorio & FAQs
           </button>
           <button
             onClick={() => setActiveView('for-ai')}
