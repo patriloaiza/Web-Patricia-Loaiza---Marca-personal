@@ -46,13 +46,19 @@ export const SobrePatriciaSection: React.FC = () => {
             </div>
 
             <div className="pt-4 border-t border-neutral-100 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 bg-[#E30613]" />
-                <span className="text-xs font-black uppercase tracking-wider text-neutral-900 font-mono">
-                  PATRICIA LOAIZA
-                </span>
+              <div className="flex items-center gap-3">
+                <img
+                  src="/assets/aistudio/Patricia_Foto_Frente_1__e1725015.png"
+                  alt="Patricia Loaiza"
+                  className="w-11 h-11 rounded-full object-cover object-top border-2 border-[#E30613] shadow-xs"
+                />
+                <div>
+                  <span className="text-xs font-black uppercase tracking-wider text-neutral-900 font-mono block">
+                    PATRICIA LOAIZA
+                  </span>
+                  <span className="text-[11px] font-mono text-neutral-500">CONSULTORA DE NEGOCIOS</span>
+                </div>
               </div>
-              <span className="text-[11px] font-mono text-neutral-500">CONSULTORA DE NEGOCIOS</span>
             </div>
           </div>
 

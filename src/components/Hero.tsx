@@ -7,8 +7,9 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
-  // Allow user to upload, preview or change their own official photo directly in the browser
-  const [photoUrl, setPhotoUrl] = useState<string | null>(null);
+  // Fotografía oficial de Patricia Loaiza con soporte de cambio interactivo en navegador
+  const OFFICIAL_PHOTO = '/assets/aistudio/Patricia_Foto_Frente_1__e1725015.png';
+  const [photoUrl, setPhotoUrl] = useState<string>(OFFICIAL_PHOTO);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +20,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
     }
   };
 
-  const removePhoto = () => {
-    setPhotoUrl(null);
+  const resetPhoto = () => {
+    setPhotoUrl(OFFICIAL_PHOTO);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -177,33 +178,35 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
               </div>
 
               {/* Main White Passe-partout Frame in front */}
-              <div className="relative z-10 bg-white border border-neutral-300 p-6 sm:p-8 min-h-[520px] sm:min-h-[580px] flex flex-col items-center justify-center shadow-xs">
+              <div className="relative z-10 bg-white border border-neutral-300 p-4 sm:p-6 min-h-[520px] sm:min-h-[580px] flex flex-col items-center justify-center shadow-xs overflow-hidden">
                 {photoUrl ? (
-                  /* Display Uploaded Official Portrait */
+                  /* Display Official Portrait */
                   <div className="relative w-full h-full flex flex-col items-center justify-center">
                     <img
                       src={photoUrl}
-                      alt="Patricia Loaiza"
-                      className="max-h-[520px] w-auto object-contain object-bottom mx-auto"
+                      alt="Patricia Loaiza · Consultora de marketing y negocios"
+                      className="max-h-[540px] w-full object-cover object-top mx-auto shadow-sm border border-neutral-200"
                     />
                     
-                    {/* Floating Controls to Change or Remove */}
-                    <div className="absolute bottom-2 right-2 flex items-center gap-2">
+                    {/* Discretely placed controls to change/reset photo */}
+                    <div className="absolute bottom-3 right-3 flex items-center gap-2">
                       <button
                         onClick={() => fileInputRef.current?.click()}
-                        className="px-3 py-1.5 bg-black/80 hover:bg-black text-white text-[11px] font-bold rounded flex items-center gap-1.5 shadow-md transition-colors cursor-pointer"
+                        className="px-3 py-1.5 bg-black/85 hover:bg-black text-white text-[11px] font-bold tracking-wider uppercase rounded flex items-center gap-1.5 shadow-md transition-colors cursor-pointer backdrop-blur-xs"
                         title="Cambiar fotografía"
                       >
                         <Camera className="w-3.5 h-3.5 text-[#E30613]" />
                         <span>Cambiar foto</span>
                       </button>
-                      <button
-                        onClick={removePhoto}
-                        className="p-1.5 bg-black/80 hover:bg-red-600 text-white rounded shadow-md transition-colors cursor-pointer"
-                        title="Quitar foto"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                      </button>
+                      {photoUrl !== OFFICIAL_PHOTO && (
+                        <button
+                          onClick={resetPhoto}
+                          className="px-2.5 py-1.5 bg-black/85 hover:bg-red-600 text-white text-[11px] font-bold rounded shadow-md transition-colors cursor-pointer"
+                          title="Restablecer fotografía oficial"
+                        >
+                          Restablecer
+                        </button>
+                      )}
                     </div>
                   </div>
                 ) : (
