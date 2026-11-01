@@ -8,7 +8,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
   // Fotografía oficial de Patricia Loaiza con soporte de cambio interactivo en navegador
-  const OFFICIAL_PHOTO = '/assets/aistudio/Patricia_Foto_Frente_1__e1725015.png';
+  const OFFICIAL_PHOTO = './assets/aistudio/Patricia_Foto_Frente_1__e1725015.png';
   const [photoUrl, setPhotoUrl] = useState<string>(OFFICIAL_PHOTO);
   const fileInputRef = useRef<HTMLInputElement>(null);
 

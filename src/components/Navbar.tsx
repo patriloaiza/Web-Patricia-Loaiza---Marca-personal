@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-3 cursor-pointer shrink-0"
         >
           <img
-            src="/assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg"
+            src="./assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg"
             alt="Patricia Loaiza®"
             className="h-11 w-auto object-contain"
           />

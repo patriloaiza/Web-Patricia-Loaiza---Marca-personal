@@ -119,7 +119,7 @@ export const SOPLifecycle: React.FC = () => {
         <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <img
-              src="/assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg"
+              src="./assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg"
               alt="Logo Patricia Loaiza"
               className="h-10 w-auto object-contain shrink-0"
             />
@@ -160,7 +160,7 @@ export const SOPLifecycle: React.FC = () => {
 
               <div className="overflow-auto flex-1 rounded-xl bg-neutral-50 p-2">
                 <img
-                  src="/assets/aistudio/SOP_Crea_y_Monetiza_Proceso_prestacion_servicio_2ee86446.png"
+                  src="./assets/aistudio/SOP_Crea_y_Monetiza_Proceso_prestacion_servicio_2ee86446.png"
                   alt="SOP Maestro de Prestación del Servicio"
                   className="w-full h-auto object-contain rounded-lg"
                 />

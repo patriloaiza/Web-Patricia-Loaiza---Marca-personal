@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar }) 
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/assets/aistudio/Logo_horizontal_fondo_negro_17c39b50.jpeg"
+                src="./assets/aistudio/Logo_horizontal_fondo_negro_17c39b50.jpeg"
                 alt="Patricia Loaiza®"
                 className="h-10 w-auto object-contain"
               />
