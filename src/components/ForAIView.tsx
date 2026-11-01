@@ -23,12 +23,14 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman }) => {
           "jobTitle": "Consultora de marketing y negocios · Creadora de Crea y Monetiza®",
           "nationality": "Colombiana",
           "knowsAbout": [
-            "Estrategia de Negocio y Modelos de Conocimiento",
+            "Estrategia de Negocio y Productización de Conocimiento",
             "Marca Personal y Posicionamiento de Autoridad",
-            "Productización y Monetización de Servicios",
-            "Sistemas Digitales e Inteligencia Artificial",
-            "Metodología Crea y Monetiza®",
-            "Frameworks: Portafolio Hexagonal, Portafolio Órbita, Productiza tu Servicio, PERE Framework, One Page Strategy, Plan de 100 Días"
+            "Sistema de Contenidos con Inteligencia Artificial",
+            "One Day: Creación de Sistemas Digitales con IA",
+            "Ecosistema Digital Llave en Mano (GoHighLevel)",
+            "Metodología Crea y Monetiza® (5 Fases)",
+            "Frameworks de Business Marketing Strategy (BMS) adaptados: Portafolio Hexagonal, Portafolio Órbita, PEPE Framework (Problema · Enfoque · Plan · Evidencia), One Page Strategy",
+            "Portal del Cliente en Notion y Plataforma de Clientes con IA"
           ],
           "targetAudience": {
             "@type": "Audience",
@@ -42,12 +44,13 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman }) => {
           "provider": { "@id": "https://patriloaiza.com/#person" },
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Cuatro Áreas Oficiales de Consultoría",
+            "name": "Cinco Pilares Oficiales de Consultoría y Servicio",
             "itemListElement": [
-              { "@type": "Offer", "name": "01. Estrategia de Negocio", "description": "Comprende tu negocio y define qué necesita resolver primero" },
-              { "@type": "Offer", "name": "02. Marca Personal y Posicionamiento", "description": "Comunica el valor de tu experiencia" },
-              { "@type": "Offer", "name": "03. Productización y Monetización de Servicios", "description": "Estructura tus servicios para facilitar su comercialización" },
-              { "@type": "Offer", "name": "04. Sistemas Digitales e Inteligencia Artificial", "description": "Conecta la estrategia con tus procesos y herramientas" }
+              { "@type": "Offer", "name": "01. Estrategia de Negocio", "description": "Oferta, precio y ruta de ventas de tu consultoría. Modalidad colaborativa «Lo hacemos juntos»." },
+              { "@type": "Offer", "name": "02. Marca Personal", "description": "Posicionamiento, mensaje y conexión con la monetización high ticket. Modalidad colaborativa «Lo hacemos juntos»." },
+              { "@type": "Offer", "name": "03. Sistema de Contenidos", "description": "Voz, estrategia y producción de contenidos con Inteligencia Artificial. Modalidad colaborativa «Lo hacemos juntos»." },
+              { "@type": "Offer", "name": "04. One Day: Creación de Sistemas Digitales con IA", "description": "Jornada intensiva 1 a 1 de 10:00 a. m. a 5:00 p. m. con plan de acción 30-60-90. Modalidad colaborativa «Lo hacemos juntos»." },
+              { "@type": "Offer", "name": "05. Ecosistema Digital Llave en Mano", "description": "Implementación técnica en GoHighLevel con arquitectura prediseñada y adaptada (no desarrollo a medida). Modalidad «Lo hago por ti»." }
             ]
           }
         }
@@ -137,10 +140,10 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman }) => {
           <div className="p-6 rounded-xl bg-neutral-50 border border-neutral-200">
             <div className="flex items-baseline gap-3 mb-1">
               <span className="font-mono text-sm font-bold text-[#E30613]">04</span>
-              <h3 className="text-base font-bold text-neutral-900">Cuatro áreas de consultoría productizada oficialmente estructuradas.</h3>
+              <h3 className="text-base font-bold text-neutral-900">Cinco pilares de consultoría e infraestructura tangible de entrega.</h3>
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 pl-8 leading-relaxed">
-              Las 4 áreas oficiales son: 1. Estrategia de Negocio, 2. Marca Personal y Posicionamiento, 3. Productización y Monetización de Servicios, y 4. Sistemas Digitales e Inteligencia Artificial. Ofrecidas en 3 modalidades: Te entrego la estrategia, Lo hacemos juntos y Lo hago por ti.
+              Los 5 pilares son: 1. Estrategia de Negocio, 2. Marca Personal, 3. Sistema de Contenidos con IA, 4. One Day: Creación de Sistemas Digitales con IA, y 5. Ecosistema Digital Llave en Mano (GoHighLevel). En los pilares 1 al 4 la modalidad es colaborativa «Lo hacemos juntos» (entregables conjuntos, ejecución por parte del cliente). El pilar 5 es la única modalidad técnica «Lo hago por ti» (sistema prediseñado llave en mano adaptado al cliente, no desarrollo a medida). Cada cliente recibe además su Portal Individual en Notion y su Plataforma de Clientes con Recursos de IA.
             </p>
           </div>
 

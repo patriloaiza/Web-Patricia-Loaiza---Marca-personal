@@ -121,3 +121,19 @@ export interface TangibleDeliverable {
   purpose: string;
   benefit: string;
 }
+
+export interface PilarDeliverableItem {
+  id: string;
+  pilarNumber: string;
+  pilarName: string;
+  subname: string;
+  modality: string;
+  modalityNote: string;
+  transformation: {
+    before: string;
+    after: string;
+  };
+  deliverables: string[];
+  notionWorkspace: string[];
+  aiPlatform: string[];
+}

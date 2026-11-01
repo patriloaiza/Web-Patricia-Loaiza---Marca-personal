@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { 
   METHODOLOGY_CREA_Y_MONETIZA, 
-  FRAMEWORKS, 
-  CONSULTING_MODALITIES,
   METHODOLOGY_CREDITS,
+  CONSULTING_MODALITIES,
   BRAND_INFO 
 } from '../data/content.ts';
-import { ArrowRight, CheckCircle2, Layers, Cpu, Compass, BookOpen, Sparkles, Award, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Layers, Compass, HelpCircle } from 'lucide-react';
 
 export const MetodologiaFrameworksSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'metodologia' | 'creditos' | 'frameworks' | 'modalidades'>('creditos');
-  const [selectedFrameworkId, setSelectedFrameworkId] = useState<string>(FRAMEWORKS[0].id);
-
-  const selectedFramework = FRAMEWORKS.find(f => f.id === selectedFrameworkId) || FRAMEWORKS[0];
+  const [activeTab, setActiveTab] = useState<'creditos' | 'metodologia'>('creditos');
 
   return (
     <section id="metodologia-frameworks" className="py-24 bg-[#F7F7F7] border-b border-neutral-200">
@@ -21,7 +17,7 @@ export const MetodologiaFrameworksSection: React.FC = () => {
         <div className="flex items-center gap-2 mb-3">
           <span className="w-2.5 h-2.5 bg-[#E30613]" />
           <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 font-mono">
-            METODOLOGÍA, CRÉDITOS Y FRAMEWORKS
+            RIGOR METODOLÓGICO Y ATRIBUCIÓN
           </span>
         </div>
 
@@ -32,15 +28,15 @@ export const MetodologiaFrameworksSection: React.FC = () => {
               Metodología propia y marcos de referencia adaptados
             </h2>
             <p className="text-base sm:text-lg text-neutral-600 max-w-2xl leading-relaxed">
-              Trabajamos con transparencia metodológica absoluta: autoría registrada de nuestros marcos propietarios y crédito explícito a los modelos de vanguardia que adaptamos para profesionales del conocimiento.
+              Transparencia metodológica absoluta: autoría propia registrada de nuestra metodología de acompañamiento y crédito explícito a los modelos analíticos de BMS que adaptamos en la consultoría.
             </p>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-neutral-200/80 p-1.5 rounded-none border border-neutral-300 shrink-0">
+          {/* Navigation Tabs (Solo 2 Pestañas Oficiales) */}
+          <div className="flex items-center gap-1.5 bg-neutral-200/80 p-1.5 rounded-none border border-neutral-300 shrink-0">
             <button
               onClick={() => setActiveTab('creditos')}
-              className={`px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'creditos'
                   ? 'bg-black text-white shadow-xs'
                   : 'text-neutral-700 hover:text-black'
@@ -50,7 +46,7 @@ export const MetodologiaFrameworksSection: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveTab('metodologia')}
-              className={`px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === 'metodologia'
                   ? 'bg-black text-white shadow-xs'
                   : 'text-neutral-700 hover:text-black'
@@ -58,30 +54,10 @@ export const MetodologiaFrameworksSection: React.FC = () => {
             >
               Fases Crea y Monetiza®
             </button>
-            <button
-              onClick={() => setActiveTab('frameworks')}
-              className={`px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeTab === 'frameworks'
-                  ? 'bg-black text-white shadow-xs'
-                  : 'text-neutral-700 hover:text-black'
-              }`}
-            >
-              6 Frameworks Propios
-            </button>
-            <button
-              onClick={() => setActiveTab('modalidades')}
-              className={`px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeTab === 'modalidades'
-                  ? 'bg-black text-white shadow-xs'
-                  : 'text-neutral-700 hover:text-black'
-              }`}
-            >
-              3 Modalidades
-            </button>
           </div>
         </div>
 
-        {/* TAB: METODOLOGÍAS Y CRÉDITOS (CREA Y MONETIZA® vs BMS) - Auditoría Punto 2.1 */}
+        {/* TAB 1: METODOLOGÍAS Y CRÉDITOS (CREA Y MONETIZA® vs BMS) */}
         {activeTab === 'creditos' && (
           <div className="space-y-8 animate-fade-in">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -109,17 +85,17 @@ export const MetodologiaFrameworksSection: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="p-4 bg-neutral-50 border border-neutral-200 text-xs text-neutral-700 space-y-1.5">
+                <div className="p-4 bg-neutral-50 border border-neutral-200 text-xs text-neutral-700 space-y-2">
                   <strong className="block text-neutral-900 font-bold mb-1 font-mono uppercase text-[11px]">
                     Enfoque y alcance:
                   </strong>
                   <div className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 bg-[#E30613] mt-1 shrink-0" />
-                    <span>Diseñada específicamente para terapeutas, psicólogos, consultores y profesionales senior (+40).</span>
+                    <span>Diseñada específicamente para profesionales, consultores, terapeutas, psicólogos y coaches (+40).</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 bg-[#E30613] mt-1 shrink-0" />
-                    <span>Estructurada en 5 fases continuas: de la auditoría inicial a la soberanía operativa total.</span>
+                    <span>Estructurada en 5 fases continuas: desde el onboarding y diagnóstico inicial hasta la autonomía operativa con IA.</span>
                   </div>
                 </div>
               </div>
@@ -139,7 +115,7 @@ export const MetodologiaFrameworksSection: React.FC = () => {
                   <h3 className="text-2xl font-black text-neutral-900 mb-2">
                     {METHODOLOGY_CREDITS.bmsFramework.name}
                   </h3>
-                  <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4 font-mono">
+                  <p className="text-xs font-bold text-neutral-600 uppercase tracking-wider mb-4 font-mono">
                     {METHODOLOGY_CREDITS.bmsFramework.attribution}
                   </p>
 
@@ -148,17 +124,17 @@ export const MetodologiaFrameworksSection: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="p-4 bg-[#F7F7F7] border border-neutral-200 text-xs text-neutral-700 space-y-1.5">
+                <div className="p-4 bg-[#F7F7F7] border border-neutral-200 text-xs text-neutral-700 space-y-2">
                   <strong className="block text-neutral-900 font-bold mb-1 font-mono uppercase text-[11px]">
-                    Claridad metodológica para clientes y buscadores:
+                    Transparencia y autoría de frameworks:
                   </strong>
                   <div className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 bg-black mt-1 shrink-0" />
-                    <span>Patricia Loaiza no se atribuye la autoría del BMS; reconoce y referencia la autoría de Vilma Núñez y Journi.</span>
+                    <span>Los frameworks como <strong>Portafolio Hexagonal</strong>, <strong>Portafolio Órbita</strong>, <strong>PEPE Framework</strong> (Problema · Enfoque · Plan · Evidencia) y <strong>One Page Strategy</strong> son creaciones de Vilma Núñez y Journi, adaptados por Patricia con crédito formal.</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 bg-black mt-1 shrink-0" />
-                    <span>Aplica sus principios adaptándolos a servicios de alto valor y prácticas de conocimiento individuales.</span>
+                    <span>Patricia Loaiza no se atribuye su creación original; los aplica con rigor técnico para dar solidez analítica al negocio del cliente.</span>
                   </div>
                 </div>
               </div>
@@ -191,7 +167,7 @@ export const MetodologiaFrameworksSection: React.FC = () => {
           </div>
         )}
 
-        {/* TAB 1: METODOLOGÍA CREA Y MONETIZA® (5 FASES) */}
+        {/* TAB 2: METODOLOGÍA CREA Y MONETIZA® (5 FASES) */}
         {activeTab === 'metodologia' && (
           <div className="space-y-6 animate-fade-in">
             <div className="p-6 bg-white border border-neutral-300 mb-8">
@@ -254,126 +230,60 @@ export const MetodologiaFrameworksSection: React.FC = () => {
           </div>
         )}
 
-        {/* TAB 2: LOS 6 FRAMEWORKS PROPIOS */}
-        {activeTab === 'frameworks' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
-            {/* Frameworks List (5 cols) */}
-            <div className="lg:col-span-5 space-y-3">
-              {FRAMEWORKS.map((fw) => {
-                const isSelected = fw.id === selectedFrameworkId;
-                return (
-                  <button
-                    key={fw.id}
-                    onClick={() => setSelectedFrameworkId(fw.id)}
-                    className={`w-full text-left p-4.5 transition-all border cursor-pointer flex items-center justify-between ${
-                      isSelected
-                        ? 'bg-black text-white border-black shadow-md'
-                        : 'bg-white text-neutral-900 border-neutral-200 hover:border-neutral-400'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-xs font-mono font-bold ${isSelected ? 'text-[#E30613]' : 'text-neutral-400'}`}>
-                          {fw.number}
-                        </span>
-                        <span className="text-sm font-bold">{fw.name}</span>
-                      </div>
-                      <p className={`text-xs ${isSelected ? 'text-neutral-300' : 'text-neutral-500'} line-clamp-1`}>
-                        {fw.tagline}
-                      </p>
-                    </div>
-                    <ArrowRight className={`w-4 h-4 shrink-0 transition-transform ${isSelected ? 'text-[#E30613] translate-x-1' : 'text-neutral-400'}`} />
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Framework Detail Display (7 cols) */}
-            <div className="lg:col-span-7 p-8 bg-white border-2 border-neutral-900 shadow-[6px_6px_0px_0px_#0A0A0A]">
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-black text-[#E30613]">{selectedFramework.number}</span>
-                  <span className="w-1.5 h-1.5 bg-[#E30613]" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 font-mono">
-                    FRAMEWORK METODOLÓGICO
-                  </span>
-                </div>
-                <span className="text-[11px] font-mono text-neutral-500">PROPIEDAD DE PATRICIA LOAIZA</span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-2">
-                {selectedFramework.name}
-              </h3>
-              <p className="text-sm font-bold text-[#E30613] mb-6">
-                {selectedFramework.tagline}
-              </p>
-
-              <div className="space-y-4 text-sm text-neutral-700 leading-relaxed mb-6">
-                <p>{selectedFramework.description}</p>
-                <div className="p-4 bg-[#F7F7F7] border-l-3 border-black text-xs text-neutral-800">
-                  <strong className="block text-neutral-900 font-bold mb-1">Aplicación práctica en consultoría:</strong>
-                  {selectedFramework.application}
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-neutral-200">
-                <span className="text-xs font-bold uppercase tracking-wider text-neutral-900 block mb-2 font-mono">
-                  BENEFICIOS CLAVE DE ESTE MODELO:
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {selectedFramework.benefits.map((benefit, i) => (
-                    <div key={i} className="p-3 bg-neutral-50 border border-neutral-200 text-xs text-neutral-800 flex items-start gap-2">
-                      <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
-                      <span>{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+        {/* BLOQUE FUNDACIONAL: MODALIDADES Y REGLA OPERATIVA */}
+        <div className="mt-14 pt-12 border-t border-neutral-300">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 bg-black" />
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 font-mono">
+              DINÁMICA OPERATIVA DE SERVICIO
+            </span>
           </div>
-        )}
 
-        {/* TAB 3: LAS 3 MODALIDADES DE TRABAJO */}
-        {activeTab === 'modalidades' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
+          <h3 className="text-2xl sm:text-3xl font-black text-neutral-900 mb-3 tracking-tight">
+            Cómo trabajamos: delimitación clara de responsabilidades y modalidades
+          </h3>
+          <p className="text-sm text-neutral-600 max-w-3xl mb-8 leading-relaxed">
+            No utilizamos esquemas abiertos de horas ni paquetes ambiguos. La consultoría estratégica (Pilares 1 al 4) opera bajo modalidad colaborativa, mientras que la infraestructura tecnológica (Pilar 5) es el único servicio de implementación llave en mano.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {CONSULTING_MODALITIES.map((mod) => (
-              <div
-                key={mod.id}
-                className="p-6 bg-white border-2 border-neutral-200 hover:border-black transition-all flex flex-col justify-between relative group"
+              <div 
+                key={mod.id} 
+                className="p-6 bg-white border-2 border-neutral-300 hover:border-black transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200">
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-neutral-200">
                     <span className="text-xs font-mono font-black text-[#E30613]">
-                      MODALIDAD {mod.number}
+                      {mod.tagline}
                     </span>
-                    <span className="w-2 h-2 bg-[#E30613]" />
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-neutral-100 px-2 py-0.5 border border-neutral-200">
+                      REGLA OFICIAL
+                    </span>
                   </div>
 
-                  <h3 className="text-xl font-black text-neutral-900 mb-1 leading-snug">
+                  <h4 className="text-lg font-bold text-neutral-900 mb-3">
                     {mod.title}
-                  </h3>
-                  <p className="text-xs font-bold text-neutral-500 mb-4">
-                    {mod.tagline}
-                  </p>
+                  </h4>
 
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-6">
                     {mod.description}
                   </p>
                 </div>
 
-                <div className="space-y-3 pt-4 border-t border-neutral-100">
-                  <div className="p-3 bg-neutral-50 border border-neutral-200 text-xs">
-                    <strong className="block text-neutral-900 font-bold mb-1">Ideal para:</strong>
+                <div className="pt-4 border-t border-neutral-100 space-y-2 text-xs">
+                  <div className="p-3 bg-neutral-50 border border-neutral-200">
+                    <strong className="block text-neutral-900 font-bold mb-0.5">Perfil de aplicación:</strong>
                     <span className="text-neutral-700">{mod.idealFor}</span>
                   </div>
-                  <div className="text-[11px] text-neutral-500 font-mono">
-                    <strong className="text-neutral-700">Alcance:</strong> {mod.commitment}
+                  <div className="text-[11px] text-neutral-500">
+                    <strong className="text-neutral-700">Compromiso:</strong> {mod.commitment}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

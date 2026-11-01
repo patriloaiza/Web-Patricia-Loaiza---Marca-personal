@@ -119,7 +119,7 @@ export const PosturaIdentidadSection: React.FC = () => {
               </p>
 
               <p className="pt-2 text-neutral-800 font-medium border-l-2 border-[#E30613] pl-4 italic bg-neutral-50 py-2">
-                Su propuesta actual une tres pilares complementarios: consultoría estratégica de negocio, estructuración y productización de servicios, y adopción de inteligencia artificial con soberanía operativa para el cliente.
+                Su propuesta comercial conecta cuatro pilares estratégicos: Estrategia de Negocio (con productización de servicios), Marca Personal de Autoridad, Sistema de Contenidos asistido por IA y One Day: Creación de Sistemas Digitales con IA.
               </p>
 
               {/* 4 Consulting Principles from PDF Page 4 */}
