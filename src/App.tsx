@@ -13,9 +13,11 @@ import { StrategicFAQ } from './components/StrategicFAQ.tsx';
 import { ContinuarExplorandoSection } from './components/ContinuarExplorandoSection.tsx';
 import { Footer } from './components/Footer.tsx';
 import { ForAIView } from './components/ForAIView.tsx';
+import { PilarDetailPage } from './components/PilarDetailPage.tsx';
 
 export default function App() {
   const [activeView, setActiveView] = useState<ActiveView>('main');
+  const [selectedPilarId, setSelectedPilarId] = useState<string>('pilar-1');
 
   const scrollToServices = () => {
     setActiveView('main');
@@ -23,6 +25,17 @@ export default function App() {
       const el = document.getElementById('cuatro-servicios');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 50);
+  };
+
+  const handleOpenPilar = (pilarId: string) => {
+    setSelectedPilarId(pilarId);
+    setActiveView('pilar-detail');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToMain = () => {
+    setActiveView('main');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -36,7 +49,19 @@ export default function App() {
       {/* Main View Router */}
       <main>
         {activeView === 'for-ai' ? (
-          <ForAIView onBackToHuman={() => setActiveView('main')} />
+          <ForAIView 
+            onBackToHuman={() => setActiveView('main')} 
+            onSelectPilar={handleOpenPilar}
+          />
+        ) : activeView === 'pilar-detail' ? (
+          <PilarDetailPage
+            pilarId={selectedPilarId}
+            onBackToHome={handleBackToMain}
+            onSelectPilar={(id) => {
+              setSelectedPilarId(id);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
         ) : (
           <>
             {/* 2. Hero Section: Promesa + Para Quién + CTA con microcopy de reducción de riesgo + Marco de foto */}
@@ -48,13 +73,13 @@ export default function App() {
             {/* 4. Cómo trabajas en 5 pasos: Entender → Diagnosticar → Priorizar → Orientar/Transformar → Evolucionar */}
             <Process5StepsSection />
 
-            {/* 5. Cuatro Áreas de Consultoría Productizada (Estructura consistente: Para quién, Qué trabajamos, Qué te llevas) */}
-            <ExpertiseSection />
+            {/* 5. Cuatro Áreas de Consultoría Productizada + Pilar 5 (Enlace directo a páginas de pilar) */}
+            <ExpertiseSection onSelectPilar={handleOpenPilar} />
 
-            {/* 6. Catálogo de Entregables Tangibles (One Page Strategy, Plan 100 Días, Portafolio Hexagonal, PERE, IA, Dossier) */}
-            <EntregablesTangiblesSection />
+            {/* 6. Catálogo de Entregables Tangibles (Notion Portal + Plataforma IA + resumen con enlace a pilar) */}
+            <EntregablesTangiblesSection onSelectPilar={handleOpenPilar} />
 
-            {/* 7. Metodologías Propias y Créditos Explícitos (CREA Y MONETIZA® vs BMS Framework de Vilma Núñez + 6 Frameworks) */}
+            {/* 7. Metodologías Propias y Créditos Explícitos (CREA Y MONETIZA® vs BMS Framework de Vilma Núñez) */}
             <MetodologiaFrameworksSection />
 
             {/* 8. Claridad de Encaje: ¿Es para ti? Qué incluye / Qué NO incluye */}
@@ -73,7 +98,11 @@ export default function App() {
       </main>
 
       {/* 12. Deep Black Footer */}
-      <Footer setActiveView={setActiveView} />
+      <Footer 
+        setActiveView={setActiveView} 
+        onSelectPilar={handleOpenPilar}
+      />
     </div>
   );
 }
+

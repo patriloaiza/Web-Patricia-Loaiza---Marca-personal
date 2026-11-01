@@ -5,9 +5,20 @@ import { BRAND_INFO } from '../data/content.ts';
 
 interface FooterProps {
   setActiveView: (view: ActiveView) => void;
+  onSelectPilar?: (pilarId: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActiveView }) => {
+export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar }) => {
+  const handlePilarClick = (id: string) => {
+    if (onSelectPilar) {
+      onSelectPilar(id);
+    } else {
+      setActiveView('main');
+      setTimeout(() => {
+        document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+    }
+  };
   return (
     <footer className="bg-[#0A0A0A] text-neutral-400 border-t border-neutral-900 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -101,23 +112,31 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView }) => {
               <li>
                 <button
                   onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  Créditos BMS Framework
+                  Metodología Crea y Monetiza®
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('metodologia-frameworks')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  6 Frameworks Propios
+                  Crédito a BMS (Vilma Núñez)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('que-te-llevas')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Portal de Notion & Copilotos IA
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('consultorio-faqs')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   Consultorio & FAQs
                 </button>
@@ -125,45 +144,53 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView }) => {
             </ul>
           </div>
 
-          {/* Col 3: SERVICIOS (2 Cols) matching screenshot image_e467b601.png */}
+          {/* Col 3: 5 PILARES DE SERVICIO */}
           <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 bg-[#E30613]" />
               <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                Servicios
+                Cinco Pilares
               </h4>
             </div>
             <ul className="space-y-2 text-neutral-400">
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  onClick={() => handlePilarClick('pilar-1')}
+                  className="hover:text-white transition-colors text-left cursor-pointer block"
                 >
-                  Estrategia de Negocio
+                  Pilar 1: Estrategia de Negocio
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  onClick={() => handlePilarClick('pilar-2')}
+                  className="hover:text-white transition-colors text-left cursor-pointer block"
                 >
-                  Marca de Autoridad
+                  Pilar 2: Marca Personal
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  onClick={() => handlePilarClick('pilar-3')}
+                  className="hover:text-white transition-colors text-left cursor-pointer block"
                 >
-                  Sistema de Contenido
+                  Pilar 3: Sistema de Contenidos
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => { setActiveView('main'); setTimeout(() => { document.getElementById('cuatro-servicios')?.scrollIntoView({ behavior: 'smooth' }); }, 50); }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  onClick={() => handlePilarClick('pilar-4')}
+                  className="hover:text-white transition-colors text-left cursor-pointer block"
                 >
-                  Jornada de Negocio Digital
+                  Pilar 4: Día de Negocios Digitales
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handlePilarClick('pilar-5')}
+                  className="hover:text-white transition-colors text-left cursor-pointer block text-[#E30613]"
+                >
+                  Pilar 5: Ecosistema Llave en Mano
                 </button>
               </li>
             </ul>

@@ -18,7 +18,11 @@ import {
   ExternalLink 
 } from 'lucide-react';
 
-export const EntregablesTangiblesSection: React.FC = () => {
+interface EntregablesTangiblesSectionProps {
+  onSelectPilar?: (pilarId: string) => void;
+}
+
+export const EntregablesTangiblesSection: React.FC<EntregablesTangiblesSectionProps> = ({ onSelectPilar }) => {
   const [selectedPilarId, setSelectedPilarId] = useState<string>(DELIVERABLES_BY_PILAR[0].id);
   const activePilar: PilarDeliverableItem = DELIVERABLES_BY_PILAR.find((p: PilarDeliverableItem) => p.id === selectedPilarId) || DELIVERABLES_BY_PILAR[0];
 
@@ -139,8 +143,8 @@ export const EntregablesTangiblesSection: React.FC = () => {
             </div>
 
             <div className="mt-6 pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
-              <span>IA entrenada con tu propio criterio y voz.</span>
-              <span className="font-mono text-[#E30613] font-bold">CERO ALUCINACIONES</span>
+              <span>Herramientas metodológicas de IA para operar y delegar con control.</span>
+              <span className="font-mono text-[#E30613] font-bold">AUTONOMÍA TOTAL</span>
             </div>
           </div>
         </div>
@@ -296,13 +300,34 @@ export const EntregablesTangiblesSection: React.FC = () => {
                   </ul>
                 </div>
                 <div className="mt-4 pt-3 border-t border-neutral-800 text-[11px] text-neutral-400 font-mono">
-                  Copilotos entrenados en tu voz
+                  Metodología unificada para crear y delegar
                 </div>
               </div>
             </div>
+
+            {/* Direct Link to Dedicated Pilar Page */}
+            {onSelectPilar && (
+              <div className="mt-8 pt-6 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span className="text-xs text-neutral-600">
+                  ¿Quieres ver las fases, componentes específicos y límites de <strong className="text-neutral-900">{activePilar.pilarName}</strong>?
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const mappedId = `pilar-${parseInt(activePilar.pilarNumber, 10)}`;
+                    onSelectPilar(mappedId);
+                  }}
+                  className="px-5 py-2.5 bg-black hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer"
+                >
+                  <span>Ver página detallada: {activePilar.pilarName}</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#E30613]" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </section>
+
   );
 };

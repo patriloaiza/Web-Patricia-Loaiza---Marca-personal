@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { SERVICES, BRAND_INFO } from '../data/content.ts';
+import React from 'react';
+import { SERVICES } from '../data/content.ts';
 import { ServiceItem } from '../types/index.ts';
-import { ArrowRight, CheckCircle2, ExternalLink, X, Package, Target, Layers } from 'lucide-react';
+import { ArrowRight, Package, Target, Layers } from 'lucide-react';
 
-export const ExpertiseSection: React.FC = () => {
-  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+interface ExpertiseSectionProps {
+  onSelectPilar?: (pilarId: string) => void;
+}
+
+export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onSelectPilar }) => {
 
   return (
     <section id="cuatro-servicios" className="py-24 bg-[#0A0A0A] text-white border-b border-neutral-900">
@@ -32,7 +35,7 @@ export const ExpertiseSection: React.FC = () => {
             <div 
               key={srv.id} 
               className="group flex flex-col justify-between p-6 bg-neutral-900/70 hover:bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition-all cursor-pointer rounded-xs"
-              onClick={() => setSelectedService(srv)}
+              onClick={() => onSelectPilar && onSelectPilar(srv.id)}
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -109,10 +112,17 @@ export const ExpertiseSection: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs font-bold text-neutral-300 group-hover:text-white">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onSelectPilar) onSelectPilar(srv.id);
+                  }}
+                  className="w-full pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs font-bold text-neutral-300 group-hover:text-white cursor-pointer bg-transparent text-left"
+                >
                   <span>Ver alcance y entregables</span>
                   <ArrowRight className="w-4 h-4 text-[#E30613] group-hover:translate-x-1 transition-transform" />
-                </div>
+                </button>
               </div>
             </div>
           ))}
@@ -121,7 +131,7 @@ export const ExpertiseSection: React.FC = () => {
         {/* Featured Card: Pilar 5 · Ecosistema Digital Llave en Mano (Lo hago por ti) */}
         {SERVICES[4] && (
           <div 
-            onClick={() => setSelectedService(SERVICES[4])}
+            onClick={() => onSelectPilar && onSelectPilar(SERVICES[4].id)}
             className="mt-8 p-6 sm:p-8 bg-neutral-900/90 hover:bg-neutral-900 border-2 border-neutral-800 hover:border-neutral-600 transition-all rounded-xs cursor-pointer group flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
           >
             <div className="max-w-3xl">
@@ -153,137 +163,16 @@ export const ExpertiseSection: React.FC = () => {
                 <span>Configurado y listo para operar</span>
               </div>
               <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onSelectPilar) onSelectPilar(SERVICES[4].id);
+                }}
                 className="w-full lg:w-auto px-5 py-3 bg-[#E30613] hover:bg-[#c90510] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
-                <span>Ver entregables del Pilar 5</span>
+                <span>Ver alcance y entregables: Ecosistema Digital</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
-          </div>
-        )}
-
-        {/* Modal / Detailed Drawer for Service Transformation */}
-        {selectedService && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-            <div className="bg-white text-neutral-900 max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 border-2 border-black shadow-2xl relative">
-              <button
-                onClick={() => setSelectedService(null)}
-                className="absolute top-5 right-5 p-2 text-neutral-400 hover:text-black transition-colors cursor-pointer"
-                aria-label="Cerrar modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-mono font-bold text-[#E30613]">{selectedService.number}</span>
-                <span className="w-1.5 h-1.5 bg-[#E30613]" />
-                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">ÁREA DE CONSULTORÍA PRODUCTIZADA</span>
-              </div>
-
-              <h3 className="text-2xl font-black text-neutral-900 mb-1">{selectedService.name}</h3>
-              <p className="text-sm font-bold text-[#E30613] mb-4">{selectedService.subname}</p>
-
-              <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
-                {selectedService.focus}
-              </p>
-
-              {/* Ideal para ti si: */}
-              <div className="p-4 bg-neutral-50 border border-neutral-200 mb-6 text-xs text-neutral-800">
-                <strong className="text-neutral-900 block mb-2 font-mono uppercase tracking-wider text-[11px]">
-                  Para quién está diseñado:
-                </strong>
-                <ul className="space-y-1.5">
-                  {selectedService.idealFor.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#E30613] mt-1 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Qué trabajamos y entregables tangibles */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-xs">
-                <div className="p-4 bg-neutral-50 border border-neutral-200">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-900 block mb-2 font-mono">
-                    QUÉ TRABAJAMOS:
-                  </span>
-                  <ul className="space-y-1.5">
-                    {selectedService.whatWeWork.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-1.5 text-neutral-700">
-                        <span className="w-1 h-1 bg-black mt-1.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="p-4 bg-neutral-900 text-white border border-neutral-800">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#E30613] block mb-2 font-mono">
-                    QUÉ TE LLEVAS (ENTREGABLES):
-                  </span>
-                  <ul className="space-y-1.5">
-                    {selectedService.deliverablesTangibles.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-1.5 text-neutral-200 font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#E30613] shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Transformation Contrast */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-xs">
-                <div className="p-4 bg-red-50/60 border border-red-200 rounded">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-red-700 block mb-1 font-mono">
-                    ANTES (Situación Actual)
-                  </span>
-                  <p className="text-neutral-800 leading-relaxed">{selectedService.transformation.before}</p>
-                </div>
-                <div className="p-4 bg-emerald-50/70 border border-emerald-200 rounded">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1 font-mono">
-                    DESPUÉS (Con Capacidad Instalada)
-                  </span>
-                  <p className="text-neutral-900 leading-relaxed font-medium">{selectedService.transformation.after}</p>
-                </div>
-              </div>
-
-              {/* Modalidad de trabajo oficial */}
-              <div className="p-4 bg-[#F7F7F7] border border-neutral-300 mb-6 text-xs">
-                <div className="flex items-center justify-between mb-1.5">
-                  <strong className="text-neutral-900 block font-mono uppercase tracking-wider text-[11px]">
-                    Modalidad de trabajo del servicio:
-                  </strong>
-                  <span className="text-[10px] font-mono font-bold text-[#E30613] uppercase bg-red-50 border border-red-200 px-2 py-0.5">
-                    OFICIAL
-                  </span>
-                </div>
-                <p className="text-neutral-900 font-bold mb-1">
-                  {selectedService.modalities[0]}
-                </p>
-                <p className="text-neutral-600 leading-snug">
-                  {selectedService.id === 'pilar-5'
-                    ? 'Implementación técnica llave en mano prediseñada que se adapta a la marca y necesidades del cliente sobre GoHighLevel. Salvedad: no es un desarrollo desde cero ni diseño a medida sin límites.'
-                    : 'Patricia acompaña el análisis, la dirección estratégica, la toma de decisiones y el desarrollo de los entregables del pilar; la ejecución de las tareas y acciones acordadas corresponde al cliente.'}
-                </p>
-              </div>
-
-              {/* CTA Inside Modal */}
-              <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <span className="text-xs font-semibold text-neutral-500">
-                  Diagnóstico personalizado previo sin compromiso.
-                </span>
-                <a
-                  href={BRAND_INFO.prediagnosticoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3 bg-[#E30613] hover:bg-[#c90510] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  <span>INICIAR CON PREDIAGNÓSTICO</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
             </div>
           </div>
         )}
@@ -291,3 +180,4 @@ export const ExpertiseSection: React.FC = () => {
     </section>
   );
 };
+

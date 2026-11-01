@@ -1,4 +1,54 @@
-export type ActiveView = 'main' | 'for-ai';
+export type ActiveView = 'main' | 'for-ai' | 'pilar-detail';
+
+export interface PilarPhaseDetail {
+  number: string;
+  name: string;
+  subtitle: string;
+  exercisesCount: string;
+  isInternalTool?: boolean;
+  internalToolNote?: string;
+  realDeliverable: string;
+  summary: string;
+  bullets?: string[];
+}
+
+export interface PilarFullDetail {
+  id: string;
+  number: string;
+  commercialName: string;
+  subname: string;
+  referenceService: string;
+  shortNavName?: string;
+  tagline: string;
+  targetProfile: string;
+  priceTestimonials: string;
+  priceRange?: string;
+  duration: string;
+  modality: string;
+  modalityBadge: 'LO HACEMOS JUNTOS' | 'LO HAGO POR TI';
+  modalityNote: string;
+  techStack?: string;
+  methodologyNote?: string;
+  objective: string;
+  needSolved: string;
+  transformation: {
+    before: string;
+    after: string;
+  };
+  keyComponents?: string[];
+  phases: PilarPhaseDetail[];
+  deliverablesTangibles: string[];
+  notionWorkspace: string[];
+  aiPlatform: string[];
+  scopeLimits: {
+    included: string[];
+    notIncluded: string[];
+  };
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
+}
 
 export interface ServiceItem {
   id: string;
