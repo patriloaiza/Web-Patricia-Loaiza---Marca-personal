@@ -48,7 +48,7 @@ export const SobrePatriciaSection: React.FC = () => {
             <div className="pt-4 border-t border-neutral-100 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src="./assets/aistudio/Patricia_Foto_Frente_1__e1725015.png"
+                  src="./assets/aistudio/Patri_Medio_cuerpo_web_745a0efc.webp"
                   alt="Patricia Loaiza"
                   className="w-11 h-11 rounded-full object-cover object-top border-2 border-[#E30613] shadow-xs"
                 />

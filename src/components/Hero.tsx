@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { ArrowDown, ExternalLink, Camera, Upload, User, X } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, ExternalLink } from 'lucide-react';
 import { BRAND_INFO } from '../data/content.ts';
 
 interface HeroProps {
@@ -7,29 +7,8 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
-  // Fotografía oficial de Patricia Loaiza con soporte de cambio interactivo en navegador
-  const OFFICIAL_PHOTO = './assets/aistudio/Patricia_Foto_Frente_1__e1725015.png';
-  const [photoUrl, setPhotoUrl] = useState<string>(OFFICIAL_PHOTO);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPhotoUrl(url);
-    }
-  };
-
-  const resetPhoto = () => {
-    setPhotoUrl(OFFICIAL_PHOTO);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
-
-  const scrollToBio = () => {
-    document.getElementById('biografia-corta')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Fotografía oficial de Patricia Loaiza (Medio cuerpo)
+  const OFFICIAL_PHOTO = './assets/aistudio/Patri_Medio_cuerpo_web_745a0efc.webp';
 
   return (
     <section id="sobre-patricia" className="relative pt-6 pb-16 bg-[#F7F7F7] border-b border-neutral-200">
@@ -179,74 +158,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
 
               {/* Main White Passe-partout Frame in front */}
               <div className="relative z-10 bg-white border border-neutral-300 p-4 sm:p-6 min-h-[520px] sm:min-h-[580px] flex flex-col items-center justify-center shadow-xs overflow-hidden">
-                {photoUrl ? (
-                  /* Display Official Portrait */
-                  <div className="relative w-full h-full flex flex-col items-center justify-center">
-                    <img
-                      src={photoUrl}
-                      alt="Patricia Loaiza · Consultora de marketing y negocios"
-                      className="max-h-[540px] w-full object-cover object-top mx-auto shadow-sm border border-neutral-200"
-                    />
-                    
-                    {/* Discretely placed controls to change/reset photo */}
-                    <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                      <button
-                        onClick={() => fileInputRef.current?.click()}
-                        className="px-3 py-1.5 bg-black/85 hover:bg-black text-white text-[11px] font-bold tracking-wider uppercase rounded flex items-center gap-1.5 shadow-md transition-colors cursor-pointer backdrop-blur-xs"
-                        title="Cambiar fotografía"
-                      >
-                        <Camera className="w-3.5 h-3.5 text-[#E30613]" />
-                        <span>Cambiar foto</span>
-                      </button>
-                      {photoUrl !== OFFICIAL_PHOTO && (
-                        <button
-                          onClick={resetPhoto}
-                          className="px-2.5 py-1.5 bg-black/85 hover:bg-red-600 text-white text-[11px] font-bold rounded shadow-md transition-colors cursor-pointer"
-                          title="Restablecer fotografía oficial"
-                        >
-                          Restablecer
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  /* Editorial Placeholder specifically sized and styled for Patricia's official portrait */
-                  <div className="w-full h-full min-h-[460px] flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-neutral-200 bg-neutral-50/50">
-                    <div className="w-24 h-24 rounded-full bg-white border-2 border-neutral-300 shadow-xs flex items-center justify-center mb-5 text-neutral-400 relative">
-                      <User className="w-12 h-12 text-neutral-300" />
-                      <div className="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-[#E30613] text-white flex items-center justify-center shadow-sm">
-                        <Camera className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
-
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#E30613] mb-1 block">
-                      ESPACIO RESERVADO
-                    </span>
-                    <h3 className="text-base font-bold text-neutral-900 mb-2">
-                      Retrato Oficial de Patricia Loaiza
-                    </h3>
-                    <p className="text-xs text-neutral-500 max-w-xs mb-6 leading-relaxed">
-                      Encuadre editorial vertical con fondo neutro o transparente según el diseño de referencia.
-                    </p>
-
-                    <button
-                      onClick={() => fileInputRef.current?.click()}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-black hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-xs"
-                    >
-                      <Upload className="w-3.5 h-3.5 text-[#E30613]" />
-                      <span>Cargar fotografía oficial</span>
-                    </button>
-                  </div>
-                )}
-
-                {/* Hidden File Input for instant local image preview */}
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handlePhotoUpload}
-                  accept="image/*"
-                  className="hidden"
-                />
+                {/* Display Official Portrait */}
+                <div className="relative w-full h-full flex flex-col items-center justify-center">
+                  <img
+                    src={OFFICIAL_PHOTO}
+                    alt="Patricia Loaiza · Consultora de marketing y negocios"
+                    className="max-h-[540px] w-full object-cover object-top mx-auto shadow-sm border border-neutral-200"
+                  />
+                </div>
               </div>
             </div>
           </div>
