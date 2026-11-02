@@ -42,7 +42,7 @@ const PILARES_SPECS: PilarFactualSpec[] = [
     id: "pilar-1",
     pilarNumber: "01",
     nombreOficial: "Estrategia de Negocio",
-    tagline: "Oferta, precio y ruta de ventas estructurada de tu consultoría",
+    tagline: "Oferta, precio y ruta de ventas estructurada de tu negocio",
     indicacionesDeEncaje: [
       "El profesional del conocimiento vende su tiempo por horas o cotiza propuestas a medida desde cero en cada llamada.",
       "Cuenta con más de 10 a 20 años de experiencia acumulada pero su modelo de negocio es disperso y depende de su esfuerzo presencial continuo.",
