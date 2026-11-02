@@ -25,10 +25,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          sed -i 's/"typescript": "\^7.0.2"/"typescript": "^5.7.2"/' package.json || true
+          npm install --legacy-peer-deps
 
       - name: Build project
         run: npm run build
