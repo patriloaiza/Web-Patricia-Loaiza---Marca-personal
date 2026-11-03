@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ActiveView } from './types/index.ts';
 import { Navbar } from './components/Navbar.tsx';
 import { Hero } from './components/Hero.tsx';
@@ -14,10 +14,37 @@ import { ContinuarExplorandoSection } from './components/ContinuarExplorandoSect
 import { Footer } from './components/Footer.tsx';
 import { ForAIView } from './components/ForAIView.tsx';
 import { PilarDetailPage } from './components/PilarDetailPage.tsx';
+import { LegalModal } from './components/LegalModal.tsx';
 
 export default function App() {
   const [activeView, setActiveView] = useState<ActiveView>('main');
   const [selectedPilarId, setSelectedPilarId] = useState<string>('pilar-1');
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
+  const [legalDocId, setLegalDocId] = useState<'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos'>('autorizacion-datos');
+
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#autorizacion-datos' || hash === '#autorizacion' || hash === '#tratamiento-datos') {
+        setLegalDocId('autorizacion-datos');
+        setIsLegalModalOpen(true);
+      } else if (hash === '#politica-datos' || hash === '#privacidad' || hash === '#politica-privacidad') {
+        setLegalDocId('politica-datos');
+        setIsLegalModalOpen(true);
+      } else if (hash === '#aviso-privacidad' || hash === '#aviso-legal') {
+        setLegalDocId('aviso-privacidad');
+        setIsLegalModalOpen(true);
+      }
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, []);
+
+  const handleOpenLegal = (docId: 'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos') => {
+    setLegalDocId(docId);
+    setIsLegalModalOpen(true);
+  };
 
   const scrollToServices = () => {
     setActiveView('main');
@@ -101,6 +128,19 @@ export default function App() {
       <Footer 
         setActiveView={setActiveView} 
         onSelectPilar={handleOpenPilar}
+        onOpenLegal={handleOpenLegal}
+      />
+
+      {/* 13. Legal Modal Overlay */}
+      <LegalModal
+        isOpen={isLegalModalOpen}
+        initialDocId={legalDocId}
+        onClose={() => {
+          setIsLegalModalOpen(false);
+          if (window.location.hash.startsWith('#')) {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
+        }}
       />
     </div>
   );

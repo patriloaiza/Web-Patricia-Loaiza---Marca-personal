@@ -1,14 +1,15 @@
 import React from 'react';
 import { ActiveView } from '../types/index.ts';
-import { Bot, ExternalLink } from 'lucide-react';
+import { Bot, ExternalLink, FileText, ShieldCheck } from 'lucide-react';
 import { BRAND_INFO } from '../data/content.ts';
 
 interface FooterProps {
   setActiveView: (view: ActiveView) => void;
   onSelectPilar?: (pilarId: string) => void;
+  onOpenLegal?: (docId: 'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar }) => {
+export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar, onOpenLegal }) => {
   const handlePilarClick = (id: string) => {
     if (onSelectPilar) {
       onSelectPilar(id);
@@ -196,12 +197,12 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar }) 
             </ul>
           </div>
 
-          {/* Col 4: RECURSOS & IA (2 Cols) matching screenshot image_e467b601.png */}
+          {/* Col 4: RECURSOS & LEGAL */}
           <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 bg-[#E30613]" />
               <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                Recursos & IA
+                Legal & IA
               </h4>
             </div>
             <ul className="space-y-2 text-neutral-400">
@@ -219,30 +220,68 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar }) 
               <li>
                 <button
                   onClick={() => setActiveView('for-ai')}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left"
                 >
-                  <Bot className="w-3.5 h-3.5 text-[#E30613]" />
+                  <Bot className="w-3.5 h-3.5 text-[#E30613] shrink-0" />
                   <span>Para Agentes de IA (/for-ai)</span>
                 </button>
               </li>
+              <li className="pt-2 border-t border-neutral-900">
+                <button
+                  onClick={() => onOpenLegal ? onOpenLegal('autorizacion-datos') : window.open('./docs/autorizacion-tratamiento-datos.pdf', '_blank')}
+                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left text-neutral-300"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#E30613] shrink-0" />
+                  <span>Autorización Tratamiento de Datos Personales</span>
+                </button>
+              </li>
               <li>
-                <span className="text-[11px] text-neutral-500 block pt-1">
-                  Schema.org JSON-LD incrustado para SEO & GEO.
-                </span>
+                <button
+                  onClick={() => onOpenLegal ? onOpenLegal('politica-datos') : window.open('./docs/politica-tratamiento-datos.pdf', '_blank')}
+                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left text-neutral-400"
+                >
+                  <FileText className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+                  <span>Política de Tratamiento de Datos (PL-01)</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal ? onOpenLegal('aviso-privacidad') : window.open('./docs/aviso-privacidad.pdf', '_blank')}
+                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left text-neutral-400"
+                >
+                  <FileText className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+                  <span>Aviso de Privacidad (AV-01)</span>
+                </button>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Legal Notice matching screenshot image_e467b601.png */}
-        <div className="pt-10 mt-10 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500">
+        {/* Bottom Legal Notice */}
+        <div className="pt-10 mt-10 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500">
           <p>© 2026 PATRICIA LOAIZA®. METODOLOGÍA CREA Y MONETIZA®. DOMINIO: patriloaiza.com. TODOS LOS DERECHOS RESERVADOS.</p>
-          <div className="flex items-center gap-4">
-            <span className="hover:text-neutral-300 cursor-pointer">Aviso Legal</span>
-            <span>·</span>
-            <span className="hover:text-neutral-300 cursor-pointer">Privacidad & Datos</span>
-            <span>·</span>
-            <span className="hover:text-neutral-300 cursor-pointer">Gobernanza Comercial</span>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 font-mono text-[11px]">
+            <button 
+              onClick={() => onOpenLegal ? onOpenLegal('aviso-privacidad') : window.open('./docs/aviso-privacidad.pdf', '_blank')} 
+              className="hover:text-neutral-200 transition-colors cursor-pointer underline-offset-2 hover:underline"
+            >
+              Aviso Legal & Privacidad (AV-01)
+            </button>
+            <span className="text-neutral-700">·</span>
+            <button 
+              onClick={() => onOpenLegal ? onOpenLegal('politica-datos') : window.open('./docs/politica-tratamiento-datos.pdf', '_blank')} 
+              className="hover:text-neutral-200 transition-colors cursor-pointer underline-offset-2 hover:underline"
+            >
+              Política de Tratamiento de Datos (PL-01)
+            </button>
+            <span className="text-neutral-700">·</span>
+            <button 
+              onClick={() => onOpenLegal ? onOpenLegal('autorizacion-datos') : window.open('./docs/autorizacion-tratamiento-datos.pdf', '_blank')} 
+              className="hover:text-[#E30613] text-neutral-400 font-semibold transition-colors cursor-pointer underline-offset-2 hover:underline"
+              title="Autorización para el Tratamiento de Datos Personales"
+            >
+              Autorización Tratamiento de Datos Personales (AT-01)
+            </button>
           </div>
         </div>
       </div>
