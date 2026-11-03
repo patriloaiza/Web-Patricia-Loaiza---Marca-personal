@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
               </div>
             </div>
 
-            {/* Credentials Strip directly inside left column matching screenshot image_d2fe5d66.png */}
+            {/* Credentials Strip directly inside left column */}
             <div className="p-6 bg-white border border-neutral-300 shadow-xs">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
                 {/* Col 1: BASE PROFESIONAL */}
@@ -101,9 +101,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
                   </span>
                   <div className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
-                    <span className="text-xs font-semibold text-neutral-900 leading-tight">
-                      Medellín, Colombia
-                    </span>
+                    <div>
+                      <strong className="text-xs font-bold text-neutral-900 block leading-tight">
+                        Medellín, Colombia
+                      </strong>
+                      <span className="text-[11px] text-neutral-600 font-medium leading-relaxed block mt-1">
+                        Consultoría en línea para Latinoamérica y España
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -112,18 +117,38 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block font-mono">
                     CREDENCIALES
                   </span>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2.5">
                     <div className="flex items-start gap-2">
                       <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
-                      <span className="text-xs font-semibold text-neutral-900 leading-tight">
-                        Administradora de Empresas (UCC)
-                      </span>
+                      <div className="text-xs leading-snug">
+                        <strong className="font-bold text-neutral-900 block">Administradora de Empresas</strong>
+                        <span className="text-[11px] text-neutral-600 block">Graduada en 2001</span>
+                      </div>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
-                      <span className="text-xs font-semibold text-neutral-900 leading-tight">
-                        Consultora Estratégica & Creadora de CREA Y MONETIZA®
-                      </span>
+                      <div className="text-xs leading-snug">
+                        <strong className="font-bold text-neutral-900 block">Consultora certificada de marketing y negocios</strong>
+                        <span className="text-[11px] text-neutral-600 block">American Business College (En proceso)</span>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
+                      <div className="text-xs leading-snug">
+                        <strong className="font-bold text-neutral-900 block">Gerencia de proyectos bajo lineamientos PMI</strong>
+                        <span className="text-[11px] text-neutral-600 block">
+                          Diplomado Internacional (Corporación Universitaria Asturias) y Experto en Gestión de Proyectos (Instituto Europeo de Postgrado)
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
+                      <div className="text-xs leading-snug">
+                        <strong className="font-bold text-neutral-900 block">Mentora autorizada</strong>
+                        <span className="text-[11px] text-neutral-600 block">
+                          Universidad Online · insignia verificable en Credly
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -133,11 +158,30 @@ export const Hero: React.FC<HeroProps> = ({ onExploreServices }) => {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block font-mono">
                     TRAYECTORIA
                   </span>
-                  <div className="flex items-start gap-2">
-                    <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
-                    <span className="text-xs font-medium text-neutral-800 leading-relaxed">
-                      Cargos misionales y de coordinación en FAO (ONU), programas de la Unión Europea (CISP), Nestlé S.A. y Red Adelco.
-                    </span>
+                  <div className="space-y-2.5">
+                    <div className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-[#E30613] mt-1 shrink-0" />
+                      <div>
+                        <strong className="text-xs font-bold text-neutral-900 block leading-tight">
+                          Desde 1996 · 30 años de trayectoria profesional
+                        </strong>
+                        <span className="text-[11px] text-neutral-600 block mt-1 leading-relaxed">
+                          Primero en administración y finanzas corporativas, luego en proyectos de desarrollo territorial y, desde 2017, en marketing y negocios.
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="pl-4 space-y-2 text-[11px] text-neutral-600 border-l border-neutral-200 mt-2">
+                      <p className="leading-snug">
+                        <strong className="text-neutral-900 font-semibold">1996 a 2006 · Nestlé S.A.:</strong> administración, facturación, cartera y tesorería en la Regional Antioquia.
+                      </p>
+                      <p className="leading-snug">
+                        <strong className="text-neutral-900 font-semibold">2009 a 2018 · Desarrollo territorial:</strong> Fundación Internacional María Luisa de Moreno, Red Adelco, CISP y FAO (ONU), con roles de coordinación y consultoría.
+                      </p>
+                      <p className="leading-snug">
+                        <strong className="text-neutral-900 font-semibold">Desde 2017 · Profesional independiente:</strong> copywriting, marketing y negocios. Creadora de la metodología Crea y Monetiza®.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

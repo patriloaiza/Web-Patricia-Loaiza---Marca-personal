@@ -143,7 +143,7 @@ export const SobrePatriciaSection: React.FC = () => {
           </div>
         </div>
 
-        {/* PARTE 2: Trayectoria de Liderazgo con Fechas Auditadas */}
+        {/* PARTE 2: Trayectoria de Liderazgo */}
         <div className="mb-16">
           <div className="flex items-center justify-between pb-4 mb-8 border-b border-neutral-200">
             <div>
@@ -155,7 +155,7 @@ export const SobrePatriciaSection: React.FC = () => {
               </h3>
             </div>
             <span className="text-xs font-mono font-semibold text-neutral-400 hidden sm:inline">
-              FECHAS Y ROLES AUDITADOS
+              EXPERIENCIA Y ENVERGADURA COMPROBADA
             </span>
           </div>
 
@@ -172,12 +172,6 @@ export const SobrePatriciaSection: React.FC = () => {
                     </span>
                     <Briefcase className="w-4 h-4 text-neutral-400" />
                   </div>
-
-                  {item.period && (
-                    <span className="inline-block text-[11px] font-mono font-black text-neutral-900 bg-neutral-100 border border-neutral-300 px-2 py-0.5 rounded-xs mb-2">
-                      📅 {item.period}
-                    </span>
-                  )}
 
                   <h4 className="text-base font-bold text-neutral-900 mb-1 leading-snug">
                     {item.role}

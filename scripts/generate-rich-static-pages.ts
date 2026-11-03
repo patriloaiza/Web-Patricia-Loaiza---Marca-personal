@@ -1088,7 +1088,7 @@ const sobrePatriciaHtml = `<!doctype html>
         </div>
       </div>
 
-      <!-- Trayectoria Institucional con Fechas Auditadas -->
+      <!-- Trayectoria Institucional -->
       <div style="background-color: #FFF; border: 1px solid #D4D4D4; padding: 36px; margin-bottom: 50px;">
         <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373; display: block; margin-bottom: 8px;">
           TRAYECTORIA INSTITUCIONAL Y DE DIRECCIÓN
@@ -1103,7 +1103,6 @@ const sobrePatriciaHtml = `<!doctype html>
               <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #E30613; text-transform: uppercase;">
                 ${h.organization}
               </span>
-              ${h.period ? `<span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; background-color: #E5E5E5; padding: 2px 6px; border-radius: 2px;">📅 ${h.period}</span>` : ''}
             </div>
             <strong style="font-size: 13px; color: #0A0A0A; display: block; margin-bottom: 6px;">
               ${h.role}
