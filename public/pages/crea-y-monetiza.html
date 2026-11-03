@@ -17,6 +17,25 @@
   }
 
   * { box-sizing: border-box; }
+  
+  /* CRITICAL: Force SVG max dimensions so they never expand out of control */
+  svg {
+    max-width: 24px;
+    max-height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  svg.w-3, .w-3 { width: 12px !important; height: 12px !important; }
+  svg.w-3.5, .w-3.5 { width: 14px !important; height: 14px !important; }
+  svg.w-4, .w-4 { width: 16px !important; height: 16px !important; }
+  svg.w-5, .w-5 { width: 20px !important; height: 20px !important; }
+  svg.w-6, .w-6 { width: 24px !important; height: 24px !important; }
+  .h-3 { height: 12px !important; }
+  .h-3.5 { height: 14px !important; }
+  .h-4 { height: 16px !important; }
+  .h-5 { height: 20px !important; }
+  .h-6 { height: 24px !important; }
   body {
     margin: 0;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -142,7 +161,7 @@
         <a href="https://soypatricialoaiza.com/#metodologia" style="font-size: 13px; font-weight: 600; color: #262626; text-decoration: none;">Metodología & BMS</a>
         <a href="https://soypatricialoaiza.com/#faq-consultorio" style="font-size: 13px; font-weight: 600; color: #262626; text-decoration: none;">Consultorio & FAQs</a>
         <a href="https://soypatricialoaiza.com/#for-ai" style="font-size: 12px; font-weight: 700; color: #E30613; text-decoration: none; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 4px;">
-          <svg class="w-3.5 h-3.5 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke-width="2"/><circle cx="12" cy="5" r="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v4M8 16h.01M16 16h.01"/></svg> /for-ai
+          <svg width="14" height="14" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; flex-shrink: 0; color: #E30613;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke-width="2"/><circle cx="12" cy="5" r="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v4M8 16h.01M16 16h.01"/></svg> /for-ai
         </a>
         <a href="https://test.creaymonetiza.online/diagnostico_p1-page?utm_source=seo&utm_medium=nav-button&utm_campaign=main-header" target="_blank" rel="noopener noreferrer" class="btn-prediagnostico">
           PREDIAGNÓSTICO OFICIAL ↗
@@ -393,18 +412,18 @@
             <li>
               <a href="https://test.creaymonetiza.online/diagnostico_p1-page?utm_source=seo&utm_medium=footer&utm_campaign=prediagnostico" target="_blank" rel="noopener noreferrer" style="color: #E30613; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px;">
                 <span>Prediagnóstico Oficial</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                <svg width="14" height="14" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
             </li>
             <li>
               <a href="https://soypatricialoaiza.com/#for-ai" style="color: #A3A3A3; text-decoration: none; display: flex; align-items: center; gap: 6px;">
-                <svg class="w-3.5 h-3.5 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke-width="2"/><circle cx="12" cy="5" r="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v4M8 16h.01M16 16h.01"/></svg>
+                <svg width="14" height="14" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; flex-shrink: 0; color: #E30613;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke-width="2"/><circle cx="12" cy="5" r="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v4M8 16h.01M16 16h.01"/></svg>
                 <span>Para Agentes de IA (/for-ai)</span>
               </a>
             </li>
             <li style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #1F1F1F;">
               <a href="../docs/autorizacion-tratamiento-datos.pdf" target="_blank" rel="noopener noreferrer" style="color: #E30613; text-decoration: none; display: flex; align-items: center; gap: 6px;" title="Abrir PDF oficial de Autorización Tratamiento de Datos Personales">
-                <svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <svg width="16" height="16" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; color: #E30613;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <span>Autorización Tratamiento de Datos Personales</span>
               </a>
             </li>
