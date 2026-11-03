@@ -1,5 +1,5 @@
 export interface LegalDocItem {
-  id: 'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos';
+  id: 'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos' | 'politica-cookies';
   code: string;
   version: string;
   date: string;
@@ -39,7 +39,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
           'La Responsable del tratamiento es Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
           'Correo electrónico: info@patriloaiza.com | Teléfono / WhatsApp: +57 300 813 5043',
           'Dirección: Calle 34A 40-51, Medellín, Antioquia, Colombia.',
-          'Sitio web oficial: https://bio.patriloaiza.com'
+          'Sitio web oficial: https://soypatricialoaiza.com'
         ]
       },
       {
@@ -188,7 +188,42 @@ export const LEGAL_DOCS: LegalDocItem[] = [
       },
       {
         title: '5. Ubicación de la Política Completa',
-        content: 'La Política de Tratamiento de Datos Personales PL-01 completa está publicada en el sitio web oficial https://bio.patriloaiza.com y disponible mediante solicitud por correo.'
+        content: 'La Política de Tratamiento de Datos Personales PL-01 completa está publicada en el sitio web oficial https://soypatricialoaiza.com y disponible mediante solicitud por correo.'
+      }
+    ]
+  },
+  {
+    id: 'politica-cookies',
+    code: 'CK-01',
+    version: '01',
+    date: '3 de noviembre de 2026',
+    title: 'Política de Cookies y Tecnologías Similares',
+    shortTitle: 'Política de Cookies (CK-01)',
+    badge: 'Normativa Web & Analítica',
+    description: 'Información sobre el uso de cookies técnicas, de preferencias, analíticas (Google Analytics 4) y de medición en https://soypatricialoaiza.com.',
+    pdfUrl: './docs/politica-cookies.pdf',
+    directPdfFileName: '05_Politica_Cookies_PL_CyM_91ab48e2.pdf',
+    sections: [
+      {
+        title: '1. Identificación de la Responsable',
+        content: 'Patricia Loaiza, domiciliada en Medellín, Colombia (marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™). Correo: info@patriloaiza.com | WhatsApp: +57 300 813 5043. Sitio web: https://soypatricialoaiza.com'
+      },
+      {
+        title: '2. ¿Qué son las Cookies?',
+        content: 'Archivos de datos descargados en el navegador del usuario al visitar el sitio web para recordar preferencias, autenticar sesiones y medir el tráfico de forma agregada.'
+      },
+      {
+        title: '3. Tipos de Cookies Utilizadas',
+        content: [
+          '• Técnicas y necesarias: Imprescindibles para el funcionamiento y seguridad de la plataforma.',
+          '• Analíticas y de medición: Miden visitas y comportamiento agregado con Google Analytics 4 (_ga, _ga_*).',
+          '• De preferencias: Guardan tu elección sobre el uso de cookies (pl_cookie_consent).',
+          '• De marketing/conversión: Evalúan la efectividad de campañas y clics hacia los embudos de consultoría.'
+        ]
+      },
+      {
+        title: '4. Gestión y Desactivación',
+        content: 'Puedes gestionar o revocar tu consentimiento en cualquier momento mediante las opciones de configuración de tu navegador (Chrome, Firefox, Safari, Edge) o mediante las opciones de privacidad del sitio.'
       }
     ]
   }

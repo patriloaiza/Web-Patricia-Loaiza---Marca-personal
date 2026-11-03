@@ -1,0 +1,33 @@
+# Robots.txt for https://soypatricialoaiza.com
+# Patricia Loaiza · Consultora de Marketing y Negocios · Metodología Crea y Monetiza®
+
+User-agent: *
+Allow: /
+
+# AI Models & Generative Engines Explicit Access (GEO/AEO)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Sitemap Location
+Sitemap: https://soypatricialoaiza.com/sitemap.xml

@@ -15,6 +15,7 @@ import { Footer } from './components/Footer.tsx';
 import { ForAIView } from './components/ForAIView.tsx';
 import { PilarDetailPage } from './components/PilarDetailPage.tsx';
 import { LegalModal } from './components/LegalModal.tsx';
+import { CookieConsentBanner } from './components/CookieConsentBanner.tsx';
 
 export default function App() {
   const [activeView, setActiveView] = useState<ActiveView>('main');
@@ -142,6 +143,8 @@ export default function App() {
           }
         }}
       />
+      {/* 14. Cookie Consent Notice */}
+      <CookieConsentBanner />
     </div>
   );
 }

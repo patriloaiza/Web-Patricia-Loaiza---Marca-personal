@@ -4,12 +4,12 @@ import { X, FileText, Download, Copy, Check, ExternalLink, ShieldCheck } from 'l
 
 interface LegalModalProps {
   isOpen: boolean;
-  initialDocId?: 'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos';
+  initialDocId?: 'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos' | 'politica-cookies';
   onClose: () => void;
 }
 
 export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialDocId = 'autorizacion-datos', onClose }) => {
-  const [activeTab, setActiveTab] = useState<'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos'>(initialDocId);
+  const [activeTab, setActiveTab] = useState<'politica-datos' | 'aviso-privacidad' | 'autorizacion-datos' | 'politica-cookies'>(initialDocId);
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedCheckbox, setCopiedCheckbox] = useState(false);
 

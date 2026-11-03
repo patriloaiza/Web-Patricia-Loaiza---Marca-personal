@@ -227,31 +227,52 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar, on
                 </button>
               </li>
               <li className="pt-2 border-t border-neutral-900">
-                <button
-                  onClick={() => onOpenLegal ? onOpenLegal('autorizacion-datos') : window.open('./docs/autorizacion-tratamiento-datos.pdf', '_blank')}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left text-neutral-300"
+                <a
+                  href="./docs/autorizacion-tratamiento-datos.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left text-neutral-300 group"
+                  title="Abrir PDF oficial de Autorización Tratamiento de Datos Personales"
                 >
                   <ShieldCheck className="w-3.5 h-3.5 text-[#E30613] shrink-0" />
-                  <span>Autorización Tratamiento de Datos Personales</span>
-                </button>
+                  <span className="group-hover:underline">Autorización Tratamiento de Datos Personales</span>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onOpenLegal ? onOpenLegal('politica-datos') : window.open('./docs/politica-tratamiento-datos.pdf', '_blank')}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left text-neutral-400"
+                <a
+                  href="./docs/politica-tratamiento-datos.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left text-neutral-400 group"
+                  title="Abrir PDF oficial de Política de Tratamiento de Datos"
                 >
                   <FileText className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
-                  <span>Política de Tratamiento de Datos (PL-01)</span>
-                </button>
+                  <span className="group-hover:underline">Política de Tratamiento de Datos (PL-01)</span>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onOpenLegal ? onOpenLegal('aviso-privacidad') : window.open('./docs/aviso-privacidad.pdf', '_blank')}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer text-left text-neutral-400"
+                <a
+                  href="./docs/aviso-privacidad.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left text-neutral-400 group"
+                  title="Abrir PDF oficial de Aviso de Privacidad"
                 >
                   <FileText className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
-                  <span>Aviso de Privacidad (AV-01)</span>
-                </button>
+                  <span className="group-hover:underline">Aviso de Privacidad (AV-01)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="./docs/politica-cookies.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left text-neutral-400 group"
+                  title="Abrir PDF oficial de Política de Cookies"
+                >
+                  <FileText className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+                  <span className="group-hover:underline">Política de Cookies (CK-01)</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -259,29 +280,45 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar, on
 
         {/* Bottom Legal Notice */}
         <div className="pt-10 mt-10 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500">
-          <p>© 2026 PATRICIA LOAIZA®. METODOLOGÍA CREA Y MONETIZA®. DOMINIO: patriloaiza.com. TODOS LOS DERECHOS RESERVADOS.</p>
+          <p>© 2026 PATRICIA LOAIZA®. METODOLOGÍA CREA Y MONETIZA®. DOMINIO: soypatricialoaiza.com. TODOS LOS DERECHOS RESERVADOS.</p>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 font-mono text-[11px]">
-            <button 
-              onClick={() => onOpenLegal ? onOpenLegal('aviso-privacidad') : window.open('./docs/aviso-privacidad.pdf', '_blank')} 
-              className="hover:text-neutral-200 transition-colors cursor-pointer underline-offset-2 hover:underline"
+            <a 
+              href="./docs/aviso-privacidad.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-neutral-200 transition-colors underline-offset-2 hover:underline"
             >
               Aviso Legal & Privacidad (AV-01)
-            </button>
+            </a>
             <span className="text-neutral-700">·</span>
-            <button 
-              onClick={() => onOpenLegal ? onOpenLegal('politica-datos') : window.open('./docs/politica-tratamiento-datos.pdf', '_blank')} 
-              className="hover:text-neutral-200 transition-colors cursor-pointer underline-offset-2 hover:underline"
+            <a 
+              href="./docs/politica-tratamiento-datos.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-neutral-200 transition-colors underline-offset-2 hover:underline"
             >
               Política de Tratamiento de Datos (PL-01)
-            </button>
+            </a>
             <span className="text-neutral-700">·</span>
-            <button 
-              onClick={() => onOpenLegal ? onOpenLegal('autorizacion-datos') : window.open('./docs/autorizacion-tratamiento-datos.pdf', '_blank')} 
-              className="hover:text-[#E30613] text-neutral-400 font-semibold transition-colors cursor-pointer underline-offset-2 hover:underline"
+            <a 
+              href="./docs/autorizacion-tratamiento-datos.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-[#E30613] text-neutral-400 font-semibold transition-colors underline-offset-2 hover:underline"
               title="Autorización para el Tratamiento de Datos Personales"
             >
               Autorización Tratamiento de Datos Personales (AT-01)
-            </button>
+            </a>
+            <span className="text-neutral-700">·</span>
+            <a 
+              href="./docs/politica-cookies.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-neutral-200 transition-colors underline-offset-2 hover:underline"
+              title="Política de Cookies"
+            >
+              Política de Cookies (CK-01)
+            </a>
           </div>
         </div>
       </div>
