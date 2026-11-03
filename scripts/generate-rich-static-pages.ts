@@ -1,0 +1,1126 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { PILARES_FULL_DETAIL } from '../src/data/pilaresDetail.ts';
+import { 
+  BRAND_INFO, 
+  CONSULTING_PRINCIPLES, 
+  HITOS_EVOLUCION, 
+  FORMACION_ACADEMICA,
+  PROCESS_5_STEPS
+} from '../src/data/content.ts';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const targetDir = path.join(__dirname, '..', 'public', 'pages');
+if (!fs.existsSync(targetDir)) {
+  fs.mkdirSync(targetDir, { recursive: true });
+}
+
+const BASE_URL = 'https://soypatricialoaiza.com';
+const PREDIAGNOSTICO_BASE = 'https://test.creaymonetiza.online/diagnostico_p1-page';
+
+// SVG Icons helper
+const ICONS = {
+  arrowLeft: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>`,
+  arrowRight: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`,
+  externalLink: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>`,
+  checkCircle: `<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  checkCircleRed: `<svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  xCircleRed: `<svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  target: `<svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke-width="2"/><circle cx="12" cy="12" r="2" stroke-width="2"/></svg>`,
+  fileCheck: `<svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+  folderKanban: `<svg class="w-4 h-4 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>`,
+  cpu: `<svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>`,
+  sparkles: `<svg class="w-3.5 h-3.5 text-[#E30613]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/></svg>`,
+  shield: `<svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  help: `<svg class="w-4 h-4 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3m.08 4h.01"/></svg>`,
+  bot: `<svg class="w-3.5 h-3.5 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke-width="2"/><circle cx="12" cy="5" r="2" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v4M8 16h.01M16 16h.01"/></svg>`,
+  chevronDown: `<svg class="w-5 h-5 text-neutral-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>`,
+  chevronUp: `<svg class="w-5 h-5 text-neutral-900 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>`
+};
+
+// Common CSS matching the App perfectly
+const COMMON_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+  
+  :root {
+    --color-red: #E30613;
+    --color-dark: #0A0A0A;
+    --color-bg-light: #F7F7F7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #F7F7F7;
+    color: #171717;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .max-w-7xl { max-width: 1280px; margin-left: auto; margin-right: auto; }
+  .max-w-5xl { max-width: 1024px; }
+  .max-w-4xl { max-width: 896px; margin-left: auto; margin-right: auto; }
+  .px-4 { padding-left: 1rem; padding-right: 1rem; }
+  @media (min-width: 640px) { .px-4 { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1024px) { .px-4 { padding-left: 2rem; padding-right: 2rem; } }
+
+  /* Shadows matching React App exactly */
+  .shadow-solid-black { box-shadow: 4px 4px 0px 0px #0A0A0A; }
+  .shadow-solid-red { box-shadow: 4px 4px 0px 0px #E30613; }
+  .shadow-solid-heavy { box-shadow: 6px 6px 0px 0px #0A0A0A; }
+  .shadow-solid-before { box-shadow: 4px 4px 0px 0px #fca5a5; }
+  .shadow-solid-after { box-shadow: 4px 4px 0px 0px #6ee7b7; }
+
+  /* Accordion interactive styling */
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] summary .chevron-down { transform: rotate(180deg); }
+
+  /* Buttons */
+  .btn-prediagnostico {
+    background-color: #E30613;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    transition: background-color 0.15s ease;
+  }
+  .btn-prediagnostico:hover { background-color: #c90510; }
+
+  .btn-nav-tab {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    display: inline-block;
+  }
+  .btn-nav-tab.active {
+    background-color: #E30613;
+    color: #FFF;
+  }
+  .btn-nav-tab:not(.active) {
+    color: #A3A3A3;
+    border: 1px solid transparent;
+  }
+  .btn-nav-tab:not(.active):hover {
+    color: #FFF;
+    background-color: #171717;
+    border-color: #404040;
+  }
+
+  /* Responsive Utilities */
+  .grid-3-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .grid-3-col { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .grid-2-col { grid-template-columns: repeat(2, 1fr); }
+  }
+`;
+
+// Helper: Global Header
+const renderHeader = () => `
+  <!-- TOP ALERT BAR -->
+  <aside style="background-color: #0A0A0A; border-bottom: 1px solid #262626; color: #D4D4D4; font-size: 12px; padding: 6px 0;">
+    <div class="max-w-7xl px-4" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="display: inline-block; width: 7px; height: 7px; background-color: #E30613; border-radius: 50%;"></span>
+        <strong style="color: #FFF; font-family: 'JetBrains Mono', monospace; font-size: 11px;">¿Eres una IA?</strong>
+        <span style="color: #A3A3A3;">¿Leyendo esto en nombre de un humano? Escribimos una versión solo para ti.</span>
+      </div>
+      <a href="${BASE_URL}/#for-ai" style="color: #FFF; background-color: #E30613; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 4px 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+        Los agentes de IA, click aquí →
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN BRAND HEADER -->
+  <header style="background-color: #FFF; border-bottom: 1px solid #E5E5E5; position: sticky; top: 0; z-index: 50;">
+    <div class="max-w-7xl px-4" style="display: flex; align-items: center; justify-content: space-between; height: 68px;">
+      <a href="${BASE_URL}/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="../assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg" alt="Patricia Loaiza" style="height: 38px; object-fit: contain;" />
+      </a>
+      <nav style="display: flex; align-items: center; gap: 20px;">
+        <a href="${BASE_URL}/#sobre-patricia-trayectoria" style="font-size: 13px; font-weight: 600; color: #262626; text-decoration: none;">Sobre Patricia</a>
+        <a href="${BASE_URL}/#como-trabajo" style="font-size: 13px; font-weight: 600; color: #262626; text-decoration: none;">Cómo trabajo</a>
+        <a href="${BASE_URL}/#areas-consultoria" style="font-size: 13px; font-weight: 700; color: #E30613; text-decoration: none;">Áreas de Consultoría</a>
+        <a href="${BASE_URL}/#metodologia" style="font-size: 13px; font-weight: 600; color: #262626; text-decoration: none;">Metodología & BMS</a>
+        <a href="${BASE_URL}/#faq-consultorio" style="font-size: 13px; font-weight: 600; color: #262626; text-decoration: none;">Consultorio & FAQs</a>
+        <a href="${BASE_URL}/#for-ai" style="font-size: 12px; font-weight: 700; color: #E30613; text-decoration: none; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 4px;">
+          ${ICONS.bot} /for-ai
+        </a>
+        <a href="${PREDIAGNOSTICO_BASE}?utm_source=seo&utm_medium=nav-button&utm_campaign=main-header" target="_blank" rel="noopener noreferrer" class="btn-prediagnostico">
+          PREDIAGNÓSTICO OFICIAL ↗
+        </a>
+      </nav>
+    </div>
+  </header>
+`;
+
+// Helper: Sticky Service Switcher Sub-Navbar
+const renderSubNavbar = (activePilarId: string) => `
+  <nav aria-label="Navegación de servicios" style="background-color: #0A0A0A; border-bottom: 1px solid #262626; position: sticky; top: 68px; z-index: 40; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="max-w-7xl px-4" style="display: flex; align-items: center; justify-content: space-between; height: 52px; overflow-x: auto;">
+      <a href="${BASE_URL}/" style="display: flex; align-items: center; gap: 8px; color: #D4D4D4; font-size: 11px; font-weight: 800; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; text-decoration: none; flex-shrink: 0;">
+        <span style="color: #E30613;">←</span> VOLVER A INICIO
+      </a>
+      <div style="display: flex; align-items: center; gap: 6px; margin: 0 16px;">
+        <a href="./estrategia-de-negocio.html" class="btn-nav-tab ${activePilarId === 'pilar-1' ? 'active' : ''}">ESTRATEGIA DE NEGOCIO</a>
+        <a href="./marca-personal.html" class="btn-nav-tab ${activePilarId === 'pilar-2' ? 'active' : ''}">MARCA PERSONAL</a>
+        <a href="./sistema-de-contenidos.html" class="btn-nav-tab ${activePilarId === 'pilar-3' ? 'active' : ''}">SISTEMA DE CONTENIDOS</a>
+        <a href="./dia-de-negocios-digitales.html" class="btn-nav-tab ${activePilarId === 'pilar-4' ? 'active' : ''}">DÍA DE NEGOCIOS DIGITALES</a>
+        <a href="./ecosistema-digital.html" class="btn-nav-tab ${activePilarId === 'pilar-5' ? 'active' : ''}">ECOSISTEMA DIGITAL</a>
+      </div>
+      <a href="${PREDIAGNOSTICO_BASE}?utm_source=seo&utm_medium=subnav&utm_campaign=pilar-nav" target="_blank" rel="noopener noreferrer" style="color: #FFF; background-color: #171717; border: 1px solid #404040; padding: 6px 12px; font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; text-decoration: none; flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px;">
+        <span>PREDIAGNÓSTICO</span>
+        <span style="color: #E30613;">↗</span>
+      </a>
+    </div>
+  </nav>
+`;
+
+// Helper: Rich Global Footer
+const renderFooter = () => `
+  <footer style="background-color: #0A0A0A; border-top: 1px solid #262626; color: #A3A3A3; padding: 60px 0 30px;">
+    <div class="max-w-7xl px-4">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px;">
+        <!-- Col 1: Brand -->
+        <div style="max-width: 320px;">
+          <img src="../assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg" alt="Patricia Loaiza" style="height: 34px; object-fit: contain; background: #FFF; padding: 4px 8px; border-radius: 2px; margin-bottom: 16px;" />
+          <p style="font-size: 12px; color: #FFF; font-style: italic; margin-bottom: 12px; font-weight: 600;">
+            “Estrategia · Experiencia · Impacto. Tu experiencia. Tu método. Tu legado.”
+          </p>
+          <p style="font-size: 12px; color: #A3A3A3; line-height: 1.6; margin-bottom: 16px;">
+            Consultoría estratégica para profesionales y expertos senior (40 a 65 años) que buscan convertir su conocimiento en un negocio estructurado con inteligencia artificial y capacidad instalada.
+          </p>
+          <div style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #737373;">
+            <p style="margin: 3px 0;">Medellín, Colombia · Atención en toda Iberoamérica y España</p>
+            <p style="margin: 3px 0;">Dominio oficial: <strong style="color: #FFF;">soypatricialoaiza.com</strong></p>
+            <p style="margin: 3px 0;">Contacto: <a href="mailto:info@patriloaiza.com" style="color: #FFF; text-decoration: none;">info@patriloaiza.com</a></p>
+          </div>
+        </div>
+
+        <!-- Col 2: Identidad -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+            <span style="width: 6px; height: 6px; background-color: #E30613;"></span>
+            <strong style="color: #FFF; font-size: 12px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;">IDENTIDAD</strong>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 2.2;">
+            <li><a href="${BASE_URL}/#sobre-patricia-trayectoria" style="color: #A3A3A3; text-decoration: none;">Sobre Patricia</a></li>
+            <li><a href="${BASE_URL}/#proceso-5-fases" style="color: #A3A3A3; text-decoration: none;">Ruta en 5 Pasos</a></li>
+            <li><a href="${BASE_URL}/#principios-consultoria" style="color: #A3A3A3; text-decoration: none;">Principios y Postura</a></li>
+            <li><a href="${BASE_URL}/#hitos-institucionales" style="color: #A3A3A3; text-decoration: none;">Trayectoria Institucional</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Metodología -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+            <span style="width: 6px; height: 6px; background-color: #E30613;"></span>
+            <strong style="color: #FFF; font-size: 12px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;">METODOLOGÍA</strong>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 2.2;">
+            <li><a href="${BASE_URL}/pages/crea-y-monetiza.html" style="color: #A3A3A3; text-decoration: none;">Crea y Monetiza®</a></li>
+            <li><a href="${BASE_URL}/#metodologia" style="color: #A3A3A3; text-decoration: none;">Metodología Crea y Monetiza®</a></li>
+            <li><a href="${BASE_URL}/#credito-bms" style="color: #A3A3A3; text-decoration: none;">Crédito a BMS (Vilma Núñez)</a></li>
+            <li><a href="${BASE_URL}/#portal-notion" style="color: #A3A3A3; text-decoration: none;">Portal de Notion & Copilotos IA</a></li>
+            <li><a href="${BASE_URL}/#faq-consultorio" style="color: #A3A3A3; text-decoration: none;">Consultorio & FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Cinco Pilares -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+            <span style="width: 6px; height: 6px; background-color: #E30613;"></span>
+            <strong style="color: #FFF; font-size: 12px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;">CINCO PILARES</strong>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 2.2;">
+            <li><a href="./estrategia-de-negocio.html" style="color: #A3A3A3; text-decoration: none;">Pilar 1: Estrategia de Negocio</a></li>
+            <li><a href="./marca-personal.html" style="color: #A3A3A3; text-decoration: none;">Pilar 2: Marca Personal</a></li>
+            <li><a href="./sistema-de-contenidos.html" style="color: #A3A3A3; text-decoration: none;">Pilar 3: Sistema de Contenidos</a></li>
+            <li><a href="./dia-de-negocios-digitales.html" style="color: #A3A3A3; text-decoration: none;">Pilar 4: Día de Negocios Digitales</a></li>
+            <li><a href="./ecosistema-digital.html" style="color: #E30613; text-decoration: none;">Pilar 5: Ecosistema Llave en Mano</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Legal & IA (Direct PDF Links) -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+            <span style="width: 6px; height: 6px; background-color: #E30613;"></span>
+            <strong style="color: #FFF; font-size: 12px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;">LEGAL & IA</strong>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 2.2;">
+            <li>
+              <a href="${PREDIAGNOSTICO_BASE}?utm_source=seo&utm_medium=footer&utm_campaign=prediagnostico" target="_blank" rel="noopener noreferrer" style="color: #E30613; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <span>Prediagnóstico Oficial</span>
+                ${ICONS.externalLink}
+              </a>
+            </li>
+            <li>
+              <a href="${BASE_URL}/#for-ai" style="color: #A3A3A3; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+                ${ICONS.bot}
+                <span>Para Agentes de IA (/for-ai)</span>
+              </a>
+            </li>
+            <li style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #1F1F1F;">
+              <a href="../docs/autorizacion-tratamiento-datos.pdf" target="_blank" rel="noopener noreferrer" style="color: #E30613; text-decoration: none; display: flex; align-items: center; gap: 6px;" title="Abrir PDF oficial de Autorización Tratamiento de Datos Personales">
+                ${ICONS.shield}
+                <span>Autorización Tratamiento de Datos Personales</span>
+              </a>
+            </li>
+            <li>
+              <a href="../docs/politica-tratamiento-datos.pdf" target="_blank" rel="noopener noreferrer" style="color: #A3A3A3; text-decoration: none;" title="Abrir PDF oficial de Política de Tratamiento de Datos">
+                Política de Tratamiento de Datos (PL-01)
+              </a>
+            </li>
+            <li>
+              <a href="../docs/aviso-privacidad.pdf" target="_blank" rel="noopener noreferrer" style="color: #A3A3A3; text-decoration: none;" title="Abrir PDF oficial de Aviso de Privacidad">
+                Aviso de Privacidad (AV-01)
+              </a>
+            </li>
+            <li>
+              <a href="../docs/politica-cookies.pdf" target="_blank" rel="noopener noreferrer" style="color: #A3A3A3; text-decoration: none;" title="Abrir PDF oficial de Política de Cookies">
+                Política de Cookies (CK-01)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #1F1F1F; padding-top: 24px; text-align: center; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #525252;">
+        © 2026 PATRICIA LOAIZA®. TODOS LOS DERECHOS RESERVADOS. METODOLOGÍA CREA Y MONETIZA®. DOMINIO OFICIAL: SOYPATRICIALOAIZA.COM
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING COOKIE CONSENT BANNER -->
+  <aside id="pl-cookie-banner" style="display: none; position: fixed; bottom: 16px; left: 16px; right: 16px; max-width: 900px; margin: 0 auto; background-color: #0A0A0A; border: 1px solid #262626; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); padding: 16px 20px; z-index: 9999; border-radius: 4px;">
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 280px;">
+        <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #FFF; letter-spacing: 0.05em; text-transform: uppercase; display: block; margin-bottom: 4px;">
+          PRIVACIDAD & USO DE COOKIES EN SOYPATRICIALOAIZA.COM
+        </span>
+        <p style="font-size: 12px; color: #A3A3A3; margin: 0; line-height: 1.4;">
+          Utilizamos cookies propias y de analítica (Google Analytics 4) para medir el tráfico agregado y asegurar el funcionamiento óptimo de la web. Puedes consultar los detalles en nuestra <a href="../docs/politica-cookies.pdf" target="_blank" rel="noopener noreferrer" style="color: #E30613; text-decoration: underline;">Política de Cookies (CK-01) ↗</a>.
+        </p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button onclick="dismissCookies('essential')" style="background: transparent; border: 1px solid #404040; color: #A3A3A3; font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; padding: 8px 14px; cursor: pointer; text-transform: uppercase;">
+          Solo necesarias
+        </button>
+        <button onclick="dismissCookies('all')" style="background: #E30613; border: 1px solid #E30613; color: #FFF; font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 800; padding: 8px 16px; cursor: pointer; text-transform: uppercase;">
+          Aceptar todas
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    function checkCookies() {
+      if (!localStorage.getItem('pl_cookie_consent')) {
+        document.getElementById('pl-cookie-banner').style.display = 'block';
+      }
+    }
+    function dismissCookies(choice) {
+      localStorage.setItem('pl_cookie_consent', JSON.stringify({ choice: choice, timestamp: new Date().toISOString() }));
+      document.getElementById('pl-cookie-banner').style.display = 'none';
+    }
+    document.addEventListener('DOMContentLoaded', checkCookies);
+  </script>
+`;
+
+// GENERATE 5 PILAR PAGES
+PILARES_FULL_DETAIL.forEach((pilar, index) => {
+  const pilarNum = pilar.number;
+  const fileName = {
+    'pilar-1': 'estrategia-de-negocio.html',
+    'pilar-2': 'marca-personal.html',
+    'pilar-3': 'sistema-de-contenidos.html',
+    'pilar-4': 'dia-de-negocios-digitales.html',
+    'pilar-5': 'ecosistema-digital.html'
+  }[pilar.id] || `pilar-${pilarNum}.html`;
+
+  const prevPilar = index > 0 ? PILARES_FULL_DETAIL[index - 1] : null;
+  const nextPilar = index < PILARES_FULL_DETAIL.length - 1 ? PILARES_FULL_DETAIL[index + 1] : null;
+  const prevFileName = prevPilar ? {
+    'pilar-1': 'estrategia-de-negocio.html',
+    'pilar-2': 'marca-personal.html',
+    'pilar-3': 'sistema-de-contenidos.html',
+    'pilar-4': 'dia-de-negocios-digitales.html',
+    'pilar-5': 'ecosistema-digital.html'
+  }[prevPilar.id] : null;
+
+  const nextFileName = nextPilar ? {
+    'pilar-1': 'estrategia-de-negocio.html',
+    'pilar-2': 'marca-personal.html',
+    'pilar-3': 'sistema-de-contenidos.html',
+    'pilar-4': 'dia-de-negocios-digitales.html',
+    'pilar-5': 'ecosistema-digital.html'
+  }[nextPilar.id] : null;
+
+  const html = `<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${pilar.commercialName} | Patricia Loaiza · Consultora de Negocios</title>
+  <meta name="description" content="${pilar.subname}. ${pilar.tagline}" />
+  <link rel="canonical" href="${BASE_URL}/pages/${fileName}" />
+  <link rel="icon" type="image/jpeg" href="../assets/aistudio/isotipo_fondo_transparente_f86013c4.jpeg" />
+  
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="${BASE_URL}/pages/${fileName}" />
+  <meta property="og:title" content="${pilar.commercialName} | Patricia Loaiza" />
+  <meta property="og:description" content="${pilar.subname}. ${pilar.tagline}" />
+  <meta property="og:image" content="${BASE_URL}/assets/aistudio/Patri_Medio_cuerpo_web_745a0efc.webp" />
+  <meta property="og:site_name" content="Patricia Loaiza · Consultora de Marketing y Negocios" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${pilar.commercialName} | Patricia Loaiza" />
+  <meta name="twitter:description" content="${pilar.subname}. ${pilar.tagline}" />
+  <meta name="twitter:image" content="${BASE_URL}/assets/aistudio/Patri_Medio_cuerpo_web_745a0efc.webp" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "${pilar.commercialName}",
+    "serviceType": "${pilar.referenceService}",
+    "provider": {
+      "@type": "Person",
+      "name": "Patricia Loaiza",
+      "url": "${BASE_URL}"
+    },
+    "description": "${pilar.subname}. ${pilar.tagline}",
+    "url": "${BASE_URL}/pages/${fileName}",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "${pilar.priceTestimonials || 'Consultar'}"
+    }
+  }
+  </script>
+
+  <style>
+    ${COMMON_CSS}
+  </style>
+</head>
+<body>
+  ${renderHeader()}
+  ${renderSubNavbar(pilar.id)}
+
+  <!-- 2. SERVICE HERO HEADER -->
+  <header style="background-color: #0A0A0A; border-bottom: 1px solid #262626; color: #FFF; padding: 64px 0;">
+    <div class="max-w-7xl px-4">
+      <!-- Kicker -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <span style="display: inline-block; width: 10px; height: 10px; background-color: #E30613;"></span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #E30613; text-transform: uppercase; letter-spacing: 0.1em;">
+          SERVICIO DE CONSULTORÍA
+        </span>
+        <span style="color: #525252;">/</span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #D4D4D4; font-weight: 700; text-transform: uppercase;">
+          ${pilar.referenceService}
+        </span>
+        <span style="color: #525252;">/</span>
+        <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border: 1px solid ${pilar.modalityBadge === 'LO HAGO POR TI' ? '#E30613' : '#404040'}; background-color: ${pilar.modalityBadge === 'LO HAGO POR TI' ? '#E30613' : '#171717'}; color: #FFF;">
+          ${pilar.modalityBadge}
+        </span>
+      </div>
+
+      <!-- Title & Tagline -->
+      <h1 style="font-size: clamp(32px, 5vw, 56px); font-weight: 900; line-height: 1.1; margin: 0 0 16px; color: #FFF; max-width: 900px; letter-spacing: -0.02em;">
+        ${pilar.commercialName}
+      </h1>
+
+      <p style="font-size: clamp(16px, 2.5vw, 22px); font-weight: 700; color: #E30613; margin: 0 0 14px; max-width: 850px; line-height: 1.3;">
+        ${pilar.subname}
+      </p>
+
+      <p style="font-size: 15px; color: #D4D4D4; max-width: 750px; margin: 0 0 36px; line-height: 1.6;">
+        ${pilar.tagline}
+      </p>
+
+      <!-- Key Metric Specs Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid #262626; max-width: 850px;">
+        <div style="background-color: #171717; border: 1px solid #262626; padding: 14px 18px;">
+          <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #A3A3A3; display: block; margin-bottom: 4px;">
+            DURACIÓN ESTIMADA:
+          </span>
+          <strong style="font-size: 14px; color: #FFF; display: block;">${pilar.duration}</strong>
+        </div>
+
+        <div style="background-color: #171717; border: 1px solid #262626; padding: 14px 18px;">
+          <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #A3A3A3; display: block; margin-bottom: 4px;">
+            MODALIDAD OPERATIVA:
+          </span>
+          <strong style="font-size: 14px; color: #E30613; display: block;">
+            ${pilar.modalityBadge === 'LO HAGO POR TI' ? '«Lo hago por ti» (Implementación técnica)' : '«Lo hacemos juntos» (Consultoría y estrategia)'}
+          </strong>
+        </div>
+
+        <div style="background-color: #171717; border: 1px solid #262626; padding: 14px 18px;">
+          <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #A3A3A3; display: block; margin-bottom: 4px;">
+            TECNOLOGÍA / ENTORNO:
+          </span>
+          <strong style="font-size: 14px; color: #E5E5E5; display: block;">
+            ${pilar.techStack || 'Notion + IA + Metodología'}
+          </strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. TARGET PROFILE & MODALITY NOTICE -->
+  <section style="background-color: #FFF; border-bottom: 1px solid #E5E5E5; padding: 50px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 32px;" class="grid-2-col">
+        <!-- Target Profile Card -->
+        <div style="background-color: #F7F7F7; border: 2px solid #0A0A0A; padding: 28px; box-shadow: 4px 4px 0px 0px #0A0A0A;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            ${ICONS.target}
+            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+              PERFIL PRIORITARIO Y CASO DE USO
+            </span>
+          </div>
+          <h3 style="font-size: 22px; font-weight: 900; color: #0A0A0A; margin: 0 0 12px; letter-spacing: -0.01em;">
+            ¿Para quién está diseñado este servicio?
+          </h3>
+          <p style="font-size: 13px; color: #404040; line-height: 1.6; margin: 0 0 16px;">
+            ${pilar.targetProfile}
+          </p>
+          <div style="background-color: #FFF; border: 1px solid #D4D4D4; padding: 14px; font-size: 12px;">
+            <strong style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: #0A0A0A; display: block; margin-bottom: 4px;">
+              Problema específico que resuelve:
+            </strong>
+            <p style="color: #404040; margin: 0; line-height: 1.5;">
+              ${pilar.needSolved}
+            </p>
+          </div>
+        </div>
+
+        <!-- Modality & Rules Card -->
+        <div style="background-color: #171717; color: #FFF; border: 2px solid #000; padding: 28px; box-shadow: 4px 4px 0px 0px #E30613;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid #262626;">
+            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #E30613; text-transform: uppercase;">
+              MODALIDAD OFICIAL DE TRABAJO
+            </span>
+            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #A3A3A3;">REGLA OPERATIVA</span>
+          </div>
+          <h4 style="font-size: 18px; font-weight: 700; color: #FFF; margin: 0 0 8px;">
+            ${pilar.modality}
+          </h4>
+          <p style="font-size: 12px; color: #D4D4D4; line-height: 1.6; margin: 0 0 16px;">
+            ${pilar.modalityNote}
+          </p>
+          ${pilar.methodologyNote ? `
+          <div style="border-top: 1px solid #262626; padding-top: 12px; font-size: 11px; color: #A3A3A3; line-height: 1.5;">
+            <strong style="font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; color: #E5E5E5; display: block; margin-bottom: 2px;">
+              Marco metodológico y créditos:
+            </strong>
+            ${pilar.methodologyNote}
+          </div>
+          ` : ''}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BEFORE VS AFTER TRANSFORMATION -->
+  <section style="background-color: #F7F7F7; border-bottom: 1px solid #E5E5E5; padding: 64px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="width: 10px; height: 10px; background-color: #E30613;"></span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          TRANSFORMACIÓN REAL ESPERADA
+        </span>
+      </div>
+      <h2 style="font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; color: #0A0A0A; margin: 0 0 32px; letter-spacing: -0.01em;">
+        De la situación actual a la capacidad instalada
+      </h2>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 24px;" class="grid-2-col">
+        <!-- Antes -->
+        <div style="background-color: #FFF; border: 2px solid #fecaca; padding: 28px; box-shadow: 4px 4px 0px 0px #fca5a5;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #fee2e2;">
+            ${ICONS.xCircleRed}
+            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 900; text-transform: uppercase; color: #b91c1c;">
+              ANTES DE ESTE SERVICIO (SITUACIÓN ACTUAL)
+            </span>
+          </div>
+          <p style="font-size: 13px; color: #262626; line-height: 1.6; font-weight: 500; margin: 0;">
+            ${pilar.transformation.before}
+          </p>
+        </div>
+
+        <!-- Después -->
+        <div style="background-color: #FFF; border: 2px solid #6ee7b7; padding: 28px; box-shadow: 4px 4px 0px 0px #6ee7b7;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #d1fae5;">
+            ${ICONS.checkCircle}
+            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 900; text-transform: uppercase; color: #065f46;">
+              DESPUÉS DE ESTE SERVICIO (CAPACIDAD INSTALADA)
+            </span>
+          </div>
+          <p style="font-size: 13px; color: #0A0A0A; line-height: 1.6; font-weight: 600; margin: 0;">
+            ${pilar.transformation.after}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PHASES & REAL DELIVERABLES BREAKDOWN -->
+  <section style="background-color: #FFF; border-bottom: 1px solid #E5E5E5; padding: 72px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="width: 10px; height: 10px; background-color: #E30613;"></span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          DESGLOSE POR FASES Y ENTREGABLES REALES
+        </span>
+      </div>
+      <h2 style="font-size: clamp(26px, 4vw, 36px); font-weight: 900; color: #0A0A0A; margin: 0 0 32px; letter-spacing: -0.01em;">
+        Ruta paso a paso y qué te llevas exactamente
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        ${pilar.phases.map((phase, pIdx) => `
+        <details ${pIdx === 0 ? 'open' : ''} style="border: 2px solid #0A0A0A; background-color: #FFF; box-shadow: 4px 4px 0px 0px #0A0A0A; transition: all 0.2s;">
+          <summary style="padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; user-select: none;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="width: 40px; height: 40px; background-color: #E30613; color: #FFF; font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                ${phase.number}
+              </span>
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                  <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+                    FASE ${phase.number}
+                  </span>
+                  <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; background-color: #E5E5E5; color: #404040; padding: 1px 6px; border: 1px solid #D4D4D4;">
+                    ${phase.exercisesCount}
+                  </span>
+                </div>
+                <h4 style="font-size: 18px; font-weight: 900; color: #0A0A0A; margin: 0 0 2px;">
+                  ${phase.name}
+                </h4>
+                <p style="font-size: 12px; color: #525252; margin: 0;">
+                  ${phase.subtitle}
+                </p>
+              </div>
+            </div>
+            <span class="chevron-down" style="flex-shrink: 0; color: #525252;">
+              ${ICONS.chevronDown}
+            </span>
+          </summary>
+          <div style="padding: 0 24px 24px; border-top: 1px solid #E5E5E5; padding-top: 16px;">
+            <p style="font-size: 13px; color: #404040; line-height: 1.6; margin: 0 0 16px;">
+              ${phase.summary}
+            </p>
+
+            <div style="background-color: #171717; color: #FFF; border-left: 4px solid #E30613; padding: 16px; margin-bottom: 16px;">
+              <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #E30613; display: block; margin-bottom: 4px;">
+                ENTREGABLE TANGIBLE QUE RECIBE EL CLIENTE:
+              </span>
+              <div style="display: flex; align-items: flex-start; gap: 8px;">
+                ${ICONS.fileCheck}
+                <strong style="font-size: 13px; color: #FFF;">
+                  ${phase.realDeliverable}
+                </strong>
+              </div>
+            </div>
+
+            ${phase.bullets && phase.bullets.length > 0 ? `
+            <div>
+              <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373; display: block; margin-bottom: 8px;">
+                COMPONENTES Y ACCIONES DESARROLLADAS EN ESTA FASE:
+              </span>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+                ${phase.bullets.map((b) => `
+                <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #262626;">
+                  <span style="display: inline-block; width: 6px; height: 6px; background-color: #E30613; margin-top: 6px; flex-shrink: 0;"></span>
+                  <span>${b}</span>
+                </li>
+                `).join('')}
+              </ul>
+            </div>
+            ` : ''}
+          </div>
+        </details>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COMPLETE TANGIBLE DELIVERABLES SUMMARY + NOTION + AI PLATFORM -->
+  <section style="background-color: #F7F7F7; border-bottom: 1px solid #E5E5E5; padding: 72px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="width: 10px; height: 10px; background-color: #E30613;"></span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          RESUMEN EJECUTIVO DE ACTIVOS
+        </span>
+      </div>
+      <h2 style="font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; color: #0A0A0A; margin: 0 0 32px; letter-spacing: -0.01em;">
+        Todo lo que te llevas formalmente con este servicio
+      </h2>
+
+      <!-- 3 Columns -->
+      <div class="grid-3-col" style="margin-bottom: 40px;">
+        <!-- Col 1: Tangibles -->
+        <div style="background-color: #FFF; border: 2px solid #0A0A0A; padding: 24px; box-shadow: 4px 4px 0px 0px #0A0A0A; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid #E5E5E5;">
+              ${ICONS.checkCircleRed}
+              <strong style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #0A0A0A;">
+                DOCUMENTOS Y ACTIVOS APROBADOS
+              </strong>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+              ${pilar.deliverablesTangibles.map((item) => `
+              <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #262626;">
+                ${ICONS.checkCircleRed}
+                <span>${item}</span>
+              </li>
+              `).join('')}
+            </ul>
+          </div>
+          <div style="margin-top: 24px; padding-top: 12px; border-top: 1px solid #E5E5E5; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #737373; text-transform: uppercase;">
+            Documentos estratégicos de tu propiedad
+          </div>
+        </div>
+
+        <!-- Col 2: Notion -->
+        <div style="background-color: #FFF; border: 2px solid #D4D4D4; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid #E5E5E5;">
+              ${ICONS.folderKanban}
+              <strong style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #0A0A0A;">
+                EN TU PORTAL PRIVADO DE NOTION
+              </strong>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+              ${pilar.notionWorkspace.map((item) => `
+              <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #262626;">
+                <span style="display: inline-block; width: 6px; height: 6px; background-color: #000; margin-top: 6px; flex-shrink: 0;"></span>
+                <span>${item}</span>
+              </li>
+              `).join('')}
+            </ul>
+          </div>
+          <div style="margin-top: 24px; padding-top: 12px; border-top: 1px solid #E5E5E5; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #737373; text-transform: uppercase;">
+            Acceso permanente y vitalicio
+          </div>
+        </div>
+
+        <!-- Col 3: AI Platform -->
+        <div style="background-color: #171717; color: #FFF; border: 2px solid #000; padding: 24px; box-shadow: 4px 4px 0px 0px #E30613; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid #262626;">
+              ${ICONS.cpu}
+              <strong style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #FFF;">
+                PLATAFORMA METODOLÓGICA DE IA
+              </strong>
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+              ${pilar.aiPlatform.map((item) => `
+              <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #D4D4D4;">
+                ${ICONS.sparkles}
+                <span>${item}</span>
+              </li>
+              `).join('')}
+            </ul>
+          </div>
+          <div style="margin-top: 24px; padding-top: 12px; border-top: 1px solid #262626; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #A3A3A3; text-transform: uppercase;">
+            Autonomía estratégica y delegación con criterio
+          </div>
+        </div>
+      </div>
+
+      <!-- Sinergia Notion + IA Card -->
+      <div style="background-color: #FFF; border: 2px solid #0A0A0A; padding: 32px; box-shadow: 6px 6px 0px 0px #0A0A0A;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-bottom: 16px; margin-bottom: 20px; border-bottom: 1px solid #E5E5E5;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 10px; height: 10px; background-color: #E30613;"></span>
+            <strong style="font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 900; text-transform: uppercase; color: #0A0A0A;">
+              ARQUITECTURA DE ENTREGA: PERSONALIZACIÓN + METODOLOGÍA
+            </strong>
+          </div>
+          <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #E30613; background-color: #fef2f2; border: 1px solid #fee2e2; padding: 4px 10px;">
+            CONTROL GERENCIAL Y SOBERANÍA
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 24px;" class="grid-2-col">
+          <div style="background-color: #F7F7F7; border: 1px solid #D4D4D4; padding: 18px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              ${ICONS.folderKanban}
+              <h4 style="font-size: 13px; font-weight: 900; text-transform: uppercase; color: #0A0A0A; margin: 0;">
+                Tu Portal de Notion: 100% Personalizado
+              </h4>
+            </div>
+            <p style="font-size: 12px; color: #404040; line-height: 1.5; margin: 0;">
+              Es tu activo estratégico privado y exclusivo. Aquí residen tus cimientos de negocio, diagnósticos clínicos, ofertas productizadas, One Page Strategy y planes tácticos de 100 días. Nadie más tiene tu portal; es la verdad oficial de tu empresa.
+            </p>
+          </div>
+
+          <div style="background-color: #171717; color: #FFF; border: 1px solid #262626; padding: 18px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              ${ICONS.cpu}
+              <h4 style="font-size: 13px; font-weight: 900; text-transform: uppercase; color: #FFF; margin: 0;">
+                Plataforma de Clientes con IA: Metodología Probada
+              </h4>
+            </div>
+            <p style="font-size: 12px; color: #D4D4D4; line-height: 1.5; margin: 0;">
+              Una plataforma unificada con prompts, skills, gemas, asistentes y artefactos estratégicos creada bajo una rigurosa metodología probada. Está diseñada para que sigas creando estrategias y tácticas con autonomía, y para que delegues tareas a tu equipo sabiendo con exactitud qué estás delegando y qué resultado exigir.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; padding: 14px 16px; background-color: #FAFAFA; border-left: 4px solid #000; font-size: 12px; color: #262626; line-height: 1.5;">
+          <strong style="color: #0A0A0A; display: block; margin-bottom: 2px;">Cómo se conectan en tu día a día:</strong>
+          Con los datos estructurados de tu Portal de Notion personalizado alimentas las herramientas metodológicas de la Plataforma de IA. Obtienes resultados con criterio senior, mantienes el control total de tus decisiones y delegas con la certeza de quien domina su propio negocio.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SCOPE: INCLUDED VS NOT INCLUDED -->
+  <section style="background-color: #FFF; border-bottom: 1px solid #E5E5E5; padding: 64px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        ${ICONS.shield}
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          CLARIDAD DE ENCAJE Y LÍMITES CONTRACTUALES
+        </span>
+      </div>
+      <h2 style="font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; color: #0A0A0A; margin: 0 0 32px; letter-spacing: -0.01em;">
+        Alcance explícito: Qué incluye y qué NO incluye
+      </h2>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 24px;" class="grid-2-col">
+        <!-- Qué incluye -->
+        <div style="background-color: #FAFAFA; border: 1px solid #D4D4D4; padding: 28px;">
+          <strong style="font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #065f46; text-transform: uppercase; display: block; margin-bottom: 16px;">
+            ✓ LO QUE SÍ INCLUYE ESTE SERVICIO:
+          </strong>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+            ${pilar.scopeLimits.included.map((inc) => `
+            <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #262626;">
+              ${ICONS.checkCircle}
+              <span>${inc}</span>
+            </li>
+            `).join('')}
+          </ul>
+        </div>
+
+        <!-- Qué NO incluye -->
+        <div style="background-color: #171717; color: #FFF; border: 1px solid #262626; padding: 28px;">
+          <strong style="font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #E30613; text-transform: uppercase; display: block; margin-bottom: 16px;">
+            ✕ LO QUE NO INCLUYE ESTE SERVICIO:
+          </strong>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+            ${pilar.scopeLimits.notIncluded.map((notInc) => `
+            <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #D4D4D4;">
+              ${ICONS.xCircleRed}
+              <span>${notInc}</span>
+            </li>
+            `).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQS -->
+  ${pilar.faqs && pilar.faqs.length > 0 ? `
+  <section style="background-color: #F7F7F7; border-bottom: 1px solid #E5E5E5; padding: 64px 0;">
+    <div class="max-w-4xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        ${ICONS.help}
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          PREGUNTAS FRECUENTES SOBRE ${pilar.commercialName.toUpperCase()}
+        </span>
+      </div>
+      <h2 style="font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; color: #0A0A0A; margin: 0 0 32px; letter-spacing: -0.01em;">
+        Dudas comunes sobre este servicio
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        ${pilar.faqs.map((faq) => `
+        <details style="border: 1px solid #D4D4D4; background-color: #FFF;">
+          <summary style="padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <strong style="font-size: 13px; font-weight: 700; color: #0A0A0A;">
+              ${faq.question}
+            </strong>
+            <span class="chevron-down" style="color: #737373; flex-shrink: 0;">
+              ${ICONS.chevronDown}
+            </span>
+          </summary>
+          <div style="padding: 0 20px 20px; font-size: 12px; color: #404040; line-height: 1.6; border-top: 1px solid #F5F5F5; padding-top: 12px;">
+            ${faq.answer}
+          </div>
+        </details>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+  ` : ''}
+
+  <!-- INTER-SERVICE NAVIGATION -->
+  <section style="background-color: #E5E5E5; border-bottom: 1px solid #D4D4D4; padding: 20px 0;">
+    <div class="max-w-7xl px-4" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+      ${prevPilar ? `
+      <a href="./${prevFileName}" style="background-color: #FFF; border: 1px solid #D4D4D4; color: #0A0A0A; padding: 10px 16px; font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+        <span style="color: #E30613;">←</span> Anterior: ${prevPilar.commercialName}
+      </a>
+      ` : '<div></div>'}
+
+      ${nextPilar ? `
+      <a href="./${nextFileName}" style="background-color: #0A0A0A; border: 1px solid #000; color: #FFF; padding: 10px 16px; font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-left: auto;">
+        <span>Siguiente: ${nextPilar.commercialName}</span>
+        <span style="color: #E30613;">→</span>
+      </a>
+      ` : '<div></div>'}
+    </div>
+  </section>
+
+  <!-- 9. BOTTOM CONVERSION SECTION -->
+  <section style="background-color: #0A0A0A; color: #FFF; padding: 80px 0; text-align: center;">
+    <div class="max-w-4xl px-4">
+      <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #E30613; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 12px;">
+        SIGUIENTE PASO RECOMENDADO
+      </span>
+      <h2 style="font-size: clamp(26px, 4vw, 38px); font-weight: 900; color: #FFF; line-height: 1.2; margin: 0 0 16px; letter-spacing: -0.01em;">
+        ¿Es ${pilar.commercialName} lo que tu negocio necesita resolver primero?
+      </h2>
+      <p style="font-size: 14px; color: #D4D4D4; max-width: 650px; margin: 0 auto 32px; line-height: 1.6;">
+        No prescribimos a ciegas. Completa el prediagnóstico oficial para evaluar la situación real de tu modelo, detectar el cuello de botella comercial y confirmar la ruta adecuada.
+      </p>
+
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+        <a href="${PREDIAGNOSTICO_BASE}?utm_source=seo&utm_medium=footer-cta&utm_campaign=pilar-${pilarNum}" target="_blank" rel="noopener noreferrer" class="btn-prediagnostico" style="padding: 16px 32px; font-size: 12px;">
+          <span>HACER EL PREDIAGNÓSTICO OFICIAL</span>
+          ${ICONS.externalLink}
+        </a>
+
+        <a href="${BASE_URL}/" style="background-color: #171717; border: 1px solid #404040; color: #FFF; font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; padding: 16px 24px; text-decoration: none;">
+          Ver todos los servicios
+        </a>
+      </div>
+
+      <p style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #737373; margin: 0;">
+        Toma de 7 a 10 minutos · Recibes ruta recomendada sin compromiso comercial
+      </p>
+    </div>
+  </section>
+
+  ${renderFooter()}
+</body>
+</html>`;
+
+  fs.writeFileSync(path.join(targetDir, fileName), html);
+  console.log(`Pilar page generated: public/pages/${fileName}`);
+});
+
+// GENERATE SOBRE PATRICIA PAGE
+const sobrePatriciaHtml = `<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Patricia Loaiza · Trayectoria, Postura y Credenciales</title>
+  <meta name="description" content="Conoce la trayectoria de Patricia Loaiza: más de 15 años conectando rigor administrativo corporativo, dirección de proyectos territoriales en FAO y Unión Europea, y consultoría estratégica." />
+  <link rel="canonical" href="${BASE_URL}/pages/sobre-patricia.html" />
+  <link rel="icon" type="image/jpeg" href="../assets/aistudio/isotipo_fondo_transparente_f86013c4.jpeg" />
+  <style>${COMMON_CSS}</style>
+</head>
+<body>
+  ${renderHeader()}
+  ${renderSubNavbar('')}
+
+  <main style="padding: 60px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="width: 10px; height: 10px; background-color: #E30613;"></span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          AUTORIDAD, POSTURA Y TRAYECTORIA
+        </span>
+      </div>
+      <h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 900; color: #0A0A0A; line-height: 1.15; margin: 0 0 16px; max-width: 900px;">
+        Estrategia, experiencia institucional y criterio tecnológico.
+      </h1>
+      <p style="font-size: 16px; color: #525252; max-width: 800px; line-height: 1.6; margin: 0 0 48px;">
+        Más de quince años de experiencia conectando el rigor administrativo corporativo, la coordinación de proyectos territoriales en organismos multilaterales y la consultoría estratégica para profesionales del conocimiento.
+      </p>
+
+      <!-- Postura Quote & Principles -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 50px;" class="grid-2-col">
+        <div style="background-color: #FFF; border: 2px solid #0A0A0A; padding: 32px; box-shadow: 6px 6px 0px 0px #0A0A0A;">
+          <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373; display: block; margin-bottom: 12px;">
+            POSTURA OFICIAL
+          </span>
+          <blockquote style="font-size: 20px; font-weight: 800; color: #0A0A0A; line-height: 1.4; margin: 0 0 24px; font-style: italic;">
+            “No vendo lo que la persona cree que necesita. Le muestro, a partir de lo que encontramos en su diagnóstico, qué necesita resolver primero y cómo puedo ayudarla a hacerlo.”
+          </blockquote>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #E5E5E5; padding-top: 16px;">
+            <img src="../assets/aistudio/Patri_Medio_cuerpo_web_745a0efc.webp" alt="Patricia Loaiza" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #E30613;" />
+            <div>
+              <strong style="font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 900; display: block; color: #0A0A0A;">PATRICIA LOAIZA</strong>
+              <span style="font-size: 11px; color: #737373; font-family: 'JetBrains Mono', monospace;">CONSULTORA DE NEGOCIOS</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background-color: #FFF; border: 1px solid #D4D4D4; padding: 28px;">
+          <strong style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 900; text-transform: uppercase; color: #0A0A0A; display: block; margin-bottom: 16px;">
+            CUATRO PRINCIPIOS INQUEBRANTABLES DE CONSULTORÍA:
+          </strong>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            ${CONSULTING_PRINCIPLES.map((pr) => `
+            <div style="background-color: #FAFAFA; border: 1px solid #E5E5E5; padding: 14px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: #E30613; font-size: 12px;">${pr.number}</span>
+                <strong style="font-size: 12px; color: #0A0A0A;">${pr.title}</strong>
+              </div>
+              <p style="font-size: 11px; color: #525252; margin: 0 0 6px; line-height: 1.4;">${pr.description}</p>
+              <em style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #737373;">"${pr.quote}"</em>
+            </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- Trayectoria Institucional -->
+      <div style="background-color: #FFF; border: 1px solid #D4D4D4; padding: 36px; margin-bottom: 50px;">
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373; display: block; margin-bottom: 8px;">
+          TRAYECTORIA INSTITUCIONAL Y DE DIRECCIÓN
+        </span>
+        <h3 style="font-size: 24px; font-weight: 900; color: #0A0A0A; margin: 0 0 24px;">
+          Envergadura y roles de liderazgo comprobados
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          ${HITOS_EVOLUCION.map((h) => `
+          <div style="background-color: #FAFAFA; border: 1px solid #E5E5E5; padding: 20px;">
+            <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #E30613; text-transform: uppercase; display: block; margin-bottom: 6px;">
+              ${h.organization}
+            </span>
+            <strong style="font-size: 13px; color: #0A0A0A; display: block; margin-bottom: 6px;">
+              ${h.role}
+            </strong>
+            <p style="font-size: 11px; color: #525252; line-height: 1.5; margin: 0;">
+              ${h.scope}
+            </p>
+          </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  ${renderFooter()}
+</body>
+</html>`;
+fs.writeFileSync(path.join(targetDir, 'sobre-patricia.html'), sobrePatriciaHtml);
+console.log('Sobre Patricia page generated: public/pages/sobre-patricia.html');
+
+// GENERATE CREA Y MONETIZA METHODOLOGY PAGE
+const creaYMonetizaHtml = `<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metodología Crea y Monetiza® · 5 Fases Propietarias</title>
+  <meta name="description" content="Conoce la Metodología Crea y Monetiza®: un sistema estructurado en 5 fases propietarias para transformar conocimiento senior en ofertas productizadas y sistemas comerciales gobernables con IA." />
+  <link rel="canonical" href="${BASE_URL}/pages/crea-y-monetiza.html" />
+  <link rel="icon" type="image/jpeg" href="../assets/aistudio/isotipo_fondo_transparente_f86013c4.jpeg" />
+  <style>${COMMON_CSS}</style>
+</head>
+<body>
+  ${renderHeader()}
+  ${renderSubNavbar('')}
+
+  <main style="padding: 60px 0;">
+    <div class="max-w-7xl px-4">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="width: 10px; height: 10px; background-color: #E30613;"></span>
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+          MÉTODO PROPIETARIO
+        </span>
+      </div>
+      <h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 900; color: #0A0A0A; line-height: 1.15; margin: 0 0 16px; max-width: 900px;">
+        Metodología CREA Y MONETIZA®: La Ruta de 5 Pasos.
+      </h1>
+      <p style="font-size: 16px; color: #525252; max-width: 800px; line-height: 1.6; margin: 0 0 48px;">
+        Un proceso sistemático desarrollado para evitar que la consultoría sea una rueda de esfuerzo reactivo. De la radiografía profunda del modelo a la entrega llave en mano del ecosistema comercial.
+      </p>
+
+      <!-- 5 Steps List -->
+      <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 60px;">
+        ${PROCESS_5_STEPS.map((st) => `
+        <div style="background-color: #FFF; border: 2px solid #0A0A0A; padding: 28px; box-shadow: 4px 4px 0px 0px #0A0A0A;">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+            <span style="width: 42px; height: 42px; background-color: #E30613; color: #FFF; font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              ${st.step}
+            </span>
+            <div>
+              <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373;">
+                PASO ${st.step} · ${st.subtitle}
+              </span>
+              <h3 style="font-size: 20px; font-weight: 900; color: #0A0A0A; margin: 0;">
+                ${st.title}
+              </h3>
+            </div>
+          </div>
+          <p style="font-size: 13px; color: #404040; line-height: 1.6; margin: 0 0 16px;">
+            ${st.action}
+          </p>
+          <div style="background-color: #FAFAFA; border-left: 4px solid #E30613; padding: 12px 16px; font-size: 12px; color: #0A0A0A;">
+            <strong style="font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; color: #E30613; display: block; margin-bottom: 2px;">
+              Entregable tangible de esta etapa:
+            </strong>
+            ${st.output}
+          </div>
+        </div>
+        `).join('')}
+      </div>
+    </div>
+  </main>
+
+  ${renderFooter()}
+</body>
+</html>`;
+fs.writeFileSync(path.join(targetDir, 'crea-y-monetiza.html'), creaYMonetizaHtml);
+console.log('Crea y Monetiza page generated: public/pages/crea-y-monetiza.html');
