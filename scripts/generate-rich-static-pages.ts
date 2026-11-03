@@ -20,6 +20,21 @@ if (!fs.existsSync(targetDir)) {
 
 const BASE_URL = 'https://soypatricialoaiza.com';
 const PREDIAGNOSTICO_BASE = 'https://test.creaymonetiza.online/diagnostico_p1-page';
+const GA4_MEASUREMENT_ID = 'G-L9YTEC9F7F';
+
+const GA4_HEAD_SNIPPET = `
+  <!-- Google tag (gtag.js) - Google Analytics 4 Oficial -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '${GA4_MEASUREMENT_ID}', {
+      send_page_view: true
+    });
+  </script>
+`;
 
 // SVG Icons helper with explicit inline dimensions and SVG styles
 const ICONS = {
@@ -413,6 +428,7 @@ PILARES_FULL_DETAIL.forEach((pilar, index) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${GA4_HEAD_SNIPPET}
   <title>${pilar.commercialName} | Patricia Loaiza · Consultora de Negocios</title>
   <meta name="description" content="${pilar.subname}. ${pilar.tagline}" />
   <link rel="canonical" href="${BASE_URL}/pages/${fileName}" />
@@ -980,6 +996,7 @@ const sobrePatriciaHtml = `<!doctype html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${GA4_HEAD_SNIPPET}
   <title>Sobre Patricia Loaiza · Trayectoria, Postura y Credenciales</title>
   <meta name="description" content="Conoce la trayectoria de Patricia Loaiza: más de 15 años conectando rigor administrativo corporativo, dirección de proyectos territoriales en FAO y Unión Europea, y consultoría estratégica." />
   <link rel="canonical" href="${BASE_URL}/pages/sobre-patricia.html" />
@@ -1081,6 +1098,7 @@ const creaYMonetizaHtml = `<!doctype html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${GA4_HEAD_SNIPPET}
   <title>Metodología Crea y Monetiza® · 5 Fases Propietarias</title>
   <meta name="description" content="Conoce la Metodología Crea y Monetiza®: un sistema estructurado en 5 fases propietarias para transformar conocimiento senior en ofertas productizadas y sistemas comerciales gobernables con IA." />
   <link rel="canonical" href="${BASE_URL}/pages/crea-y-monetiza.html" />

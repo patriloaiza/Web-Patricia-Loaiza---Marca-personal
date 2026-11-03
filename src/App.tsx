@@ -35,6 +35,29 @@ export default function App() {
       } else if (hash === '#aviso-privacidad' || hash === '#aviso-legal') {
         setLegalDocId('aviso-privacidad');
         setIsLegalModalOpen(true);
+      } else if (hash.startsWith('#pilar-')) {
+        const id = hash.replace('#', '');
+        if (['pilar-1', 'pilar-2', 'pilar-3', 'pilar-4', 'pilar-5'].includes(id)) {
+          setSelectedPilarId(id);
+          setActiveView('pilar-detail');
+        }
+      } else if (hash === '#estrategia-de-negocio') {
+        setSelectedPilarId('pilar-1');
+        setActiveView('pilar-detail');
+      } else if (hash === '#marca-personal') {
+        setSelectedPilarId('pilar-2');
+        setActiveView('pilar-detail');
+      } else if (hash === '#sistema-de-contenidos') {
+        setSelectedPilarId('pilar-3');
+        setActiveView('pilar-detail');
+      } else if (hash === '#dia-de-negocios-digitales') {
+        setSelectedPilarId('pilar-4');
+        setActiveView('pilar-detail');
+      } else if (hash === '#ecosistema-digital') {
+        setSelectedPilarId('pilar-5');
+        setActiveView('pilar-detail');
+      } else if (hash === '#for-ai') {
+        setActiveView('for-ai');
       }
     };
     checkHash();
@@ -49,6 +72,7 @@ export default function App() {
 
   const scrollToServices = () => {
     setActiveView('main');
+    window.history.pushState(null, '', window.location.pathname);
     setTimeout(() => {
       const el = document.getElementById('cuatro-servicios');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -58,12 +82,34 @@ export default function App() {
   const handleOpenPilar = (pilarId: string) => {
     setSelectedPilarId(pilarId);
     setActiveView('pilar-detail');
+    window.history.pushState(null, '', `#${pilarId}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Track Virtual Pageview and Service Selection in GA4
+    if (typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
+      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'select_item', {
+        item_list_name: 'areas_consultoria',
+        items: [{ item_id: pilarId, item_name: pilarId }]
+      });
+      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'page_view', {
+        page_title: `Patricia Loaiza · ${pilarId}`,
+        page_location: `${window.location.origin}/#${pilarId}`
+      });
+    }
   };
 
   const handleBackToMain = () => {
     setActiveView('main');
+    window.history.pushState(null, '', window.location.pathname);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Track return to home in GA4
+    if (typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
+      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'page_view', {
+        page_title: 'Patricia Loaiza · Inicio',
+        page_location: `${window.location.origin}/`
+      });
+    }
   };
 
   return (
