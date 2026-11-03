@@ -153,6 +153,8 @@ export interface AcademicItem {
   title: string;
   institution: string;
   year?: string;
+  credentialUrl?: string;
+  status?: string;
 }
 
 export interface ProcessStep {

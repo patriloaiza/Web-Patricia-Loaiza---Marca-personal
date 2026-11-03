@@ -998,7 +998,7 @@ const sobrePatriciaHtml = `<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   ${GA4_HEAD_SNIPPET}
   <title>Sobre Patricia Loaiza · Trayectoria, Postura y Credenciales</title>
-  <meta name="description" content="Conoce la trayectoria de Patricia Loaiza: más de 15 años conectando rigor administrativo corporativo, dirección de proyectos territoriales en FAO y Unión Europea, y consultoría estratégica." />
+  <meta name="description" content="Conoce la trayectoria de Patricia Loaiza: más de 30 años de experiencia acumulada conectando rigor administrativo corporativo (Nestlé), dirección de proyectos territoriales en FAO y Unión Europea, y consultoría estratégica." />
   <link rel="canonical" href="${BASE_URL}/pages/sobre-patricia.html" />
   <link rel="icon" type="image/jpeg" href="../assets/aistudio/isotipo_fondo_transparente_f86013c4.jpeg" />
   <style>${COMMON_CSS}</style>
@@ -1018,9 +1018,38 @@ const sobrePatriciaHtml = `<!doctype html>
       <h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 900; color: #0A0A0A; line-height: 1.15; margin: 0 0 16px; max-width: 900px;">
         Estrategia, experiencia institucional y criterio tecnológico.
       </h1>
-      <p style="font-size: 16px; color: #525252; max-width: 800px; line-height: 1.6; margin: 0 0 48px;">
-        Más de quince años de experiencia conectando el rigor administrativo corporativo, la coordinación de proyectos territoriales en organismos multilaterales y la consultoría estratégica para profesionales del conocimiento.
+      <p style="font-size: 16px; color: #525252; max-width: 800px; line-height: 1.6; margin: 0 0 36px;">
+        Más de 30 años de experiencia conectando el rigor administrativo corporativo, la coordinación de proyectos territoriales en organismos multilaterales y la consultoría estratégica para profesionales del conocimiento.
       </p>
+
+      <!-- Cuadro de Datos Rápidos -->
+      <div style="background-color: #0A0A0A; color: #F5F5F5; border: 2px solid #000; padding: 28px; box-shadow: 6px 6px 0px 0px #E30613; margin-bottom: 48px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #262626; padding-bottom: 12px; margin-bottom: 16px;">
+          <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #E30613; text-transform: uppercase; letter-spacing: 0.05em;">
+            CUADRO DE DATOS RÁPIDOS · PERFIL AUDITADO
+          </span>
+          <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #A3A3A3;">
+            VERIFICACIÓN DISPONIBLE
+          </span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; font-size: 13px;">
+          <div>
+            <strong style="color: #A3A3A3; font-size: 11px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; display: block; margin-bottom: 4px;">BASE PROFESIONAL</strong>
+            <p style="margin: 0; font-weight: 700; color: #FFF;">Medellín, Colombia.</p>
+            <span style="font-size: 11px; color: #A3A3A3;">Atención y consultoría estratégica en Iberoamérica y España.</span>
+          </div>
+          <div style="grid-column: span 2;">
+            <strong style="color: #A3A3A3; font-size: 11px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; display: block; margin-bottom: 4px;">CREDENCIALES Y FORMACIÓN</strong>
+            <p style="margin: 0; line-height: 1.5; color: #E5E5E5; font-size: 12px;">
+              <strong style="color: #FFF;">Administradora de Empresas</strong> · Consultora de marketing y negocios (Certificación BMS avalada por American Business College — <em style="color: #FBBF24;">En proceso</em>) · <strong style="color: #FFF;">Diplomado Internacional en Gerencia de Proyectos bajo lineamientos PMI</strong> (Corporación Universitaria Asturias) · <strong style="color: #FFF;">Experto en Gestión de Proyectos según PMI</strong> (Instituto Europeo de Postgrado) · <strong style="color: #FFF;">Mentora autorizada de Universidad Online</strong> <a href="https://www.credly.com/users/patricia-loaiza" target="_blank" rel="noopener noreferrer" style="color: #E30613; text-decoration: underline; font-weight: 700; font-family: 'JetBrains Mono', monospace;">[Verificar en Credly ↗]</a>.
+            </p>
+          </div>
+        </div>
+        <div style="margin-top: 16px; pt-2; border-top: 1px solid #262626; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-family: 'JetBrains Mono', monospace; padding-top: 12px;">
+          <span style="color: #D4D4D4;"><strong>TRAYECTORIA:</strong> Desde 1996: gestión corporativa, cooperación y consultoría. Más de 9 años como profesional independiente.</span>
+          <strong style="color: #E30613;">+30 AÑOS DE EXPERIENCIA INTEGRAL</strong>
+        </div>
+      </div>
 
       <!-- Postura Quote & Principles -->
       <div style="display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 50px;" class="grid-2-col">
@@ -1059,7 +1088,7 @@ const sobrePatriciaHtml = `<!doctype html>
         </div>
       </div>
 
-      <!-- Trayectoria Institucional -->
+      <!-- Trayectoria Institucional con Fechas Auditadas -->
       <div style="background-color: #FFF; border: 1px solid #D4D4D4; padding: 36px; margin-bottom: 50px;">
         <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373; display: block; margin-bottom: 8px;">
           TRAYECTORIA INSTITUCIONAL Y DE DIRECCIÓN
@@ -1070,15 +1099,47 @@ const sobrePatriciaHtml = `<!doctype html>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
           ${HITOS_EVOLUCION.map((h) => `
           <div style="background-color: #FAFAFA; border: 1px solid #E5E5E5; padding: 20px;">
-            <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #E30613; text-transform: uppercase; display: block; margin-bottom: 6px;">
-              ${h.organization}
-            </span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #E30613; text-transform: uppercase;">
+                ${h.organization}
+              </span>
+              ${h.period ? `<span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; background-color: #E5E5E5; padding: 2px 6px; border-radius: 2px;">📅 ${h.period}</span>` : ''}
+            </div>
             <strong style="font-size: 13px; color: #0A0A0A; display: block; margin-bottom: 6px;">
               ${h.role}
             </strong>
             <p style="font-size: 11px; color: #525252; line-height: 1.5; margin: 0;">
               ${h.scope}
             </p>
+          </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Formación Académica -->
+      <div style="background-color: #FFF; border: 1px solid #D4D4D4; padding: 36px; margin-bottom: 50px;">
+        <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; color: #737373; display: block; margin-bottom: 8px;">
+          FORMACIÓN ACADÉMICA Y CREDENCIALES
+        </span>
+        <h3 style="font-size: 20px; font-weight: 900; color: #0A0A0A; margin: 0 0 20px;">
+          Rigor académico y acreditaciones oficiales
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          ${FORMACION_ACADEMICA.map((fa) => `
+          <div style="background-color: #FAFAFA; border: 1px solid #E5E5E5; padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span style="font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #E30613; text-transform: uppercase;">
+                ${fa.year || 'TITULACIÓN'}
+              </span>
+              ${fa.status ? `<span style="font-size: 9px; font-family: 'JetBrains Mono', monospace; font-weight: 700; padding: 1px 4px; border-radius: 2px; ${fa.status === 'En proceso' ? 'background: #FEF3C7; color: #92400E;' : 'background: #D1FAE5; color: #065F46;'}">${fa.status}</span>` : ''}
+            </div>
+            <strong style="font-size: 12px; color: #0A0A0A; display: block; margin-bottom: 4px;">
+              ${fa.title}
+            </strong>
+            <span style="font-size: 11px; color: #737373; display: block;">
+              ${fa.institution}
+            </span>
+            ${fa.credentialUrl ? `<a href="${fa.credentialUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 8px; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #E30613; font-weight: 700;">Verificar en Credly ↗</a>` : ''}
           </div>
           `).join('')}
         </div>

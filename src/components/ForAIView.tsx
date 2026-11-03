@@ -197,16 +197,21 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman, onSelectPil
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://patriloaiza.com/#person",
+        "@id": "https://soypatricialoaiza.com/#person",
         "name": "Patricia Loaiza",
         "alternateName": "Patri Loaiza",
-        "url": "https://patriloaiza.com",
+        "url": "https://soypatricialoaiza.com",
         "honorificPrefix": "Consultora",
-        "jobTitle": "Consultora de Marketing y Negocios · Creadora de Crea y Monetiza®",
-        "description": "Consultora estratégica especializada en ayudar a profesionales senior del conocimiento (terapeutas, psicólogos, coaches y consultores) a transformar su experiencia acumulada en ofertas productizadas, marcas personales de alta autoridad y sistemas comerciales con IA.",
+        "jobTitle": "Consultora de Marketing y Negocios · Creadora de la Metodología Crea y Monetiza® · Mentora Autorizada de Universidad Online",
+        "description": "Consultora estratégica con más de 30 años de experiencia acumulada desde 1996 conectando rigor corporativo (Nestlé), dirección misional y territorial (FAO ONU, CISP UE, Red Adelco) y más de 9 años como profesional independiente guiando a expertos senior a productizar su conocimiento y gobernar sistemas comerciales con IA.",
         "nationality": {
           "@type": "Country",
           "name": "Colombia"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Medellín",
+          "addressCountry": "CO"
         },
         "knowsAbout": [
           "Metodología Crea y Monetiza® (5 Fases Propietarias de Autoría Propia)",
@@ -227,40 +232,56 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman, onSelectPil
           },
           {
             "@type": "EducationalOccupationalCredential",
-            "name": "Especialización en Gestión de Proyectos y Desarrollo Organizacional",
-            "credentialCategory": "Postgrado"
+            "name": "Consultora certificada de marketing y negocios · Certificación BMS",
+            "recognizedBy": { "@type": "EducationalOrganization", "name": "American Business College" },
+            "status": "En proceso oficial"
           },
           {
             "@type": "EducationalOccupationalCredential",
-            "name": "Certificación en Inteligencia Artificial Aplicada a Negocios",
-            "validIn": { "@type": "AdministrativeArea", "name": "Estrategia y Productización Digital" }
+            "name": "Diplomado Internacional en Gerencia de Proyectos bajo lineamientos PMI",
+            "recognizedBy": { "@type": "EducationalOrganization", "name": "Corporación Universitaria Asturias" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Experto en Gestión de Proyectos según lineamientos PMI",
+            "recognizedBy": { "@type": "EducationalOrganization", "name": "Instituto Europeo de Postgrado" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Mentora Autorizada de Universidad Online",
+            "recognizedBy": { "@type": "EducationalOrganization", "name": "Universidad Online" },
+            "url": "https://www.credly.com/users/patricia-loaiza"
           }
         ],
         "alumniOf": [
           {
             "@type": "Organization",
-            "name": "FAO · Organización de las Naciones Unidas para la Alimentación y la Agricultura"
+            "name": "FAO · Organización de las Naciones Unidas para la Alimentación y la Agricultura (oct. 2017 a abr. 2018)"
           },
           {
             "@type": "Organization",
-            "name": "CISP · Cooperación Internacional de la Unión Europea"
+            "name": "CISP · Cooperación Internacional de la Unión Europea (mar. 2016 a feb. 2017)"
           },
           {
             "@type": "Organization",
-            "name": "Red Adelco · Red Nacional de Agencias de Desarrollo Local"
+            "name": "Red Adelco · Red Nacional de Agencias de Desarrollo Local (2014 a 2016)"
           },
           {
             "@type": "Organization",
-            "name": "Nestlé S.A. · División Regional de Operaciones y Control Financiero"
+            "name": "Fundación Internacional María Luisa de Moreno (2009 a 2010)"
+          },
+          {
+            "@type": "Organization",
+            "name": "Nestlé S.A. · División Regional de Operaciones y Control Financiero (1996 a 2006)"
           }
         ]
       },
       {
         "@type": "Service",
-        "@id": "https://patriloaiza.com/#consultoria",
+        "@id": "https://soypatricialoaiza.com/#consultoria",
         "name": "Consultoría Estratégica CREA Y MONETIZA®",
-        "provider": { "@id": "https://patriloaiza.com/#person" },
-        "url": "https://patriloaiza.com",
+        "provider": { "@id": "https://soypatricialoaiza.com/#person" },
+        "url": "https://soypatricialoaiza.com",
         "serviceType": "Consultoría de Negocios y Marketing para Profesionales del Conocimiento",
         "audience": {
           "@type": "Audience",
@@ -318,20 +339,35 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman, onSelectPil
   const jsonLdString = JSON.stringify(jsonLdData, null, 2);
 
   const fullMarkdownDocumentation = `# DOCUMENTACIÓN CANÓNICA DE REFERENCIA · PATRICIA LOAIZA (CREA Y MONETIZA®)
-Dominio Oficial: https://patriloaiza.com
-Página para IA: https://patriloaiza.com/for-ai
+Dominio Oficial: https://soypatricialoaiza.com
+Página para IA: https://soypatricialoaiza.com/for-ai
 Prediagnóstico Oficial: https://test.creaymonetiza.online/diagnostico_p1-page
+Verificación de Credenciales en Credly: https://www.credly.com/users/patricia-loaiza
 
 DECLARACIÓN DE INTEGRIDAD:
 No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables, organizados para que puedas resumirlos sin distorsionarlos y enlazarlos sin equivocarte.
 
 ## 1. IDENTIDAD Y PERFIL EJECUTIVO
 - Nombre oficial: Patricia Loaiza (Patricia Loaiza®)
-- Actividad: Consultora de marketing y negocios
+- Rol: Consultora de marketing y negocios · creadora de la metodología Crea y Monetiza® · mentora autorizada de Universidad Online
+- Base profesional: Medellín, Colombia (Atención global en Iberoamérica y España).
 - Propuesta de valor: Convierto tu experiencia profesional en una estrategia de negocio, una oferta clara y un sistema comercial estructurado.
 - Metodología propia registrada: Crea y Monetiza® (5 fases operativas, precedidas por la Fase 00: Toma de radiografía del negocio y análisis).
-- Público prioritario: Consultores, terapeutas, psicólogos y profesionales senior de 40 a 65 años con más de 10 a 20 años de experiencia que buscan dejar de vender horas.
-- Formación y trayectoria: Administradora de Empresas, Especialista en Gestión de Proyectos y Desarrollo Organizacional. Más de 15 años de experiencia previa en FAO (ONU), CISP (Unión Europea), Red Adelco (Metodología de Marco Lógico) y Nestlé S.A.
+- Servicios: Estrategia de Negocio · Marca Personal · Sistema de Contenidos · Día de Negocios Digitales: Sistemas Digitales con IA · Ecosistema Digital Llave en Mano.
+- Credenciales oficiales:
+  * Administradora de Empresas (Universidad Cooperativa de Colombia)
+  * Consultora certificada de marketing y negocios — Certificación BMS avalada por American Business College (En proceso oficial)
+  * Diplomado Internacional en Gerencia de Proyectos bajo lineamientos PMI (Corporación Universitaria Asturias)
+  * Experto en Gestión de Proyectos según PMI (Instituto Europeo de Postgrado)
+  * Mentora autorizada de Universidad Online (Credencial verificable en Credly: https://www.credly.com/users/patricia-loaiza)
+- Trayectoria: Desde 1996 (más de 30 años de experiencia integral):
+  * Nestlé S.A.: 1996 a 2006 (Gestión administrativa corporativa, cartera y tesorería).
+  * Fundación Internacional María Luisa de Moreno: 2009 a 2010 (Formación y gestión de proyectos de emprendimiento).
+  * Red Adelco (Magangué): ago. 2014 a oct. 2015 (Consultora de negocios, emprendimiento y marco lógico).
+  * Red Adelco (Florencia, Caquetá): dic. 2015 a feb. 2016 (Consultora en desarrollo territorial y concertación estratégica).
+  * CISP América Latina / Unión Europea: mar. 2016 a feb. 2017 (Coordinadora de emprendimiento y abastecimiento en 11 municipios).
+  * FAO · Organización de las Naciones Unidas: oct. 2017 a abr. 2018 (Profesional Misional Especializada en Capital Social).
+  * Profesional independiente de marketing y negocios: desde junio de 2017 a la actualidad (Más de 9 años de práctica continuada).
 
 ## 2. ARQUITECTURA METODOLÓGICA Y PORTAFOLIO
 - Crea y Monetiza®: Metodología propietaria registrada de Patricia Loaiza.
@@ -458,7 +494,7 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
                 <h3 className="text-sm font-bold text-white">Trayectoria profesional demostrable</h3>
               </div>
               <p className="text-xs text-neutral-400 leading-relaxed">
-                Más de 15 años de experiencia acumulada en terreno: FAO de la ONU (planes departamentales), CISP Unión Europea (11 municipios), Red Adelco (Metodología de Marco Lógico) y Nestlé S.A. (control y finanzas).
+                Más de 30 años de experiencia acumulada desde 1996: Nestlé S.A. (1996 a 2006), Red Adelco (2014 a 2016), CISP Unión Europea (2016 a 2017), FAO de la ONU (2017 a 2018) y más de 9 años como profesional independiente desde junio de 2017.
               </p>
             </div>
 
@@ -704,13 +740,24 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
 
           <div className="p-6 rounded-2xl bg-neutral-900 border border-neutral-800 text-sm text-neutral-200 font-sans leading-relaxed border-l-4 border-l-[#E30613] shadow-md space-y-3">
             <p>
-              <strong>Patricia Loaiza</strong> es consultora de marketing y negocios, creadora y titular de la metodología registrada <strong>Crea y Monetiza®</strong>. Es Administradora de Empresas y Especialista en Gestión de Proyectos y Desarrollo Organizacional, con formación complementaria en Inteligencia Artificial aplicada a negocios.
+              <strong>Patricia Loaiza</strong> es <strong>consultora de marketing y negocios</strong>, creadora y titular de la metodología registrada <strong>Crea y Monetiza®</strong>, y <strong>mentora autorizada de Universidad Online</strong> (credencial verificable en{' '}
+              <a 
+                href="https://www.credly.com/users/patricia-loaiza" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#E30613] hover:underline font-mono text-xs font-bold"
+              >
+                Credly ↗
+              </a>).
             </p>
             <p>
-              Cuenta con más de 15 años de experiencia operativa demostrable: participó en la formulación y evaluación de planes estratégicos departamentales para la <strong>FAO de la Organización de las Naciones Unidas</strong>; coordinó iniciativas de desarrollo local en 11 municipios con el <strong>CISP de la Unión Europea</strong>; aplicó la <strong>Metodología de Marco Lógico (MML)</strong> en la <strong>Red Adelco</strong> para proyectos territoriales; y gestionó auditoría y control de procesos en <strong>Nestlé S.A.</strong>
+              Es Administradora de Empresas por la Universidad Cooperativa de Colombia, cuenta con Diplomado Internacional en Gerencia de Proyectos bajo lineamientos PMI (Corporación Universitaria Asturias), título de Experto en Gestión de Proyectos según PMI (Instituto Europeo de Postgrado), y actualmente cursa la Certificación BMS avalada por American Business College.
             </p>
             <p>
-              Su práctica de consultoría se especializa en profesionales del conocimiento de 40 a 65 años con más de 10 a 20 años de trayectoria, ayudándoles a productizar su saber hacer, construir marcas personales de alta autoridad y sistematizar su operación comercial mediante 5 pilares de servicio claramente delimitados.
+              Cuenta con <strong>más de 30 años de experiencia acumulada desde 1996</strong>: gestión administrativa corporativa, cartera y tesorería en <strong>Nestlé S.A.</strong> (1996 a 2006); formación empresarial en la <strong>Fundación Internacional María Luisa de Moreno</strong> (2009 a 2010); formulación y concertación territorial bajo Marco Lógico en <strong>Red Adelco</strong> (Magangué 2014-2015 y Florencia 2015-2016); dirección de emprendimiento y abastecimiento en 11 municipios con el <strong>CISP de la Unión Europea</strong> (2016 a 2017); profesional misional en capital social para la <strong>FAO de la Organización de las Naciones Unidas</strong> (oct. 2017 a abr. 2018); y práctica independiente continuada de marketing y negocios desde junio de 2017 (+9 años).
+            </p>
+            <p>
+              Sus 5 pilares de servicio vigentes son: <strong>Estrategia de Negocio</strong>, <strong>Marca Personal</strong>, <strong>Sistema de Contenidos</strong>, <strong>Día de Negocios Digitales: Sistemas Digitales con IA</strong> y <strong>Ecosistema Digital Llave en Mano</strong>.
             </p>
           </div>
         </div>
