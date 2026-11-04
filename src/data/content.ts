@@ -1123,7 +1123,11 @@ export const HITOS_EVOLUCION: EvolutionItem[] = [
     organization: "CISP América Latina y El Caribe (Cooperación Internacional / Programas UE)",
     period: "mar. 2016 a feb. 2017",
     tag: "Cooperación Internacional & Inclusión Socioeconómica",
-    scope: "Dirección operativa e inclusión socioeconómica con 40 organizaciones en 11 municipios del Bajo Magdalena (programa UE). Coordinación de emprendimientos asociativos y acuerdos de abastecimiento. Coautora de 2 obras con ISBN en gestión del conocimiento: Cultivar (ISBN: 978-958-99482-8-6) y Alimentar (ISBN: 978-958-99482-6-2, metodologías territoriales y tablero de control ODS).",
+    scope: `Coordinación operativa e inclusión socioeconómica con 40 organizaciones en 11 municipios del Bajo Magdalena, en el marco del programa Nuevos Territorios de Paz, financiado por la Unión Europea (UE). Coordinación de emprendimientos asociativos y acuerdos de abastecimiento.
+
+Coautora de las obras:
+• Cultivar - Cosechas para la Paz: Sembrando desde el territorio hacia la seguridad alimentaria – Sistematización (ISBN: 978-958-99482-8-6)
+• Alimentar - Modelo de Abastecimiento y Distribución de Alimentos para la Región del Bajo Magdalena (ISBN: 978-958-99482-6-2)`,
     highlight: "Coautora de 2 Obras con ISBN · Gestión del Conocimiento"
   },
   {

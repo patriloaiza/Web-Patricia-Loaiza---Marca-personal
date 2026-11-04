@@ -214,7 +214,7 @@ export const SobrePatriciaSection: React.FC = () => {
                     {item.organization}
                   </span>
 
-                  <p className="text-xs text-neutral-600 leading-relaxed mb-4">
+                  <p className="text-xs text-neutral-600 leading-relaxed mb-4 whitespace-pre-line">
                     {item.scope}
                   </p>
                 </div>

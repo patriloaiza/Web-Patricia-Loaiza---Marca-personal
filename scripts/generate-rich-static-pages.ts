@@ -1122,7 +1122,7 @@ const sobrePatriciaHtml = `<!doctype html>
             <strong style="font-size: 13px; color: #0A0A0A; display: block; margin-bottom: 6px;">
               ${h.role}
             </strong>
-            <p style="font-size: 11px; color: #525252; line-height: 1.5; margin: 0;">
+            <p style="font-size: 11px; color: #525252; line-height: 1.5; margin: 0; white-space: pre-line;">
               ${h.scope}
             </p>
           </div>
