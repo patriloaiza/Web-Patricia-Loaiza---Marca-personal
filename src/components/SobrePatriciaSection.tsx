@@ -55,21 +55,54 @@ export const SobrePatriciaSection: React.FC = () => {
               </span>
             </div>
 
-            <div className="space-y-1.5 md:col-span-2">
+            <div className="space-y-2 md:col-span-2">
               <span className="text-[11px] font-mono font-bold text-neutral-400 uppercase tracking-wider block">
                 CREDENCIALES Y FORMACIÓN
               </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-medium">
-                <strong className="text-white">Administradora de Empresas</strong> · Consultora de marketing y negocios (Certificación BMS avalada por American Business College — <span className="text-amber-400 font-bold">En proceso</span>) · <strong className="text-white">Diplomado Internacional en Gerencia de Proyectos bajo lineamientos PMI</strong> (Corporación Universitaria Asturias) · <strong className="text-white">Experto en Gestión de Proyectos según PMI</strong> (Instituto Europeo de Postgrado) · <strong className="text-white">Mentora autorizada de Universidad Online</strong>{' '}
-                <a 
-                  href="https://www.credly.com/users/patricia-loaiza" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[#E30613] hover:text-red-400 underline font-mono text-xs font-bold transition-colors"
-                >
-                  <span>[Verificar credencial en Credly ↗]</span>
-                </a>.
-              </p>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-200">
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-[#E30613] mt-1.5 shrink-0" />
+                  <div>
+                    <strong className="text-white">Administradora de Empresas</strong>
+                    <span className="text-neutral-400 text-xs block sm:inline sm:ml-1.5">· Graduada en 2001 (Universidad Cooperativa de Colombia)</span>
+                  </div>
+                </li>
+
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-[#E30613] mt-1.5 shrink-0" />
+                  <div>
+                    <strong className="text-white">Consultora certificada de marketing y negocios</strong>
+                    <span className="text-neutral-300 text-xs block sm:inline sm:ml-1.5">
+                      · Certificación BMS avalada por American Business College (<span className="text-amber-400 font-bold">En proceso</span>)
+                    </span>
+                  </div>
+                </li>
+
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-[#E30613] mt-1.5 shrink-0" />
+                  <div>
+                    <strong className="text-white">Gerencia de proyectos bajo lineamientos PMI</strong>
+                    <span className="text-neutral-300 text-xs block sm:inline sm:ml-1.5">
+                      · Diplomado Internacional (Asturias) y Experto en Gestión de Proyectos (IEP)
+                    </span>
+                  </div>
+                </li>
+
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-[#E30613] mt-1.5 shrink-0" />
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <strong className="text-white">Mentora autorizada de Universidad Online</strong>
+                    <a 
+                      href="https://www.credly.com/users/patricia-loaiza" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[#E30613] hover:text-red-400 underline font-mono text-xs font-bold transition-colors"
+                    >
+                      <span>[Verificar credencial en Credly ↗]</span>
+                    </a>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 

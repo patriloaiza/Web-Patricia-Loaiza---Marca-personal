@@ -1039,10 +1039,25 @@ const sobrePatriciaHtml = `<!doctype html>
             <span style="font-size: 11px; color: #A3A3A3;">Atención y consultoría estratégica en Iberoamérica y España.</span>
           </div>
           <div style="grid-column: span 2;">
-            <strong style="color: #A3A3A3; font-size: 11px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; display: block; margin-bottom: 4px;">CREDENCIALES Y FORMACIÓN</strong>
-            <p style="margin: 0; line-height: 1.5; color: #E5E5E5; font-size: 12px;">
-              <strong style="color: #FFF;">Administradora de Empresas</strong> · Consultora de marketing y negocios (Certificación BMS avalada por American Business College — <em style="color: #FBBF24;">En proceso</em>) · <strong style="color: #FFF;">Diplomado Internacional en Gerencia de Proyectos bajo lineamientos PMI</strong> (Corporación Universitaria Asturias) · <strong style="color: #FFF;">Experto en Gestión de Proyectos según PMI</strong> (Instituto Europeo de Postgrado) · <strong style="color: #FFF;">Mentora autorizada de Universidad Online</strong> <a href="https://www.credly.com/users/patricia-loaiza" target="_blank" rel="noopener noreferrer" style="color: #E30613; text-decoration: underline; font-weight: 700; font-family: 'JetBrains Mono', monospace;">[Verificar en Credly ↗]</a>.
-            </p>
+            <strong style="color: #A3A3A3; font-size: 11px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; display: block; margin-bottom: 6px;">CREDENCIALES Y FORMACIÓN</strong>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 1.6; color: #E5E5E5;">
+              <li style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background-color: #E30613; margin-top: 6px; flex-shrink: 0;"></span>
+                <span><strong style="color: #FFF;">Administradora de Empresas</strong> <span style="color: #A3A3A3; font-size: 11px;">· Graduada en 2001 (Universidad Cooperativa de Colombia)</span></span>
+              </li>
+              <li style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background-color: #E30613; margin-top: 6px; flex-shrink: 0;"></span>
+                <span><strong style="color: #FFF;">Consultora certificada de marketing y negocios</strong> <span style="color: #D4D4D4; font-size: 11px;">· Certificación BMS avalada por American Business College (<em style="color: #FBBF24;">En proceso</em>)</span></span>
+              </li>
+              <li style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background-color: #E30613; margin-top: 6px; flex-shrink: 0;"></span>
+                <span><strong style="color: #FFF;">Gerencia de proyectos bajo lineamientos PMI</strong> <span style="color: #D4D4D4; font-size: 11px;">· Diplomado Internacional (Asturias) y Experto en Gestión de Proyectos (IEP)</span></span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background-color: #E30613; margin-top: 6px; flex-shrink: 0;"></span>
+                <span><strong style="color: #FFF;">Mentora autorizada de Universidad Online</strong> <a href="https://www.credly.com/users/patricia-loaiza" target="_blank" rel="noopener noreferrer" style="color: #E30613; text-decoration: underline; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 11px;">[Verificar en Credly ↗]</a></span>
+              </li>
+            </ul>
           </div>
         </div>
         <div style="margin-top: 16px; pt-2; border-top: 1px solid #262626; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-family: 'JetBrains Mono', monospace; padding-top: 12px;">
