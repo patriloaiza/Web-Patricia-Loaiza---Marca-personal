@@ -38,7 +38,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
         content: [
           'La Responsable del tratamiento es Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
           'Correo electrónico: hola@soypatricialoaiza.com | Teléfono / WhatsApp: +57 300 813 5043',
-          'Dirección: Calle 34A 40-51, Medellín, Antioquia, Colombia.',
+          'Domicilio profesional: Medellín, Antioquia, Colombia.',
           'Sitio web oficial: https://soypatricialoaiza.com'
         ]
       },
