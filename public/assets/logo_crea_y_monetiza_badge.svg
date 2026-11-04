@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" width="1000" height="320">
+  <!-- White pill background with smooth black border -->
+  <rect x="10" y="10" width="980" height="300" rx="60" ry="60" fill="#FFFFFF" stroke="#000000" stroke-width="12"/>
+
+  <!-- CM Emblem -->
+  <g transform="translate(60, 35)">
+    <!-- Red C Swoop -->
+    <path d="M 125,25 C 65,25 20,70 20,130 C 20,190 65,235 125,235 C 160,235 190,215 205,185 C 185,185 165,195 140,195 C 95,195 65,165 65,130 C 65,95 95,65 140,65 C 165,65 185,75 205,75 C 190,45 160,25 125,25 Z" fill="#E30613" />
+    <path d="M 115,35 C 75,35 45,75 45,130 C 45,180 75,220 115,220 C 85,200 65,165 65,130 C 65,95 85,60 115,35 Z" fill="#990000" opacity="0.4" />
+    
+    <!-- Black M with 3D feel -->
+    <path d="M 170,225 L 170,120 L 220,175 L 255,175 L 295,100 L 295,225 L 340,225 L 340,55 L 285,55 L 235,145 L 185,75 L 125,120 L 125,225 Z" fill="#0D0D0D" />
+    
+    <!-- Red Arrow extending from M -->
+    <polygon points="340,55 315,10 395,15 390,95 350,65" fill="#E30613" />
+  </g>
+
+  <!-- CREA Y MONETIZA Typography -->
+  <g transform="translate(450, 40)">
+    <text x="0" y="100" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="95" fill="#000000" letter-spacing="4">CREA Y</text>
+    <text x="0" y="205" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="95" fill="#000000" letter-spacing="4">MONETIZA</text>
+    <!-- Red Underline -->
+    <rect x="0" y="230" width="480" height="14" fill="#E30613" rx="2" />
+  </g>
+</svg>

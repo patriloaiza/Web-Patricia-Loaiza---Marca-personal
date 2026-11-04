@@ -2,12 +2,12 @@ const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
 const fs = require('fs');
 const path = require('path');
 
-// Colors
-const brandRed = rgb(227 / 255, 6 / 255, 19 / 255);
-const darkGray = rgb(25 / 255, 25 / 255, 25 / 255);
-const medGray = rgb(95 / 255, 95 / 255, 95 / 255);
-const lightBorder = rgb(220 / 255, 220 / 255, 220 / 255);
-const highlightBg = rgb(248 / 255, 248 / 255, 248 / 255);
+// Corporate Brand Colors
+const brandRed = rgb(227 / 255, 6 / 255, 19 / 255);       // #E30613
+const darkGray = rgb(25 / 255, 25 / 255, 25 / 255);       // #191919
+const medGray = rgb(105 / 255, 105 / 255, 105 / 255);     // #696969
+const lightBorder = rgb(224 / 255, 224 / 255, 224 / 255); // #E0E0E0
+const highlightBg = rgb(250 / 255, 250 / 255, 250 / 255); // #FAFAFA
 
 // Helper to wrap text into lines based on maximum width
 function wrapText(text, font, fontSize, maxWidth) {
@@ -37,29 +37,39 @@ async function buildLegalPdf(docConfig) {
   const fontRegular = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const fontOblique = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
 
+  // Load official horizontal brand logo on white background
+  const logoPath = path.join(process.cwd(), 'public/assets/aistudio/logo_horizontal_fondo_blanco_a4fe62ce.jpeg');
+  let embeddedLogo = null;
+  if (fs.existsSync(logoPath)) {
+    const logoBytes = fs.readFileSync(logoPath);
+    embeddedLogo = await pdfDoc.embedJpg(logoBytes);
+  }
+
   const PAGE_WIDTH = 595.28; // A4
   const PAGE_HEIGHT = 841.89; // A4
   const MARGIN_LEFT = 45;
   const MARGIN_RIGHT = 45;
   const CONTENT_WIDTH = PAGE_WIDTH - MARGIN_LEFT - MARGIN_RIGHT;
 
-  const TOP_MARGIN = 740;
-  const BOTTOM_MARGIN = 65;
+  // Header geometry: pure white background, no black patches
+  const PAGE1_TOP_MARGIN = 740;
+  const SUBSEQUENT_TOP_MARGIN = 765;
+  const BOTTOM_MARGIN = 62;
 
   let pages = [];
   let currentPage = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
   pages.push(currentPage);
-  let y = TOP_MARGIN;
+  let y = PAGE1_TOP_MARGIN;
 
   function ensureSpace(neededHeight) {
     if (y - neededHeight < BOTTOM_MARGIN) {
       currentPage = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
       pages.push(currentPage);
-      y = TOP_MARGIN;
+      y = SUBSEQUENT_TOP_MARGIN;
     }
   }
 
-  // Document Title
+  // Document Title (Page 1)
   currentPage.drawText(docConfig.title.toUpperCase(), {
     x: MARGIN_LEFT,
     y: y,
@@ -72,11 +82,11 @@ async function buildLegalPdf(docConfig) {
   currentPage.drawText('PATRICIA LOAIZA™ | CREA Y MONETIZA™', {
     x: MARGIN_LEFT,
     y: y,
-    size: 10,
+    size: 9.5,
     font: fontBold,
     color: brandRed,
   });
-  y -= 14;
+  y -= 13;
 
   if (docConfig.description) {
     const descLines = wrapText(docConfig.description, fontOblique, 8.5, CONTENT_WIDTH);
@@ -91,7 +101,7 @@ async function buildLegalPdf(docConfig) {
       y -= 12;
     }
   }
-  y -= 12;
+  y -= 10;
 
   // Render Sections
   for (const section of docConfig.sections) {
@@ -105,27 +115,27 @@ async function buildLegalPdf(docConfig) {
       font: fontBold,
       color: brandRed,
     });
-    y -= 15;
+    y -= 14;
 
     // Section Content
     const contents = Array.isArray(section.content) ? section.content : [section.content];
 
     for (const paragraph of contents) {
       const isBullet = paragraph.startsWith('• ') || paragraph.startsWith('  • ') || paragraph.startsWith('- ');
-      const fontSize = section.isHighlighted ? 8.5 : 8.5;
+      const fontSize = 8.5;
       const font = section.isHighlighted && paragraph.startsWith('CASILLA') ? fontBold : fontRegular;
-      const indent = isBullet ? 10 : 0;
+      const indent = isBullet ? 12 : 0;
       const pWidth = CONTENT_WIDTH - indent;
 
       const lines = wrapText(paragraph, font, fontSize, pWidth);
-      ensureSpace(lines.length * 12 + 6);
+      ensureSpace(lines.length * 11.5 + 6);
 
       if (section.isHighlighted) {
         currentPage.drawRectangle({
           x: MARGIN_LEFT - 4,
-          y: y - (lines.length * 12) + 2,
+          y: y - (lines.length * 11.5) + 2,
           width: CONTENT_WIDTH + 8,
-          height: lines.length * 12 + 8,
+          height: lines.length * 11.5 + 8,
           color: highlightBg,
           borderColor: lightBorder,
           borderWidth: 0.5,
@@ -140,7 +150,7 @@ async function buildLegalPdf(docConfig) {
           font: font,
           color: darkGray,
         });
-        y -= 12;
+        y -= 11.5;
       }
       y -= 4; // Paragraph gap
     }
@@ -153,58 +163,108 @@ async function buildLegalPdf(docConfig) {
   pages.forEach((page, idx) => {
     const pageNum = idx + 1;
 
-    // Header Top Bar
-    page.drawRectangle({
-      x: MARGIN_LEFT,
-      y: PAGE_HEIGHT - 55,
-      width: CONTENT_WIDTH,
-      height: 22,
-      color: rgb(18 / 255, 18 / 255, 18 / 255),
-    });
+    if (pageNum === 1) {
+      // PAGE 1 HEADER: Official white background logo + Document info badge
+      if (embeddedLogo) {
+        // Logo dimensions: 1510 x 446 (ratio: 3.3857)
+        const logoH = 38;
+        const logoW = logoH * (embeddedLogo.width / embeddedLogo.height);
+        page.drawImage(embeddedLogo, {
+          x: MARGIN_LEFT,
+          y: PAGE_HEIGHT - 66,
+          width: logoW,
+          height: logoH,
+        });
+      }
 
-    page.drawText('PATRICIA LOAIZA', {
-      x: MARGIN_LEFT + 12,
-      y: PAGE_HEIGHT - 48,
-      size: 10,
-      font: fontBold,
-      color: rgb(1, 1, 1),
-    });
+      // Top-right document metadata block
+      const metaRight = PAGE_WIDTH - MARGIN_RIGHT;
+      page.drawText('CREA Y MONETIZA™', {
+        x: metaRight - 150,
+        y: PAGE_HEIGHT - 38,
+        size: 9.5,
+        font: fontBold,
+        color: darkGray,
+      });
 
-    page.drawText('CREA Y MONETIZA', {
-      x: PAGE_WIDTH - MARGIN_RIGHT - 120,
-      y: PAGE_HEIGHT - 48,
-      size: 10,
-      font: fontBold,
-      color: brandRed,
-    });
+      page.drawText('MARCO LEGAL · PROTECCIÓN DE DATOS', {
+        x: metaRight - 150,
+        y: PAGE_HEIGHT - 48,
+        size: 6.5,
+        font: fontBold,
+        color: brandRed,
+      });
 
-    // Metadata Subheader
-    page.drawText(`Código: ${docConfig.code}    Versión: ${docConfig.version}    Fecha de emisión: ${docConfig.date}    Base oficial: Medellín, Colombia`, {
-      x: MARGIN_LEFT,
-      y: PAGE_HEIGHT - 70,
-      size: 7.5,
-      font: fontRegular,
-      color: medGray,
-    });
+      page.drawText(`Código: ${docConfig.code}  ·  Versión: ${docConfig.version}`, {
+        x: metaRight - 150,
+        y: PAGE_HEIGHT - 58,
+        size: 6.5,
+        font: fontRegular,
+        color: medGray,
+      });
 
+      page.drawText(`Emisión: ${docConfig.date}  ·  Medellín, Colombia`, {
+        x: metaRight - 150,
+        y: PAGE_HEIGHT - 67,
+        size: 6.5,
+        font: fontRegular,
+        color: medGray,
+      });
+
+      // Refined double separator rule (Brand Red + Light Gray)
+      page.drawLine({
+        start: { x: MARGIN_LEFT, y: PAGE_HEIGHT - 74 },
+        end: { x: PAGE_WIDTH - MARGIN_RIGHT, y: PAGE_HEIGHT - 74 },
+        thickness: 1.25,
+        color: brandRed,
+      });
+
+      page.drawLine({
+        start: { x: MARGIN_LEFT, y: PAGE_HEIGHT - 76.5 },
+        end: { x: PAGE_WIDTH - MARGIN_RIGHT, y: PAGE_HEIGHT - 76.5 },
+        thickness: 0.5,
+        color: lightBorder,
+      });
+    } else {
+      // SUBSEQUENT PAGES: Compact letterhead with white background logo
+      if (embeddedLogo) {
+        const logoH = 22;
+        const logoW = logoH * (embeddedLogo.width / embeddedLogo.height);
+        page.drawImage(embeddedLogo, {
+          x: MARGIN_LEFT,
+          y: PAGE_HEIGHT - 44,
+          width: logoW,
+          height: logoH,
+        });
+      }
+
+      page.drawText(`${docConfig.code} v${docConfig.version}  ·  ${docConfig.title}  |  CREA Y MONETIZA™`, {
+        x: MARGIN_LEFT + 95,
+        y: PAGE_HEIGHT - 36,
+        size: 7.5,
+        font: fontRegular,
+        color: medGray,
+      });
+
+      page.drawLine({
+        start: { x: MARGIN_LEFT, y: PAGE_HEIGHT - 50 },
+        end: { x: PAGE_WIDTH - MARGIN_RIGHT, y: PAGE_HEIGHT - 50 },
+        thickness: 0.75,
+        color: lightBorder,
+      });
+    }
+
+    // FOOTER (All Pages): Pristine, verified canonical domain & official contact
     page.drawLine({
-      start: { x: MARGIN_LEFT, y: PAGE_HEIGHT - 76 },
-      end: { x: PAGE_WIDTH - MARGIN_RIGHT, y: PAGE_HEIGHT - 76 },
+      start: { x: MARGIN_LEFT, y: 44 },
+      end: { x: PAGE_WIDTH - MARGIN_RIGHT, y: 44 },
       thickness: 0.75,
       color: lightBorder,
     });
 
-    // Footer
-    page.drawLine({
-      start: { x: MARGIN_LEFT, y: 45 },
-      end: { x: PAGE_WIDTH - MARGIN_RIGHT, y: 45 },
-      thickness: 0.75,
-      color: lightBorder,
-    });
-
-    page.drawText(`Patricia Loaiza™ | CREA Y MONETIZA™ · ${docConfig.code} v${docConfig.version} · Dominio: https://soypatricialoaiza.com · Contacto: hola@soypatricialoaiza.com`, {
+    page.drawText(`Patricia Loaiza™ | CREA Y MONETIZA™ · Dominio: https://soypatricialoaiza.com · Contacto: hola@soypatricialoaiza.com`, {
       x: MARGIN_LEFT,
-      y: 33,
+      y: 32,
       size: 7,
       font: fontRegular,
       color: medGray,
@@ -212,7 +272,7 @@ async function buildLegalPdf(docConfig) {
 
     page.drawText(`Página ${pageNum} de ${totalPages}`, {
       x: PAGE_WIDTH - MARGIN_RIGHT - 65,
-      y: 33,
+      y: 32,
       size: 7,
       font: fontBold,
       color: darkGray,
@@ -252,10 +312,11 @@ async function generateAll() {
       {
         title: '1. Identificación de la Responsable',
         content: [
-          'La Responsable del tratamiento es Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
-          'Correo electrónico oficial: hola@soypatricialoaiza.com  |  Teléfono / WhatsApp: +57 300 813 5043',
-          'Domicilio profesional: Medellín, Antioquia, Colombia.',
-          'Sitio web canónico oficial: https://soypatricialoaiza.com',
+          'La Responsable del tratamiento es Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas registradas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
+          '• Correo electrónico oficial: hola@soypatricialoaiza.com',
+          '• Teléfono / WhatsApp oficial: +57 300 813 5043',
+          '• Domicilio profesional: Medellín, Antioquia, Colombia',
+          '• Sitio web canónico oficial: https://soypatricialoaiza.com',
         ],
       },
       {
@@ -281,7 +342,7 @@ async function generateAll() {
           '• Administrar campañas en plataformas propias o de terceros, incluyendo audiencias personalizadas, públicos similares y remarketing/retargeting cuando la normativa lo permita.',
           '• Automatizar tareas de marketing y gestión comercial mediante CRM (asignación de etiquetas, etapas y recordatorios).',
           '• Analizar resultados para mejorar la pertinencia de los contenidos y servicios ofrecidos.',
-          'Nota: La autorización comercial no implica la venta de datos. No se autoriza que aliados comerciales utilicen los datos para sus propias campañas independientes sin autorización previa.',
+          'Nota de transparencia: La autorización comercial no implica la venta de datos personales. No se autoriza que aliados comerciales utilicen los datos para sus propias campañas independientes sin autorización previa.',
         ],
       },
       {
@@ -295,9 +356,11 @@ async function generateAll() {
       {
         title: '5. Derechos del Titular y Canales de Atención',
         content: [
-          'Tengo derecho a conocer, actualizar, rectificar y suprimir mis datos; solicitar prueba de la autorización; conocer el uso dado; revocar la autorización cuando proceda; y acceder gratuitamente a mis datos.',
-          'Para ejercer estos derechos puedo escribir a: hola@soypatricialoaiza.com indicando en el asunto "Protección de Datos Personales – Ejercicio de Derechos".',
-          'También puedo acudir ante la Superintendencia de Industria y Comercio (SIC) una vez agotado el trámite ante la Responsable.',
+          'Tengo derecho a conocer, actualizar, rectificar y suprimir mis datos; solicitar prueba de la autorización; conocer el uso dado; revocar la autorización cuando proceda; y acceder gratuitamente a mis datos personales.',
+          '• Canal oficial para ejercer derechos: hola@soypatricialoaiza.com',
+          '• Asunto del correo: "Protección de Datos Personales – Ejercicio de Derechos"',
+          '• Canal complementario WhatsApp: +57 300 813 5043',
+          'También puedo acudir ante la Superintendencia de Industria y Comercio (SIC) una vez agotado el trámite directo ante la Responsable.',
         ],
       },
       {
@@ -306,7 +369,7 @@ async function generateAll() {
       },
       {
         title: '7. Política Aplicable y Constancia Digital',
-        content: 'Declaro que tuve la posibilidad de consultar la Política de Tratamiento de Datos Personales PL-01 y el Aviso de Privacidad AV-01 en https://soypatricialoaiza.com o mediante solicitud a hola@soypatricialoaiza.com. La Responsable conservará evidencia de la aceptación digital.',
+        content: 'Declaro que tuve la posibilidad de consultar la Política de Tratamiento de Datos Personales PL-01 y el Aviso de Privacidad AV-01 en el sitio oficial https://soypatricialoaiza.com o mediante solicitud escrita al correo hola@soypatricialoaiza.com. La Responsable conservará evidencia digital de la aceptación.',
       },
       {
         title: '8. Textos Oficiales para Configurar en Formulario (GoHighLevel / Web)',
@@ -334,9 +397,11 @@ async function generateAll() {
       {
         title: '1. Responsable del Tratamiento',
         content: [
-          'Patricia Loaiza, persona natural con domicilio profesional en Medellín, Colombia, quien actúa bajo las marcas registradas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
-          'Correo de atención oficial: hola@soypatricialoaiza.com  |  Teléfono / WhatsApp: +57 300 813 5043',
-          'Sitio web oficial: https://soypatricialoaiza.com',
+          'Patricia Loaiza, persona natural con domicilio profesional en Medellín, Colombia, quien actúa bajo las marcas registradas PATRICIA LOAIZA™ y CREA Y MONETIZA™, es la Responsable del tratamiento de sus datos personales.',
+          '• Correo electrónico oficial: hola@soypatricialoaiza.com',
+          '• Teléfono / WhatsApp oficial: +57 300 813 5043',
+          '• Domicilio profesional: Medellín, Antioquia, Colombia',
+          '• Sitio web oficial: https://soypatricialoaiza.com',
         ],
       },
       {
@@ -367,9 +432,10 @@ async function generateAll() {
       {
         title: '4. Canales para Ejercer los Derechos de Privacidad',
         content: [
-          'Para ejercer cualquiera de los derechos mencionados, el titular o su apoderado pueden enviar una comunicación escrita a:',
-          'Correo electrónico: hola@soypatricialoaiza.com',
-          'Asunto: "Ejercicio de Derechos de Datos Personales – [Nombre del Titular]"',
+          'Para ejercer cualquiera de los derechos mencionados, el titular o su apoderado pueden enviar una comunicación escrita a los canales oficiales:',
+          '• Correo electrónico oficial: hola@soypatricialoaiza.com',
+          '• Asunto del correo: "Ejercicio de Derechos de Datos Personales – [Nombre del Titular]"',
+          '• Canal WhatsApp de orientación: +57 300 813 5043',
           'La solicitud será atendida en los términos de la Ley 1581 de 2012 (máximo 10 días hábiles para consultas y 15 días hábiles para reclamos).',
         ],
       },
@@ -377,8 +443,8 @@ async function generateAll() {
         title: '5. Ubicación y Disponibilidad de la Política Completa',
         content: [
           'La versión completa de la Política de Tratamiento de Datos Personales (Código: PL-01) se encuentra a disposición permanente del público en el sitio web oficial:',
-          'https://soypatricialoaiza.com',
-          'Asimismo, puede ser solicitada en formato digital en cualquier momento escribiendo a: hola@soypatricialoaiza.com.',
+          '• Sitio web oficial: https://soypatricialoaiza.com',
+          '• Solicitud directa en formato digital por correo electrónico: hola@soypatricialoaiza.com',
         ],
       },
     ],
@@ -401,10 +467,11 @@ async function generateAll() {
       {
         title: '2. Responsable del Tratamiento y Oficial de Protección de Datos',
         content: [
-          'Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
-          'Correo electrónico oficial: hola@soypatricialoaiza.com  |  Teléfono / WhatsApp: +57 300 813 5043',
-          'Domicilio profesional: Medellín, Antioquia, Colombia.',
-          'Sitio web oficial: https://soypatricialoaiza.com',
+          'Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas registradas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
+          '• Correo electrónico oficial: hola@soypatricialoaiza.com',
+          '• Teléfono / WhatsApp oficial: +57 300 813 5043',
+          '• Domicilio profesional: Medellín, Antioquia, Colombia',
+          '• Sitio web canónico oficial: https://soypatricialoaiza.com',
           'Patricia Loaiza asume directamente las funciones de Oficial de Protección de Datos Personales.',
         ],
       },
@@ -436,7 +503,8 @@ async function generateAll() {
         title: '6. Procedimiento para el Ejercicio de Derechos (Habeas Data)',
         content: [
           'El titular puede solicitar en cualquier momento el acceso, rectificación, actualización o supresión de sus datos personales, así como revocar la autorización otorgada.',
-          'Canal de recepción: Correo electrónico a hola@soypatricialoaiza.com con el asunto "Protección de Datos Personales – Ejercicio de Derechos".',
+          '• Canal oficial de recepción: Correo electrónico a hola@soypatricialoaiza.com con el asunto "Protección de Datos Personales – Ejercicio de Derechos".',
+          '• Canal WhatsApp complementario: +57 300 813 5043',
           'Plazos legales de atención:',
           '• Consultas: Plazo máximo de diez (10) días hábiles contados a partir de la fecha de recibo.',
           '• Reclamos: Plazo máximo de quince (15) días hábiles contados a partir del día siguiente a la fecha de recibo.',
@@ -469,9 +537,10 @@ async function generateAll() {
         title: '1. Identificación de la Responsable',
         content: [
           'Responsable: Patricia Loaiza, persona natural con domicilio profesional en Medellín, Colombia (marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™).',
-          'Correo electrónico oficial: hola@soypatricialoaiza.com  |  Teléfono / WhatsApp: +57 300 813 5043',
-          'Domicilio profesional: Medellín, Antioquia, Colombia.',
-          'Sitio web oficial: https://soypatricialoaiza.com',
+          '• Correo electrónico oficial: hola@soypatricialoaiza.com',
+          '• Teléfono / WhatsApp oficial: +57 300 813 5043',
+          '• Domicilio profesional: Medellín, Antioquia, Colombia',
+          '• Sitio web canónico oficial: https://soypatricialoaiza.com',
         ],
       },
       {
@@ -518,14 +587,15 @@ async function generateAll() {
         title: '8. Enlace con la Política de Tratamiento y Canal de Atención',
         content: [
           'Esta Política de Cookies complementa la Política de Tratamiento de Datos Personales (Código: PL-01) y el Aviso de Privacidad (AV-01) disponibles en https://soypatricialoaiza.com.',
-          'Para cualquier duda, solicitud o ejercicio de derechos de privacidad, puede escribir a: hola@soypatricialoaiza.com.',
-          'Vigencia: Esta Política de Cookies rige desde el 3 de noviembre de 2026.',
+          '• Canal de atención para consultas sobre cookies y privacidad: hola@soypatricialoaiza.com',
+          '• Teléfono / WhatsApp: +57 300 813 5043',
+          '• Vigencia: Esta Política de Cookies rige desde el 3 de noviembre de 2026.',
         ],
       },
     ],
   });
 
-  console.log('✓ All 4 legal PDFs successfully generated and synchronized!');
+  console.log('✓ All 4 legal PDFs successfully generated and synchronized with white background logos and verified canonical data!');
 }
 
 generateAll().catch(console.error);
