@@ -31,108 +31,115 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onSelectPila
 
         {/* 4 Strategic Consulting Cards (Pilares 1 al 4: Lo hacemos juntos) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-neutral-800 pt-12">
-          {SERVICES.slice(0, 4).map((srv) => (
-            <div 
-              key={srv.id} 
-              className="group flex flex-col justify-between p-6 bg-neutral-900/70 hover:bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition-all cursor-pointer rounded-xs"
-              onClick={() => onSelectPilar && onSelectPilar(srv.id)}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-2xl sm:text-3xl font-black text-[#E30613] font-mono block group-hover:translate-x-1 transition-transform">
-                    {srv.number}
-                  </span>
-                  <span className="text-[10px] font-mono font-bold uppercase text-neutral-400 bg-neutral-800/90 px-2 py-0.5 border border-neutral-700">
-                    LO HACEMOS JUNTOS
-                  </span>
+          {SERVICES.slice(0, 4).map((srv) => {
+            const staticPages: Record<string, string> = {
+              'pilar-1': './pages/estrategia-de-negocio.html',
+              'pilar-2': './pages/marca-personal.html',
+              'pilar-3': './pages/sistema-de-contenidos.html',
+              'pilar-4': './pages/dia-de-negocios-digitales.html',
+              'pilar-5': './pages/ecosistema-digital.html'
+            };
+            const targetUrl = staticPages[srv.id] || `./pages/${srv.id}.html`;
+
+            return (
+              <div 
+                key={srv.id} 
+                className="group flex flex-col justify-between p-6 bg-neutral-900/70 hover:bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition-all rounded-xs"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl sm:text-3xl font-black text-[#E30613] font-mono block group-hover:translate-x-1 transition-transform">
+                      {srv.number}
+                    </span>
+                    <span className="text-[10px] font-mono font-bold uppercase text-neutral-400 bg-neutral-800/90 px-2 py-0.5 border border-neutral-700">
+                      LO HACEMOS JUNTOS
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 leading-snug">
+                    <a href={targetUrl} className="hover:text-[#E30613] transition-colors">
+                      {srv.name}
+                    </a>
+                  </h3>
+
+                  <p className="text-xs font-semibold text-[#E30613] mb-4 leading-tight">
+                    {srv.subname}
+                  </p>
+
+                  {/* 1. Para quién es */}
+                  <div className="pt-3 border-t border-neutral-800/80 mb-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-1.5 font-mono flex items-center gap-1">
+                      <Target className="w-3 h-3 text-[#E30613]" />
+                      <span>PARA QUIÉN ES:</span>
+                    </span>
+                    <ul className="space-y-1">
+                      {srv.idealFor.slice(0, 2).map((item, idx) => (
+                        <li key={idx} className="text-xs text-neutral-300 leading-snug flex items-start gap-1.5">
+                          <span className="w-1 h-1 bg-[#E30613] mt-1.5 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* 2. Qué trabajamos */}
+                  <div className="pt-3 border-t border-neutral-800/80 mb-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-1.5 font-mono flex items-center gap-1">
+                      <Layers className="w-3 h-3 text-[#E30613]" />
+                      <span>QUÉ TRABAJAMOS:</span>
+                    </span>
+                    <ul className="space-y-1">
+                      {srv.whatWeWork.slice(0, 2).map((item, idx) => (
+                        <li key={idx} className="text-xs text-neutral-300 leading-snug flex items-start gap-1.5">
+                          <span className="w-1 h-1 bg-white mt-1.5 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* 3. Qué te llevas (Entregables) */}
+                  <div className="pt-3 border-t border-neutral-800/80 mb-4">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-1.5 font-mono flex items-center gap-1">
+                      <Package className="w-3 h-3 text-[#E30613]" />
+                      <span>QUÉ TE LLEVAS (ENTREGABLES):</span>
+                    </span>
+                    <ul className="space-y-1">
+                      {srv.deliverablesTangibles.slice(0, 2).map((item, idx) => (
+                        <li key={idx} className="text-xs text-neutral-200 font-medium leading-snug flex items-start gap-1.5">
+                          <span className="w-1.5 h-1.5 bg-[#E30613] mt-1 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 leading-snug">
-                  {srv.name}
-                </h3>
+                <div>
+                  {/* Modalidad Badge */}
+                  <div className="mb-4">
+                    <span className="text-[10px] font-semibold text-neutral-300 bg-neutral-800 px-2 py-1 border border-neutral-700 block text-center">
+                      Modalidad: Lo hacemos juntos (ejecución del cliente)
+                    </span>
+                  </div>
 
-                <p className="text-xs font-semibold text-[#E30613] mb-4 leading-tight">
-                  {srv.subname}
-                </p>
-
-                {/* 1. Para quién es */}
-                <div className="pt-3 border-t border-neutral-800/80 mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-1.5 font-mono flex items-center gap-1">
-                    <Target className="w-3 h-3 text-[#E30613]" />
-                    <span>PARA QUIÉN ES:</span>
-                  </span>
-                  <ul className="space-y-1">
-                    {srv.idealFor.slice(0, 2).map((item, idx) => (
-                      <li key={idx} className="text-xs text-neutral-300 leading-snug flex items-start gap-1.5">
-                        <span className="w-1 h-1 bg-[#E30613] mt-1.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 2. Qué trabajamos */}
-                <div className="pt-3 border-t border-neutral-800/80 mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-1.5 font-mono flex items-center gap-1">
-                    <Layers className="w-3 h-3 text-[#E30613]" />
-                    <span>QUÉ TRABAJAMOS:</span>
-                  </span>
-                  <ul className="space-y-1">
-                    {srv.whatWeWork.slice(0, 2).map((item, idx) => (
-                      <li key={idx} className="text-xs text-neutral-300 leading-snug flex items-start gap-1.5">
-                        <span className="w-1 h-1 bg-white mt-1.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 3. Qué te llevas (Entregables) */}
-                <div className="pt-3 border-t border-neutral-800/80 mb-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-1.5 font-mono flex items-center gap-1">
-                    <Package className="w-3 h-3 text-[#E30613]" />
-                    <span>QUÉ TE LLEVAS (ENTREGABLES):</span>
-                  </span>
-                  <ul className="space-y-1">
-                    {srv.deliverablesTangibles.slice(0, 2).map((item, idx) => (
-                      <li key={idx} className="text-xs text-neutral-200 font-medium leading-snug flex items-start gap-1.5">
-                        <span className="w-1.5 h-1.5 bg-[#E30613] mt-1 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <a
+                    href={targetUrl}
+                    className="w-full pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs font-bold text-neutral-300 hover:text-white group-hover:text-white transition-colors block"
+                  >
+                    <span>Ver alcance y entregables</span>
+                    <ArrowRight className="w-4 h-4 text-[#E30613] group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </div>
               </div>
-
-              <div>
-                {/* Modalidad Badge */}
-                <div className="mb-4">
-                  <span className="text-[10px] font-semibold text-neutral-300 bg-neutral-800 px-2 py-1 border border-neutral-700 block text-center">
-                    Modalidad: Lo hacemos juntos (ejecución del cliente)
-                  </span>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (onSelectPilar) onSelectPilar(srv.id);
-                  }}
-                  className="w-full pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs font-bold text-neutral-300 group-hover:text-white cursor-pointer bg-transparent text-left"
-                >
-                  <span>Ver alcance y entregables</span>
-                  <ArrowRight className="w-4 h-4 text-[#E30613] group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Featured Card: Pilar 5 · Ecosistema Digital Llave en Mano (Lo hago por ti) */}
         {SERVICES[4] && (
           <div 
-            onClick={() => onSelectPilar && onSelectPilar(SERVICES[4].id)}
-            className="mt-8 p-6 sm:p-8 bg-neutral-900/90 hover:bg-neutral-900 border-2 border-neutral-800 hover:border-neutral-600 transition-all rounded-xs cursor-pointer group flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+            className="mt-8 p-6 sm:p-8 bg-neutral-900/90 hover:bg-neutral-900 border-2 border-neutral-800 hover:border-neutral-600 transition-all rounded-xs group flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
           >
             <div className="max-w-3xl">
               <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -144,7 +151,9 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onSelectPila
                 <span className="text-xs text-neutral-400 font-mono">Tecnología base: GoHighLevel (GHL)</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
-                {SERVICES[4].name}: {SERVICES[4].subname}
+                <a href="./pages/ecosistema-digital.html" className="hover:text-[#E30613] transition-colors">
+                  {SERVICES[4].name}: {SERVICES[4].subname}
+                </a>
               </h3>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-4">
                 {SERVICES[4].focus}
@@ -162,17 +171,13 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ onSelectPila
                 <span className="text-white font-bold block">Página web · Embudo · CRM · Automatizaciones</span>
                 <span>Configurado y listo para operar</span>
               </div>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (onSelectPilar) onSelectPilar(SERVICES[4].id);
-                }}
-                className="w-full lg:w-auto px-5 py-3 bg-[#E30613] hover:bg-[#c90510] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              <a
+                href="./pages/ecosistema-digital.html"
+                className="w-full lg:w-auto px-5 py-3 bg-[#E30613] hover:bg-[#c90510] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
               >
                 <span>Ver alcance y entregables: Ecosistema Digital</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
         )}
