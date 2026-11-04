@@ -1123,8 +1123,8 @@ export const HITOS_EVOLUCION: EvolutionItem[] = [
     organization: "CISP América Latina y El Caribe (Cooperación Internacional / Programas UE)",
     period: "mar. 2016 a feb. 2017",
     tag: "Cooperación Internacional & Inclusión Socioeconómica",
-    scope: "Dirección y coordinación operativa de proyectos de inclusión socioeconómica en 11 municipios de la subregión del Bajo Magdalena. Coordinación de actividades técnicas, financieras y administrativas en la implementación de emprendimientos asociativos y acuerdos de abastecimiento para involucrar a productores en cadenas de valor.",
-    highlight: "Gestión Territorial en 11 Municipios"
+    scope: "Dirección operativa e inclusión socioeconómica con 40 organizaciones en 11 municipios del Bajo Magdalena (programa UE). Coordinación de emprendimientos asociativos y acuerdos de abastecimiento. Coautora de 2 obras con ISBN en gestión del conocimiento: Cultivar (ISBN: 978-958-99482-8-6) y Alimentar (ISBN: 978-958-99482-6-2, metodologías territoriales y tablero de control ODS).",
+    highlight: "Coautora de 2 Obras con ISBN · Gestión del Conocimiento"
   },
   {
     id: "evo-4",
@@ -1141,8 +1141,8 @@ export const HITOS_EVOLUCION: EvolutionItem[] = [
     organization: "Red Adelco (Magangué)",
     period: "ago. 2014 a oct. 2015",
     tag: "Formulación de Proyectos & Metodología de Marco Lógico",
-    scope: "Desarrollo y fortalecimiento de capacidades gerenciales y técnicas en organizaciones asociativas de base productiva y Grupos Autogestionados de Ahorro. Acompañamiento especializado en estructuración y formulación de proyectos bajo la rigurosa Metodología de Marco Lógico en 11 municipios.",
-    highlight: "Estándares Metodológicos Internacionales"
+    scope: "Asistencia técnica y consultoría de fortalecimiento gerencial a 40 organizaciones de base productiva y grupos autogestionados de ahorro en 11 municipios del Bajo Magdalena, en el marco del programa Nuevos Territorios de Paz financiado por la Unión Europea (UE). Estructuración y formulación de proyectos bajo Metodología de Marco Lógico.",
+    highlight: "40 Organizaciones en 11 Municipios · Programa UE"
   },
   {
     id: "evo-6",
