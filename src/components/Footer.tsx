@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar, on
             <div className="pt-2 text-neutral-500 text-[11px] space-y-1">
               <p>Medellín, Colombia · Atención en toda Iberoamérica y España</p>
               <p>Dominio oficial: <strong className="text-white">{BRAND_INFO.domain}</strong></p>
-              <p>Contacto: {BRAND_INFO.contactEmail}</p>
+              <p>Contacto: <a href={`mailto:${BRAND_INFO.contactEmail}`} className="text-white hover:text-[#E30613] transition-colors underline decoration-neutral-700 underline-offset-2">{BRAND_INFO.contactEmail}</a></p>
             </div>
           </div>
 

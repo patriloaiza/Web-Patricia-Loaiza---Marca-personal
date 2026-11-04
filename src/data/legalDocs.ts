@@ -37,7 +37,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
         title: '1. Identificación de la Responsable',
         content: [
           'La Responsable del tratamiento es Patricia Loaiza, persona natural domiciliada en Medellín, Colombia, quien actúa bajo las marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™.',
-          'Correo electrónico: info@patriloaiza.com | Teléfono / WhatsApp: +57 300 813 5043',
+          'Correo electrónico: hola@soypatricialoaiza.com | Teléfono / WhatsApp: +57 300 813 5043',
           'Dirección: Calle 34A 40-51, Medellín, Antioquia, Colombia.',
           'Sitio web oficial: https://soypatricialoaiza.com'
         ]
@@ -80,7 +80,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
         title: '5. Derechos del Titular y Canales de Atención',
         content: [
           'Tengo derecho a conocer, actualizar, rectificar y suprimir mis datos; solicitar prueba de la autorización; conocer el uso dado; revocar la autorización cuando proceda; y acceder gratuitamente a mis datos.',
-          'Para ejercer estos derechos puedo escribir a: info@patriloaiza.com indicando en el asunto "Protección de Datos Personales – Ejercicio de Derechos".',
+          'Para ejercer estos derechos puedo escribir a: hola@soypatricialoaiza.com indicando en el asunto "Protección de Datos Personales – Ejercicio de Derechos".',
           'También puedo acudir ante la Superintendencia de Industria y Comercio (SIC) una vez agotado el trámite ante la Responsable.'
         ]
       },
@@ -90,7 +90,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
       },
       {
         title: '7. Política Aplicable y Constancia Digital',
-        content: 'Declaro que tuve la posibilidad de consultar la Política de Tratamiento de Datos Personales PL-01 y el Aviso de Privacidad AV-01 en https://bio.patriloaiza.com o en info@patriloaiza.com. La Responsable conservará evidencia de la aceptación digital.'
+        content: 'Declaro que tuve la posibilidad de consultar la Política de Tratamiento de Datos Personales PL-01 y el Aviso de Privacidad AV-01 en https://soypatricialoaiza.com o en hola@soypatricialoaiza.com. La Responsable conservará evidencia de la aceptación digital.'
       },
       {
         title: '8. Textos Oficiales para Configurar en Formulario (GoHighLevel / Web)',
@@ -123,7 +123,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
       },
       {
         title: '2. Responsable del Tratamiento',
-        content: 'Patricia Loaiza, persona natural con domicilio en Medellín, Colombia. Correo: info@patriloaiza.com | WhatsApp: +57 300 813 5043. Asume también las funciones de Oficial de Protección de Datos.'
+        content: 'Patricia Loaiza, persona natural con domicilio en Medellín, Colombia. Correo: hola@soypatricialoaiza.com | WhatsApp: +57 300 813 5043. Asume también las funciones de Oficial de Protección de Datos.'
       },
       {
         title: '3. Principios Rectores',
@@ -139,7 +139,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
       },
       {
         title: '6. Procedimiento para Ejercicio de Derechos',
-        content: 'Escribir a info@patriloaiza.com. Plazos de respuesta: Consultas en máximo 10 días hábiles; Reclamos en máximo 15 días hábiles; RGPD en máximo 1 mes; CCPA en 45 días.'
+        content: 'Escribir a hola@soypatricialoaiza.com. Plazos de respuesta: Consultas en máximo 10 días hábiles; Reclamos en máximo 15 días hábiles; RGPD en máximo 1 mes; CCPA en 45 días.'
       },
       {
         title: '7. Cookies y Tecnologías Similares',
@@ -165,7 +165,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
     sections: [
       {
         title: '1. Responsable del Tratamiento',
-        content: 'Patricia Loaiza, con domicilio en Medellín, Colombia (marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™). Correo: info@patriloaiza.com | WhatsApp: +57 300 813 5043.'
+        content: 'Patricia Loaiza, con domicilio en Medellín, Colombia (marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™). Correo: hola@soypatricialoaiza.com | WhatsApp: +57 300 813 5043.'
       },
       {
         title: '2. Finalidades Principales',
@@ -184,7 +184,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
       },
       {
         title: '4. Canales para Ejercer Derechos',
-        content: 'Correo electrónico: info@patriloaiza.com con el asunto "Ejercicio de Derechos de Datos Personales".'
+        content: 'Correo electrónico: hola@soypatricialoaiza.com con el asunto "Ejercicio de Derechos de Datos Personales".'
       },
       {
         title: '5. Ubicación de la Política Completa',
@@ -206,7 +206,7 @@ export const LEGAL_DOCS: LegalDocItem[] = [
     sections: [
       {
         title: '1. Identificación de la Responsable',
-        content: 'Patricia Loaiza, domiciliada en Medellín, Colombia (marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™). Correo: info@patriloaiza.com | WhatsApp: +57 300 813 5043. Sitio web: https://soypatricialoaiza.com'
+        content: 'Patricia Loaiza, domiciliada en Medellín, Colombia (marcas PATRICIA LOAIZA™ y CREA Y MONETIZA™). Correo: hola@soypatricialoaiza.com | WhatsApp: +57 300 813 5043. Sitio web: https://soypatricialoaiza.com'
       },
       {
         title: '2. ¿Qué son las Cookies?',

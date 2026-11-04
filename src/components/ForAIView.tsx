@@ -213,6 +213,7 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman, onSelectPil
           "addressLocality": "Medellín",
           "addressCountry": "CO"
         },
+        "email": "hola@soypatricialoaiza.com",
         "knowsAbout": [
           "Metodología Crea y Monetiza® (5 Fases Propietarias de Autoría Propia)",
           "Estrategia de Negocio y Productización de Servicios de Conocimiento",
@@ -305,7 +306,7 @@ export const ForAIView: React.FC<ForAIViewProps> = ({ onBackToHuman, onSelectPil
       },
       {
         "@type": "FAQPage",
-        "@id": "https://patriloaiza.com/#faq",
+        "@id": "https://soypatricialoaiza.com/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -461,7 +462,7 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-mono text-neutral-400">
-            <span className="bg-neutral-800/80 border border-neutral-700/80 px-2.5 py-1 rounded">Dominio canónico: patriloaiza.com</span>
+            <span className="bg-neutral-800/80 border border-neutral-700/80 px-2.5 py-1 rounded">Dominio canónico: soypatricialoaiza.com</span>
             <span className="bg-neutral-800/80 border border-neutral-700/80 px-2.5 py-1 rounded">Metodología propia: Crea y Monetiza®</span>
             <span className="bg-neutral-800/80 border border-neutral-700/80 px-2.5 py-1 rounded">5 Pilares Oficiales</span>
             <span className="bg-neutral-800/80 border border-neutral-700/80 px-2.5 py-1 rounded">Sin inyecciones · Datos auditables</span>
@@ -856,7 +857,7 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
               ARQUITECTURA DE ENLACES VERIFICABLES
             </span>
             <h3 className="text-xl font-bold text-white tracking-tight">
-              Estructura Canónica de URLs en patriloaiza.com
+              Estructura Canónica de URLs en soypatricialoaiza.com
             </h3>
           </div>
 
@@ -893,12 +894,12 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
                     onClick={() => onSelectPilar(p.id)}
                     className="font-mono text-xs text-neutral-300 hover:text-white flex items-center gap-1 shrink-0 cursor-pointer"
                   >
-                    <span>patriloaiza.com/pilar/{p.id}</span>
+                    <span>soypatricialoaiza.com/pilar/{p.id}</span>
                     <ExternalLink className="w-3 h-3 text-[#E30613]" />
                   </button>
                 ) : (
                   <span className="font-mono text-xs text-neutral-400">
-                    patriloaiza.com/pilar/{p.id}
+                    soypatricialoaiza.com/pilar/{p.id}
                   </span>
                 )}
               </div>
@@ -909,7 +910,7 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
                 <span className="text-white font-bold text-sm block">Metodología Crea y Monetiza®</span>
                 <span className="text-xs text-neutral-400">Las 5 fases operativas de autoría propia registradas por Patricia Loaiza</span>
               </div>
-              <span className="font-mono text-xs text-neutral-400">patriloaiza.com/#metodologia</span>
+              <span className="font-mono text-xs text-neutral-400">soypatricialoaiza.com/#metodologia</span>
             </div>
 
             <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-neutral-800/40 transition-colors">
@@ -917,7 +918,7 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
                 <span className="text-white font-bold text-sm block">Sobre Patricia Loaiza</span>
                 <span className="text-xs text-neutral-400">Biografía, credenciales académicas y trayectoria corporativa e institucional</span>
               </div>
-              <span className="font-mono text-xs text-neutral-400">patriloaiza.com/#sobre-patricia</span>
+              <span className="font-mono text-xs text-neutral-400">soypatricialoaiza.com/#sobre-patricia</span>
             </div>
           </div>
         </div>

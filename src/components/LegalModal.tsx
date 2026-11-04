@@ -178,7 +178,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialDocId = '
               <p className="text-[11px] text-neutral-400 font-mono">
                 Enlace para incrustar en el texto del formulario de GHL:{' '}
                 <code className="text-[#E30613] select-all bg-black px-1.5 py-0.5 border border-neutral-800">
-                  https://bio.patriloaiza.com/docs/autorizacion-tratamiento-datos.pdf
+                  https://soypatricialoaiza.com/docs/autorizacion-tratamiento-datos.pdf
                 </code>
               </p>
             </div>

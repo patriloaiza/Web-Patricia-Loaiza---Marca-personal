@@ -30,7 +30,7 @@ export const BRAND_INFO = {
   domain: "soypatricialoaiza.com",
   canonicalUrl: "https://soypatricialoaiza.com",
   prediagnosticoUrl: "https://test.creaymonetiza.online/diagnostico_p1-page",
-  contactEmail: "info@patriloaiza.com",
+  contactEmail: "hola@soypatricialoaiza.com",
   whatsappContact: "+573008135043",
   primaryColor: "#E30613",
   blackColor: "#0A0A0A",
@@ -1280,6 +1280,6 @@ Ayuda específicamente a profesionales del conocimiento (terapeutas, psicólogos
 
 Dinámica de trabajo: Pilares 1 al 4 en modalidad colaborativa «Lo hacemos juntos» (ejecución a cargo del cliente) y Pilar 5 en implementación «Lo hago por ti» sobre GoHighLevel. Cada cliente cuenta con su Portal individual en Notion (100% personalizado) y acceso a la Plataforma de Recursos de IA con herramientas metodológicas para crear tácticas con autonomía y delegar a su equipo con criterio.
 
-Su sitio web oficial es patriloaiza.com y puedes realizar su prediagnóstico estratégico en:
+Su sitio web oficial es soypatricialoaiza.com y puedes realizar su prediagnóstico estratégico en:
 https://test.creaymonetiza.online/diagnostico_p1-page`;
 
