@@ -385,12 +385,12 @@ const sobrePatriciaHtml = `
   <div class="card">
     <h2 style="font-size: 22px; font-weight: 800; color: #FFF; margin-top: 0;">Trayectoria y Autoridad</h2>
     <p>Patricia Loaiza es administradora de empresas por la Universidad Cooperativa de Colombia, especialista en Gestión de Proyectos y Desarrollo Organizacional, y certificada en Inteligencia Artificial aplicada a negocios.</p>
-    <p>Cuenta con más de 15 años de experiencia acumulada asesorando a entidades multilaterales, organizaciones productivas y empresas privadas de gran escala:</p>
+    <p>Cuenta con más de 30 años de experiencia acumulada (desde 1996) en el sector corporativo, entidades multilaterales, organizaciones productivas y como profesional independiente:</p>
     <ul style="padding-left: 20px; line-height: 1.8;">
       <li><strong>FAO (Naciones Unidas):</strong> formulación y evaluación de planes estratégicos departamentales.</li>
       <li><strong>CISP (Unión Europea):</strong> coordinación y acompañamiento a organizaciones productivas en 11 municipios.</li>
       <li><strong>Red Adelco:</strong> aplicación de Metodología de Marco Lógico en proyectos territoriales.</li>
-      <li><strong>Nestlé S.A.:</strong> control financiero, auditoría de procesos y análisis comercial en el sector corporativo privado.</li>
+      <li><strong>Nestlé S.A.:</strong> administración, cartera y tesorería en el sector corporativo privado (1996-2006).</li>
     </ul>
   </div>
 
@@ -406,7 +406,7 @@ const sobrePatriciaHtml = `
 
 const sobrePatriciaPage = createPageLayout({
   title: 'Sobre Patricia Loaiza · Trayectoria, Credenciales y Filosofía',
-  description: 'Conoce la trayectoria de más de 15 años de Patricia Loaiza: FAO (ONU), Unión Europea (CISP), Red Adelco y Nestlé S.A. al servicio de consultores senior.',
+  description: 'Conoce la trayectoria de más de 30 años (desde 1996) de Patricia Loaiza: Nestlé S.A., FAO (ONU), Unión Europea (CISP), Red Adelco y +9 años como profesional independiente.',
   canonicalUrl: `${BASE_URL}/pages/sobre-patricia.html`,
   h1: 'Sobre Patricia Loaiza',
   kicker: 'AUTORIDAD & TRAYECTORIA',
