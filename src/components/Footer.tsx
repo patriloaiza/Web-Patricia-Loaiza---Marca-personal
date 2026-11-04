@@ -155,44 +155,44 @@ export const Footer: React.FC<FooterProps> = ({ setActiveView, onSelectPilar, on
             </div>
             <ul className="space-y-2 text-neutral-400">
               <li>
-                <button
-                  onClick={() => handlePilarClick('pilar-1')}
-                  className="hover:text-white transition-colors text-left cursor-pointer block"
+                <a
+                  href="./pages/estrategia-de-negocio.html"
+                  className="hover:text-white transition-colors text-left block"
                 >
                   Pilar 1: Estrategia de Negocio
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handlePilarClick('pilar-2')}
-                  className="hover:text-white transition-colors text-left cursor-pointer block"
+                <a
+                  href="./pages/marca-personal.html"
+                  className="hover:text-white transition-colors text-left block"
                 >
                   Pilar 2: Marca Personal
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handlePilarClick('pilar-3')}
-                  className="hover:text-white transition-colors text-left cursor-pointer block"
+                <a
+                  href="./pages/sistema-de-contenidos.html"
+                  className="hover:text-white transition-colors text-left block"
                 >
                   Pilar 3: Sistema de Contenidos
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handlePilarClick('pilar-4')}
-                  className="hover:text-white transition-colors text-left cursor-pointer block"
+                <a
+                  href="./pages/dia-de-negocios-digitales.html"
+                  className="hover:text-white transition-colors text-left block"
                 >
                   Pilar 4: Día de Negocios Digitales
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handlePilarClick('pilar-5')}
-                  className="hover:text-white transition-colors text-left cursor-pointer block text-[#E30613]"
+                <a
+                  href="./pages/ecosistema-digital.html"
+                  className="hover:text-white transition-colors text-left block text-[#E30613]"
                 >
                   Pilar 5: Ecosistema Llave en Mano
-                </button>
+                </a>
               </li>
             </ul>
           </div>

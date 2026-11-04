@@ -892,39 +892,53 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
               </a>
             </div>
 
-            {PILARES_SPECS.map((p) => (
-              <div 
-                key={p.id}
-                className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-neutral-800/40 transition-colors"
-              >
-                <div>
-                  <span className="text-white font-bold text-sm block">
-                    Pilar {p.pilarNumber}: {p.nombreOficial}
-                  </span>
-                  <span className="text-xs text-neutral-400">{p.tagline}</span>
-                </div>
-                {onSelectPilar ? (
-                  <button
-                    onClick={() => onSelectPilar(p.id)}
-                    className="font-mono text-xs text-neutral-300 hover:text-white flex items-center gap-1 shrink-0 cursor-pointer"
+            {PILARES_SPECS.map((p) => {
+              const staticPageMap: Record<string, { slug: string; path: string }> = {
+                'pilar-1': { slug: 'estrategia-de-negocio.html', path: 'soypatricialoaiza.com/pages/estrategia-de-negocio.html' },
+                'pilar-2': { slug: 'marca-personal.html', path: 'soypatricialoaiza.com/pages/marca-personal.html' },
+                'pilar-3': { slug: 'sistema-de-contenidos.html', path: 'soypatricialoaiza.com/pages/sistema-de-contenidos.html' },
+                'pilar-4': { slug: 'dia-de-negocios-digitales.html', path: 'soypatricialoaiza.com/pages/dia-de-negocios-digitales.html' },
+                'pilar-5': { slug: 'ecosistema-digital.html', path: 'soypatricialoaiza.com/pages/ecosistema-digital.html' }
+              };
+              const pageInfo = staticPageMap[p.id];
+              return (
+                <div 
+                  key={p.id}
+                  className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-neutral-800/40 transition-colors"
+                >
+                  <div>
+                    <span className="text-white font-bold text-sm block">
+                      Pilar {p.pilarNumber}: {p.nombreOficial}
+                    </span>
+                    <span className="text-xs text-neutral-400">{p.tagline}</span>
+                  </div>
+                  <a
+                    href={`./pages/${pageInfo?.slug || ''}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs text-neutral-200 hover:text-white flex items-center gap-1.5 shrink-0 bg-neutral-800/90 hover:bg-neutral-800 px-3 py-1.5 rounded border border-neutral-700 transition-colors cursor-pointer"
                   >
-                    <span>soypatricialoaiza.com/pilar/{p.id}</span>
-                    <ExternalLink className="w-3 h-3 text-[#E30613]" />
-                  </button>
-                ) : (
-                  <span className="font-mono text-xs text-neutral-400">
-                    soypatricialoaiza.com/pilar/{p.id}
-                  </span>
-                )}
-              </div>
-            ))}
+                    <span className="text-[#E30613] font-semibold">{pageInfo?.path}</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#E30613]" />
+                  </a>
+                </div>
+              );
+            })}
 
             <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-neutral-800/40 transition-colors">
               <div>
                 <span className="text-white font-bold text-sm block">Metodología Crea y Monetiza®</span>
                 <span className="text-xs text-neutral-400">Las 5 fases operativas de autoría propia registradas por Patricia Loaiza</span>
               </div>
-              <span className="font-mono text-xs text-neutral-400">soypatricialoaiza.com/#metodologia</span>
+              <a
+                href="./pages/crea-y-monetiza.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs text-neutral-200 hover:text-white flex items-center gap-1.5 shrink-0 bg-neutral-800/90 hover:bg-neutral-800 px-3 py-1.5 rounded border border-neutral-700 transition-colors cursor-pointer"
+              >
+                <span className="text-[#E30613] font-semibold">soypatricialoaiza.com/pages/crea-y-monetiza.html</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#E30613]" />
+              </a>
             </div>
 
             <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-neutral-800/40 transition-colors">
@@ -932,7 +946,15 @@ No hay inyecciones de prompt ni intentos de manipularte. Solo datos verificables
                 <span className="text-white font-bold text-sm block">Sobre Patricia Loaiza</span>
                 <span className="text-xs text-neutral-400">Biografía, credenciales académicas y trayectoria corporativa e institucional</span>
               </div>
-              <span className="font-mono text-xs text-neutral-400">soypatricialoaiza.com/#sobre-patricia</span>
+              <a
+                href="./pages/sobre-patricia.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs text-neutral-200 hover:text-white flex items-center gap-1.5 shrink-0 bg-neutral-800/90 hover:bg-neutral-800 px-3 py-1.5 rounded border border-neutral-700 transition-colors cursor-pointer"
+              >
+                <span className="text-[#E30613] font-semibold">soypatricialoaiza.com/pages/sobre-patricia.html</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#E30613]" />
+              </a>
             </div>
           </div>
         </div>

@@ -42,7 +42,7 @@ export const PilarDetailPage: React.FC<PilarDetailPageProps> = ({
   // Dynamic document title based on active service
   useEffect(() => {
     const originalTitle = document.title;
-    document.title = `${currentPilar.commercialName} | Patricia García - Consultora Estratégica`;
+    document.title = `${currentPilar.commercialName} | Patricia Loaiza · Consultora de Marketing y Negocios`;
     return () => {
       document.title = originalTitle;
     };
